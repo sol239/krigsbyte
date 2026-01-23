@@ -1,0 +1,360 @@
+<template>
+  <header id="header">
+    <a href="https://knizni-korist.cz/" class="logo">
+      <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5" />
+        <path d="M6.5 17H20" />
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17" />
+      </svg>
+      <span>Švédská knižní kořist z&nbsp;českých zemí</span>
+    </a>
+
+    <div class="search-container">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+
+      <input type="text" class="search-input" placeholder="Hledat v databázi..." />
+
+      <div class="custom-dropdown" id="myDropdown">
+        <div class="dropdown-selected" @click="toggleMenu">Všechna pole</div>
+        <div class="dropdown-list">
+          <div class="dropdown-option" @click="setVal('Všechna pole')">Všechna pole</div>
+          <div class="dropdown-option" @click="setVal('Název')">Název</div>
+          <div class="dropdown-option" @click="setVal('Autor')">Autor</div>
+          <div class="dropdown-option" @click="setVal('Popis')">Popis</div>
+        </div>
+      </div>
+
+      <div class="search-button-group">
+        <button class="search-button">Hledat</button>
+        <button class="search-button secondary" title="Vyhledávání v knihách">
+          <img :src="bookSearch" alt="Book search" />
+        </button>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="info-btn" title="Informace">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+      </div>
+      <div class="lang-dropdown" id="langDropdown">
+        <div class="lang-selected" @click="toggleLangMenu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 8 6 6" />
+            <path d="m4 14 6-6 2-3" />
+            <path d="M2 5h12" />
+            <path d="M7 2h1" />
+            <path d="m22 22-5-10-5 10" />
+            <path d="M14 18h6" />
+          </svg>
+        </div>
+        <div class="lang-list">
+          <div class="lang-option" @click="setLang('cs')">Čeština</div>
+          <div class="lang-option" @click="setLang('en')">English</div>
+          <div class="lang-option" @click="setLang('sv')">Svenska</div>
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script>
+import bookSearch from '~/assets/svg/book-search.svg'
+
+export default {
+  data() {
+    return {
+      selectedField: 'Všechna pole',
+      selectedLang: 'cs',
+      bookSearch
+    }
+  },
+  mounted() {
+    window.addEventListener('click', this.handleClickOutside)
+  },
+  beforeUnmount() {
+    window.removeEventListener('click', this.handleClickOutside)
+  },
+  methods: {
+    toggleMenu() {
+      document.getElementById('myDropdown').classList.toggle('open')
+    },
+    setVal(text) {
+      this.selectedField = text
+      document.querySelector('.dropdown-selected').textContent = text
+      document.getElementById('myDropdown').classList.remove('open')
+    },
+    toggleLangMenu() {
+      document.getElementById('langDropdown').classList.toggle('open')
+    },
+    setLang(langCode) {
+      this.selectedLang = langCode
+      document.getElementById('langDropdown').classList.remove('open')
+      console.log('Jazyk změněn na:', langCode)
+    },
+    handleClickOutside(event) {
+      if (!event.target.closest('.dropdown-selected') && !event.target.closest('.lang-selected')) {
+        document.getElementById('myDropdown')?.classList.remove('open')
+        document.getElementById('langDropdown')?.classList.remove('open')
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+/* --- HEADER --- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 80px;
+  background: var(--bg-header);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+  flex-shrink: 0;
+}
+
+.logo {
+  text-decoration: none;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--transition);
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+/* V headeru skryjeme text loga */
+header .logo span {
+  display: none;
+}
+
+.logo-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* --- SEARCH CONTAINER --- */
+.search-container {
+  display: flex;
+  align-items: center;
+  background: var(--bg-input);
+  padding: 6px 6px 6px 18px;
+  border-radius: 50px;
+  flex: 1;
+  max-width: 500px;
+  margin: 0 30px;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  position: relative;
+}
+
+.search-container:focus-within {
+  background: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(130, 41, 12, 0.1);
+}
+
+.search-icon {
+  color: #999;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+/* --- CUSTOM DROPDOWNS --- */
+.custom-dropdown {
+  position: relative;
+  border-left: 1px solid #ddd;
+  margin-right: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dropdown-selected {
+  padding: 0 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-selected::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.custom-dropdown.open .dropdown-selected::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  min-width: 150px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.custom-dropdown.open .dropdown-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-option {
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  transition: all 0.1s;
+}
+
+.dropdown-option:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+/* --- SEARCH BUTTON GROUP --- */
+.search-button-group {
+  display: flex;
+  gap: 4px;
+}
+
+.search-button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.search-button.secondary {
+  padding: 10px 14px;
+}
+
+.search-button.secondary img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+/* --- ACTIONS & LANG --- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.info-btn,
+.lang-selected {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-input);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.info-btn:hover,
+.lang-selected:hover {
+  background: #e8e8e8;
+}
+
+.lang-dropdown {
+  position: relative;
+}
+
+.lang-list {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  min-width: 130px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 2000;
+  overflow: hidden;
+}
+
+.lang-dropdown.open .lang-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-option {
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  transition: all 0.1s;
+  cursor: pointer;
+}
+
+.lang-option:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+</style>
