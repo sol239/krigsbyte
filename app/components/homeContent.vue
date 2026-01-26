@@ -1,110 +1,393 @@
 <template>
   <main class="main-content">
-    <div class="search-nav-group">
-      <div class="group-header">
-        <span class="group-title">Rychlá navigace</span>
-      </div>
-      <div class="nav-links">
-        <NuxtLink to="/krigsbyte/history" class="nav-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
-          Historie vyhledávání
-        </NuxtLink>
-        <NuxtLink to="/krigsbyte/advanced" class="nav-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/></svg>
-          Pokročilé vyhledávání
-        </NuxtLink>
-        <NuxtLink to="/krigsbyte/alphabetical" class="nav-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="11" x2="20" y2="11"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="4" y1="19" x2="20" y2="19"/></svg>
-          Prohlížet abecedně
-        </NuxtLink>
-      </div>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Švédská knižní kořist z českých zemí</h1>
+        <p class="hero-subtitle">Bibliografický a informační portál</p>
+        <p class="hero-description">
+          V letech 1646–1648 odvezla švédská vojska z Mikulova, Olomouce a Prahy více než 25 000 knih.
+          Tento portál zpřístupňuje informace o dochovaných exemplářích rozptýlených po knihovnách celé Evropy.
+        </p>
 
-    <div class="intro-text">
-      <h1>Hlavní obsah</h1>
-      <p>Text loga byl v záhlaví skryt pro minimalistický vzhled. Kompletní logo s názvem nyní najdete v patičce stránky.</p>
-    </div>
+        <div class="hero-stats-card">
+          <span class="stats-label">Aktuálně:</span>
+          <div class="stat-item">
+            <span class="stat-number">4,312</span>
+            <span class="stat-text">identifikovaných knih</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">63</span>
+            <span class="stat-text">knihoven</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">16</span>
+            <span class="stat-text">zemí</span>
+          </div>
+        </div>
+
+        <div class="city-scroller-container">
+          <div class="city-scroller">
+            <div class="city-scroller-track">
+              <span>Västerås (688)</span><span>Stockholm (669)</span><span>Uppsala (347)</span>
+              <span>Lund (209)</span><span>Leiden (180)</span><span>København (169)</span>
+              <span>Vatikán (91)</span><span>Växjö (45)</span><span>Linköping (30)</span>
+              <span>Brno (21)</span><span>Hamburg (16)</span><span>Karlstad (16)</span>
+              <span>Skara (15)</span><span>Göteborg (13)</span><span>Göttingen (12)</span>
+              <span>Hannover (11)</span><span>Bremen (9)</span><span>Berlin (7)</span>
+              <span>Oslo (7)</span><span>Skokloster (5)</span><span>Praha (3)</span>
+              <span>Frankfurt (3)</span><span>Roma (2)</span><span>Sankt Peterburg (2)</span>
+              <!-- Duplicate for seamless loop -->
+              <span>Västerås (688)</span><span>Stockholm (669)</span><span>Uppsala (347)</span>
+              <span>Lund (209)</span><span>Leiden (180)</span><span>København (169)</span>
+              <span>Vatikán (91)</span><span>Växjö (45)</span><span>Linköping (30)</span>
+              <span>Brno (21)</span><span>Hamburg (16)</span><span>Karlstad (16)</span>
+              <span>Skara (15)</span><span>Göteborg (13)</span><span>Göttingen (12)</span>
+              <span>Hannover (11)</span><span>Bremen (9)</span><span>Berlin (7)</span>
+              <span>Oslo (7)</span><span>Skokloster (5)</span><span>Praha (3)</span>
+              <span>Frankfurt (3)</span><span>Roma (2)</span><span>Sankt Peterburg (2)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-footer-link">
+          <a href="https://knizni-korist.cz/" target="_blank" rel="noopener">
+            Navštívit hlavní web projektu knizni-korist.cz
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
   </main>
 </template>
 
 <style scoped>
-/* --- MAIN CONTENT --- */
 .main-content {
   flex: 1;
-  width: 80vw;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: var(--shadow);
-  overflow-y: auto;
-}
-
-.search-nav-group {
-  background: #f9f9f9;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 40px;
-}
-
-.group-header {
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.group-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #111;
-}
-
-.nav-links {
+  width: calc(100% - 40px);
+  max-width: none;
+  margin: 20px auto;
+  padding: 0;
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 20px;
+  background: transparent;
+  box-shadow: none;
 }
 
-.nav-btn {
+/* --- HERO SECTION --- */
+.hero-section {
+  background: #fff;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  min-height: calc(76vh - 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-stats-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: var(--bg-input);
+  padding: 10px 24px;
+  border-radius: 100px;
+  margin: 10px 0 20px;
+  border: 1px solid var(--border-color);
+}
+
+.stats-label {
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.stat-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  padding: 10px 20px;
-  border-radius: 8px;
-  color: #374151;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s;
+  gap: 8px;
+}
+
+.stat-number {
+  font-weight: 800;
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+.stat-text {
+  color: var(--text-muted);
   font-size: 0.95rem;
 }
 
-.nav-btn:hover {
-  border-color: var(--primary);
+.stat-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-color);
+}
+
+.hero-section h1 {
+  font-size: 2.8rem;
+  color: var(--text-main);
+  margin-bottom: 5px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
   color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.hero-description {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* --- CITY SCROLLER --- */
+.city-scroller-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.city-scroller {
+  display: flex;
+  white-space: nowrap;
+}
+
+.city-scroller-track {
+  display: flex;
+  gap: 15px;
+  animation: scroll 40s linear infinite;
+  padding: 10px 0;
+}
+
+.city-scroller-container:hover .city-scroller-track {
+  animation-play-state: paused;
+}
+
+.city-scroller-track span {
+  background: var(--bg-input);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.hero-footer-link {
+  margin-top: 10px;
+}
+
+.hero-footer-link a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.hero-footer-link a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* --- FEATURES GRID --- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
   background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
 }
 
-.nav-btn svg {
-  color: #6b7280;
-  transition: color 0.2s;
+.feature-card:hover {
+  transform: translateY(-5px);
 }
 
-.nav-btn:hover svg {
+.card-icon {
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.feature-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.stats {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  padding: 10px;
+  background: var(--bg-input);
+  border-radius: 8px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.cta-button.secondary {
+  background: #444;
+}
+
+.cta-button.outline {
+  background: transparent;
+  border: 2px solid var(--primary);
   color: var(--primary);
 }
 
-.intro-text h1 {
-  font-size: 2rem;
-  margin-bottom: 16px;
-  color: #111;
+.cta-button:hover {
+  opacity: 0.9;
 }
 
-.intro-text p {
-  line-height: 1.6;
-  color: #4b5563;
+/* --- SECONDARY INFO --- */
+.secondary-info {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+}
+
+.video-section,
+.resources-links {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.video-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #222;
+  border-radius: 12px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+}
+
+.links-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.link-group h4 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.link-group a {
+  display: block;
+  color: var(--text-main);
+  text-decoration: none;
+  padding: 5px 0;
+  font-weight: 500;
+}
+
+.link-group a:hover {
+  color: var(--primary);
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-stats-card {
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 20px;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  .secondary-info {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    width: calc(100% - 20px);
+    margin: 5px auto;
+    gap: 12px;
+  }
 }
 </style>
