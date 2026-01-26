@@ -140,8 +140,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
-  height: 9vh;
+  padding: 10px 40px;
+  min-height: 70px;
   background: var(--bg-header);
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
@@ -261,18 +261,19 @@ header .logo span {
   transform: rotate(180deg);
 }
 
-.dropdown-list {
+  .dropdown-list {
   position: absolute;
-  top: 45px;
-  left: 0;
+  top: calc(100% + 8px);
+  right: 0;
+  left: auto;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   min-width: 150px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.2s ease;
+  transform: translateY(-8px);
+  transition: all 0.18s ease;
   overflow: hidden;
   z-index: 2000;
 }
