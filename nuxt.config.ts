@@ -4,6 +4,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   app: {
-    baseURL: '/sky-notes',
+    baseURL: '/krigsbyte',
   },
 })
