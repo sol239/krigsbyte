@@ -360,4 +360,76 @@ header .logo span {
   background-color: var(--primary);
   color: #fff;
 }
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+  header {
+    padding: 0 15px;
+    height: 8vh;
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .search-container {
+    margin: 0 10px;
+    max-width: none;
+    padding: 4px 4px 4px 12px;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+  }
+
+  .dropdown-selected {
+    padding: 0 8px;
+    font-size: 0.8rem;
+  }
+
+  .search-button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .search-button.secondary {
+    padding: 8px 10px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .info-btn,
+  .lang-selected {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0 10px;
+    height: 7vh;
+  }
+
+  .search-container {
+    margin: 0 5px;
+  }
+
+  .search-button.secondary {
+    display: none;
+  }
+
+  .dropdown-list,
+  .lang-list {
+    min-width: 120px;
+  }
+
+  .dropdown-option,
+  .lang-option {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
 </style>
