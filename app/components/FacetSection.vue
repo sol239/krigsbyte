@@ -2,7 +2,11 @@
   <div class="facet-section">
     <div class="facet-header" @click="isOpen = !isOpen">
       <span>{{ title }}</span>
-      <svg class="chevron" :class="{ rotated: !isOpen }" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+      <svg class="chevron" :class="{ rotated: !isOpen }" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
     </div>
     <div v-show="isOpen" class="facet-content">
       <ul class="facet-list">

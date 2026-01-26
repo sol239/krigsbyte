@@ -6,7 +6,11 @@
             <div class="top-nav">
                 <h1>Pokročilé vyhledávání</h1>
                 <a class="back-btn" href="/krigsbyte">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5" />
+                        <path d="M12 19l-7-7 7-7" />
+                    </svg>
                     Zpět na vyhledávání
                 </a>
             </div>
@@ -14,17 +18,24 @@
             <div class="card search-card">
                 <div class="card-header">
                     <h2>Kritéria vyhledávání</h2>
-                    
+
                     <div class="match-selector">
                         <label>Shoda:</label>
-                        <div class="custom-dropdown" :class="{ open: activeDropdown === 'match' }" v-click-outside="() => activeDropdown = null">
+                        <div class="custom-dropdown" :class="{ open: activeDropdown === 'match' }"
+                            v-click-outside="() => activeDropdown = null">
                             <button class="dropdown-trigger" @click.stop="toggleDropdown('match')">
                                 {{ selectedMatch }}
-                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
                             </button>
                             <div class="dropdown-menu">
-                                <div class="dropdown-item" @click="selectMatch('Všechny výrazy (AND)')">Všechny výrazy (AND)</div>
-                                <div class="dropdown-item" @click="selectMatch('Libovolné výrazy (OR)')">Libovolné výrazy (OR)</div>
+                                <div class="dropdown-item" @click="selectMatch('Všechny výrazy (AND)')">Všechny výrazy
+                                    (AND)</div>
+                                <div class="dropdown-item" @click="selectMatch('Libovolné výrazy (OR)')">Libovolné
+                                    výrazy (OR)</div>
                                 <div class="dropdown-item" @click="selectMatch('Žádné výrazy')">Žádné výrazy</div>
                             </div>
                         </div>
@@ -32,15 +43,21 @@
                 </div>
 
                 <div class="search-groups-wrapper">
-                    
+
                     <template v-for="(group, groupIdx) in fieldGroups" :key="group.id">
                         <hr v-if="groupIdx > 0" class="group-divider" />
                         <div class="field-group-container">
-                            
+
                             <div class="group-header-label" v-if="fieldGroups.length > 1">
                                 <span class="group-title">Skupina {{ groupIdx + 1 }}</span>
-                                <button class="delete-group-btn" @click="removeGroup(groupIdx)" title="Odstranit celou skupinu">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                <button class="delete-group-btn" @click="removeGroup(groupIdx)"
+                                    title="Odstranit celou skupinu">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
                                     Odstranit skupinu
                                 </button>
                             </div>
@@ -48,23 +65,40 @@
                             <div class="group-fields">
                                 <div v-for="(field, idx) in group.fields" :key="field.id" class="search-row">
                                     <div class="field-select-wrapper">
-                                        <div class="custom-dropdown" :class="{ open: activeDropdown === `field-${field.id}` }">
-                                            <button class="dropdown-trigger" @click.stop="toggleDropdown(`field-${field.id}`)">
+                                        <div class="custom-dropdown"
+                                            :class="{ open: activeDropdown === `field-${field.id}` }">
+                                            <button class="dropdown-trigger"
+                                                @click.stop="toggleDropdown(`field-${field.id}`)">
                                                 {{ field.selected || 'Všechna pole' }}
-                                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                    height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="6 9 12 15 18 9" />
+                                                </svg>
                                             </button>
                                             <div class="dropdown-menu">
-                                                <div class="dropdown-item" @click="selectField(field.id, 'Všechna pole')">Všechna pole</div>
-                                                <div class="dropdown-item" @click="selectField(field.id, 'Název')">Název</div>
-                                                <div class="dropdown-item" @click="selectField(field.id, 'Autor')">Autor</div>
-                                                <div class="dropdown-item" @click="selectField(field.id, 'Popis')">Popis</div>
+                                                <div class="dropdown-item"
+                                                    @click="selectField(field.id, 'Všechna pole')">Všechna pole</div>
+                                                <div class="dropdown-item" @click="selectField(field.id, 'Název')">Název
+                                                </div>
+                                                <div class="dropdown-item" @click="selectField(field.id, 'Autor')">Autor
+                                                </div>
+                                                <div class="dropdown-item" @click="selectField(field.id, 'Popis')">Popis
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="input-wrapper">
-                                        <input class="modern-input" type="text" placeholder="Zadejte hledaný výraz..." v-model="field.value" />
-                                        <button v-if="group.fields.length > 1" class="delete-field-btn" @click="removeField(groupIdx, idx)" title="Odebrat pole" type="button">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#850000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                        <input class="modern-input" type="text" placeholder="Zadejte hledaný výraz..."
+                                            v-model="field.value" />
+                                        <button v-if="group.fields.length > 1" class="delete-field-btn"
+                                            @click="removeField(groupIdx, idx)" title="Odebrat pole" type="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 24 24" fill="none" stroke="#850000" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="18" y1="6" x2="6" y2="18" />
+                                                <line x1="6" y1="6" x2="18" y2="18" />
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>
@@ -72,7 +106,12 @@
 
                             <div class="group-actions">
                                 <button class="btn-ghost" type="button" @click="addField(groupIdx)">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
                                     Přidat další pole
                                 </button>
                             </div>
@@ -81,7 +120,13 @@
 
                     <div class="global-actions">
                         <button class="btn-dashed" type="button" @click="addGroup">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="12" y1="8" x2="12" y2="16"></line>
+                                <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
                             Přidat novou skupinu
                         </button>
                     </div>
@@ -112,7 +157,7 @@
                 <hr class="filter-divider" />
                 <div class="card filter-card">
                     <h3>Rok vydání</h3>
-                    
+
                     <div class="year-filter-content">
                         <div class="year-inputs-row">
                             <div class="input-group">
@@ -256,7 +301,9 @@ useHead({
 </style>
 
 <style scoped>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 .page-layout {
     display: flex;
@@ -287,7 +334,10 @@ h1 {
     margin: 0;
 }
 
-h2, h3 { margin: 0; }
+h2,
+h3 {
+    margin: 0;
+}
 
 .back-btn {
     display: flex;
@@ -446,19 +496,30 @@ h2, h3 { margin: 0; }
     transition: all 0.2s;
 }
 
-.dropdown-trigger:hover { border-color: #bbb; }
+.dropdown-trigger:hover {
+    border-color: #bbb;
+}
+
 .custom-dropdown.open .dropdown-trigger {
     border-color: var(--primary);
     box-shadow: var(--focus-ring);
 }
-.chevron { color: #9ca3af; transition: transform 0.2s; }
-.custom-dropdown.open .chevron { transform: rotate(180deg); }
+
+.chevron {
+    color: #9ca3af;
+    transition: transform 0.2s;
+}
+
+.custom-dropdown.open .chevron {
+    transform: rotate(180deg);
+}
 
 .dropdown-menu {
     position: absolute;
     top: calc(100% + 4px);
     left: 0;
-    width: 100%; /* Match trigger width */
+    width: 100%;
+    /* Match trigger width */
     min-width: 10rem;
     background: #fff;
     border: 1px solid var(--border-color);
@@ -653,8 +714,8 @@ h2, h3 { margin: 0; }
     position: absolute;
     width: 100%;
     height: 6px;
-    background: #e5e7eb;
-    border-radius: 4px;
+    background: #eee;
+    border-radius: 3px;
     z-index: 1;
 }
 
@@ -662,7 +723,7 @@ h2, h3 { margin: 0; }
     position: absolute;
     height: 6px;
     background: var(--primary);
-    border-radius: 4px;
+    border-radius: 3px;
     z-index: 2;
 }
 
@@ -680,27 +741,30 @@ h2, h3 { margin: 0; }
 .range-thumb::-webkit-slider-thumb {
     -webkit-appearance: none;
     pointer-events: auto;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: #fff;
     border: 2px solid var(--primary);
     cursor: grab;
-    margin-top: -8px; 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    margin-top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     transition: transform 0.1s;
 }
 
-.range-thumb::-webkit-slider-thumb:hover { transform: scale(1.1); }
+.range-thumb::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
 .range-thumb::-moz-range-thumb {
     pointer-events: auto;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: #fff;
     border: 2px solid var(--primary);
     cursor: grab;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 /* --- SUBMIT BUTTON --- */
@@ -734,14 +798,17 @@ h2, h3 { margin: 0; }
         grid-template-columns: 1fr;
         gap: 8px;
     }
+
     .filters-grid {
         grid-template-columns: 1fr;
     }
+
     .card-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
+
     .match-selector {
         width: 100%;
     }

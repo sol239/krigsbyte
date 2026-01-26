@@ -31,23 +31,9 @@
         <div class="city-scroller-container">
           <div class="city-scroller">
             <div class="city-scroller-track">
-              <span>Västerås (688)</span><span>Stockholm (669)</span><span>Uppsala (347)</span>
-              <span>Lund (209)</span><span>Leiden (180)</span><span>København (169)</span>
-              <span>Vatikán (91)</span><span>Växjö (45)</span><span>Linköping (30)</span>
-              <span>Brno (21)</span><span>Hamburg (16)</span><span>Karlstad (16)</span>
-              <span>Skara (15)</span><span>Göteborg (13)</span><span>Göttingen (12)</span>
-              <span>Hannover (11)</span><span>Bremen (9)</span><span>Berlin (7)</span>
-              <span>Oslo (7)</span><span>Skokloster (5)</span><span>Praha (3)</span>
-              <span>Frankfurt (3)</span><span>Roma (2)</span><span>Sankt Peterburg (2)</span>
-              <!-- Duplicate for seamless loop -->
-              <span>Västerås (688)</span><span>Stockholm (669)</span><span>Uppsala (347)</span>
-              <span>Lund (209)</span><span>Leiden (180)</span><span>København (169)</span>
-              <span>Vatikán (91)</span><span>Växjö (45)</span><span>Linköping (30)</span>
-              <span>Brno (21)</span><span>Hamburg (16)</span><span>Karlstad (16)</span>
-              <span>Skara (15)</span><span>Göteborg (13)</span><span>Göttingen (12)</span>
-              <span>Hannover (11)</span><span>Bremen (9)</span><span>Berlin (7)</span>
-              <span>Oslo (7)</span><span>Skokloster (5)</span><span>Praha (3)</span>
-              <span>Frankfurt (3)</span><span>Roma (2)</span><span>Sankt Peterburg (2)</span>
+              <span v-for="(city, index) in loopedCities" :key="index" class="city-item">
+                <span class="flag-icon" v-html="flagSvg(city.country)"></span> {{ city.name }} ({{ city.count }})
+              </span>
             </div>
           </div>
         </div>
@@ -69,6 +55,53 @@
 
   </main>
 </template>
+
+<script setup lang="ts">
+const cities = [
+  { name: 'Västerås', count: 688, country: 'SE' },
+  { name: 'Stockholm', count: 669, country: 'SE' },
+  { name: 'Uppsala', count: 347, country: 'SE' },
+  { name: 'Lund', count: 209, country: 'SE' },
+  { name: 'Leiden', count: 180, country: 'NL' },
+  { name: 'København', count: 169, country: 'DK' },
+  { name: 'Vatikán', count: 91, country: 'VA' },
+  { name: 'Växjö', count: 45, country: 'SE' },
+  { name: 'Linköping', count: 30, country: 'SE' },
+  { name: 'Brno', count: 21, country: 'CZ' },
+  { name: 'Hamburg', count: 16, country: 'DE' },
+  { name: 'Karlstad', count: 16, country: 'SE' },
+  { name: 'Skara', count: 15, country: 'SE' },
+  { name: 'Göteborg', count: 13, country: 'SE' },
+  { name: 'Göttingen', count: 12, country: 'DE' },
+  { name: 'Hannover', count: 11, country: 'DE' },
+  { name: 'Bremen', count: 9, country: 'DE' },
+  { name: 'Berlin', count: 7, country: 'DE' },
+  { name: 'Oslo', count: 7, country: 'NO' },
+  { name: 'Skokloster', count: 5, country: 'SE' },
+  { name: 'Praha', count: 3, country: 'CZ' },
+  { name: 'Frankfurt', count: 3, country: 'DE' },
+  { name: 'Roma', count: 2, country: 'IT' },
+  { name: 'Sankt Peterburg', count: 2, country: 'RU' },
+];
+
+const flagSvgs: Record<string, string> = {
+  SE: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" fill="#0052B4"/><rect x="5.33" y="0" width="1.33" height="16" fill="#FFCC00"/><rect x="0" y="5.33" width="16" height="1.33" fill="#FFCC00"/></svg>`,
+  NL: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="5.33" fill="#AE1C28"/><rect y="5.33" width="16" height="5.33" fill="#FFFFFF"/><rect y="10.67" width="16" height="5.33" fill="#21468B"/></svg>`,
+  DK: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" fill="#C8102E"/><rect x="5.33" y="0" width="1.33" height="16" fill="#FFFFFF"/><rect x="0" y="5.33" width="16" height="1.33" fill="#FFFFFF"/></svg>`,
+  VA: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="8" height="16" fill="#FFE000"/><rect x="8" width="8" height="16" fill="#FFFFFF"/></svg>`,
+  CZ: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="8" fill="#FFFFFF"/><rect y="8" width="16" height="8" fill="#D52B1E"/><polygon points="0,0 8,8 0,16" fill="#11457E"/></svg>`,
+  DE: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="5.33" fill="#000000"/><rect y="5.33" width="16" height="5.33" fill="#DD0000"/><rect y="10.67" width="16" height="5.33" fill="#FFCC00"/></svg>`,
+  NO: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" fill="#BA0C2F"/><rect x="5.33" y="0" width="1.33" height="16" fill="#FFFFFF"/><rect x="0" y="5.33" width="16" height="1.33" fill="#FFFFFF"/><rect x="6" y="0" width="0.67" height="16" fill="#00205B"/><rect x="0" y="6" width="16" height="0.67" fill="#00205B"/></svg>`,
+  IT: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="5.33" height="16" fill="#009246"/><rect x="5.33" width="5.33" height="16" fill="#FFFFFF"/><rect x="10.67" width="5.33" height="16" fill="#CE2B37"/></svg>`,
+  RU: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="5.33" fill="#FFFFFF"/><rect y="5.33" width="16" height="5.33" fill="#0052B4"/><rect y="10.67" width="16" height="5.33" fill="#D52B1E"/></svg>`,
+};
+
+function flagSvg(code: string): string {
+  return flagSvgs[code] || '';
+}
+
+const loopedCities = [...cities, ...cities];
+</script>
 
 <style scoped>
 .main-content {
@@ -190,7 +223,7 @@
 .city-scroller-track {
   display: flex;
   gap: 15px;
-  animation: scroll 40s linear infinite;
+  animation: scroll 60s linear infinite;
   padding: 10px 0;
 }
 
@@ -198,7 +231,7 @@
   animation-play-state: paused;
 }
 
-.city-scroller-track span {
+.city-item {
   background: var(--bg-input);
   padding: 6px 14px;
   border-radius: 20px;
@@ -206,6 +239,18 @@
   font-weight: 500;
   color: var(--text-muted);
   border: 1px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flag-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 @keyframes scroll {
