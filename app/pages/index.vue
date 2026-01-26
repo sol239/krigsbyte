@@ -1,3 +1,9 @@
+<script setup>
+definePageMeta({
+  middleware: 'krigsbyte-redirect'
+})
+</script>
+
 <template>
 
 <!-- nav link to krigsbyte page-->

@@ -7,37 +7,51 @@
         <div class="card">
           <!-- Results meta info bar -->
           <div class="results-meta-bar">
-            <div class="results-count">
-              Zobrazeno <strong>1 - 10</strong> výsledků z <strong>4 323</strong>
-            </div>
+            <!-- Top Row -->
+            <div class="meta-row top-row">
+              <div class="results-count">
+                Zobrazeno <strong>1 - 10</strong> z <strong>4323</strong>
+              </div>
 
-            <div class="meta-controls">
-              <div class="control-group">
-                <label>Seřadit podle</label>
-                <div class="custom-dropdown" :class="{ open: isSortOpen }" @click.stop="toggleSort">
-                  <div class="dropdown-selected">{{ selectedSort }}</div>
-                  <div class="dropdown-list">
-                    <div class="dropdown-option" @click.stop="setSort('Relevance')">Relevance</div>
-                    <div class="dropdown-option" @click.stop="setSort('Autor')">Autor</div>
-                    <div class="dropdown-option" @click.stop="setSort('Název')">Název</div>
-                    <div class="dropdown-option" @click.stop="setSort('Místo')">Místo</div>
-                    <div class="dropdown-option" @click.stop="setSort('Podle data sestupně')">Podle data sestupně</div>
-                    <div class="dropdown-option" @click.stop="setSort('Podle data vzestupně')">Podle data vzestupně</div>
+              <div class="meta-controls">
+                <div class="control-group">
+                  <label>Seřadit podle</label>
+                  <div class="custom-dropdown" :class="{ open: isSortOpen }" @click.stop="toggleSort">
+                    <div class="dropdown-selected">{{ selectedSort }}</div>
+                    <div class="dropdown-list">
+                      <div class="dropdown-option" @click.stop="setSort('Relevance')">Relevance</div>
+                      <div class="dropdown-option" @click.stop="setSort('Autor')">Autor</div>
+                      <div class="dropdown-option" @click.stop="setSort('Název')">Název</div>
+                      <div class="dropdown-option" @click.stop="setSort('Místo')">Místo</div>
+                      <div class="dropdown-option" @click.stop="setSort('Podle data sestupně')">Podle data sestupně</div>
+                      <div class="dropdown-option" @click.stop="setSort('Podle data vzestupně')">Podle data vzestupně</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label>Na stránku</label>
+                  <div class="custom-dropdown min-dropdown" :class="{ open: isPageSizeOpen }" @click.stop="togglePageSize">
+                    <div class="dropdown-selected">{{ selectedPageSize }}</div>
+                    <div class="dropdown-list">
+                      <div class="dropdown-option" @click.stop="setPageSize(10)">10</div>
+                      <div class="dropdown-option" @click.stop="setPageSize(20)">20</div>
+                      <div class="dropdown-option" @click.stop="setPageSize(40)">40</div>
+                      <div class="dropdown-option" @click.stop="setPageSize(80)">80</div>
+                      <div class="dropdown-option" @click.stop="setPageSize(100)">100</div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="control-group">
-                <label>Na stránku</label>
-                <div class="custom-dropdown min-dropdown" :class="{ open: isPageSizeOpen }" @click.stop="togglePageSize">
-                  <div class="dropdown-selected">{{ selectedPageSize }}</div>
-                  <div class="dropdown-list">
-                    <div class="dropdown-option" @click.stop="setPageSize(10)">10</div>
-                    <div class="dropdown-option" @click.stop="setPageSize(20)">20</div>
-                    <div class="dropdown-option" @click.stop="setPageSize(40)">40</div>
-                    <div class="dropdown-option" @click.stop="setPageSize(80)">80</div>
-                    <div class="dropdown-option" @click.stop="setPageSize(100)">100</div>
-                  </div>
-                </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="meta-row bottom-row">
+              <div class="facet-toggle">
+                <span class="facet-label-text">Fasety:</span>
+                <label class="switch-container">
+                  <input type="checkbox" v-model="showFasety" />
+                  <span class="switch-slider"></span>
+                </label>
               </div>
 
               <div class="meta-actions">
@@ -54,279 +68,32 @@
 
         <!-- Results List -->
         <div class="results-list card">
-        <!-- Result 1 -->
-        <div class="result-item">
-          <div class="result-number">1</div>
+        <div v-for="result in results" :key="result.number" class="result-item">
+          <div class="result-number">{{ result.number }}</div>
           <div class="result-image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <img v-if="result.imageUrl" :src="result.imageUrl" class="result-image" alt="Book cover" />
+            <svg v-else xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           </div>
           <div class="result-content">
             <div class="result-title-row">
-              <a href="#" class="result-title-link">Adels-Spiegel. Historischer ausführlicher Bericht, was Adel sey und heisse, woher er komme, wie mancherley er sey, und was denselben ziere und erhalte, auch hingegen verstelle und schwäche...</a>
+              <a href="#" class="result-title-link">{{ result.title }}</a>
             </div>
             <div class="result-info-grid">
               <div class="result-row">
                 <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">Spangenberg, Cyriacus, 1528-1604</a>
+                <a href="#" class="result-author-link">{{ result.author }}</a>
               </div>
               <div class="result-row">
                 <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">Schmalkalden : Schmuck, Michael, 1591</span>
+                <span class="result-value">{{ result.publication }}</span>
               </div>
               <div class="result-row">
                 <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">RK 964</span>
+                <span class="result-value secondary">{{ result.recordNumber }}</span>
               </div>
             </div>
           </div>
           <!-- <div class="result-file">...</div> -->
-        </div>
-
-        <!-- Result 2 -->
-        <div class="result-item">
-          <div class="result-number">2</div>
-          <div class="result-image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="result-content">
-            <div class="result-title-row">
-              <a href="#" class="result-title-link">Der Prophet Jona ausgelegt durch Mart. Luth.</a>
-            </div>
-            <div class="result-info-grid">
-              <div class="result-row">
-                <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">Luther, Martin, 1483-1546</a>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">Wittemberg : Lufft, Hans, 1526</span>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">RK 1025</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Result 3 -->
-        <div class="result-item">
-          <div class="result-number">3</div>
-          <div class="result-image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="result-content">
-            <div class="result-title-row">
-              <a href="#" class="result-title-link">Loci praecipui theologici</a>
-            </div>
-            <div class="result-info-grid">
-              <div class="result-row">
-                <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">Melanchthon, Philipp, 1497-1560</a>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">Lipsiae : Rhamba, Johann, 1559</span>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">RK 452</span>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="result-file">...</div> -->
-        </div>
-
-        <!-- Result 4 -->
-        <div class="result-item">
-          <div class="result-number">4</div>
-          <div class="result-image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="result-content">
-            <div class="result-title-row">
-              <a href="#" class="result-title-link">Institutio christianae religionis</a>
-            </div>
-            <div class="result-info-grid">
-              <div class="result-row">
-                <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">Calvin, Jean, 1509-1564</a>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">Genevae : Stephanus, Robertus, 1559</span>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">RK 789</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Result 5 -->
-        <div class="result-item">
-          <div class="result-number">5</div>
-          <div class="result-image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="result-content">
-            <div class="result-title-row">
-              <a href="#" class="result-title-link">Enchiridion militis Christiani</a>
-            </div>
-            <div class="result-info-grid">
-              <div class="result-row">
-                <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">Erasmus Roterodamus, Desiderius, 1466-1536</a>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">Basileae : Froben, Johann, 1518</span>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">RK 123</span>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="result-file">...</div> -->
-        </div>
-
-        <!-- Result 6 -->
-        <div class="result-item">
-          <div class="result-number">6</div>
-          <div class="result-image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="result-content">
-            <div class="result-title-row">
-              <a href="#" class="result-title-link">De re metallica libri XII</a>
-            </div>
-            <div class="result-info-grid">
-              <div class="result-row">
-                <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">Agricola, Georgius, 1494-1555</a>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">Basileae : Froben, Hieronymus, 1556</span>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">RK 888</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Result 7 -->
-        <div class="result-item">
-          <div class="result-number">7</div>
-          <div class="result-image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="result-content">
-            <div class="result-title-row">
-              <a href="#" class="result-title-link">De revolutionibus orbium coelestium</a>
-            </div>
-            <div class="result-info-grid">
-              <div class="result-row">
-                <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">Copernicus, Nicolaus, 1473-1543</a>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">Norimbergae : Petreius, Johannes, 1543</span>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">RK 333</span>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="result-file">...</div> -->
-        </div>
-
-        <!-- Result 8 -->
-        <div class="result-item">
-          <div class="result-number">8</div>
-          <div class="result-image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="result-content">
-            <div class="result-title-row">
-              <a href="#" class="result-title-link">De humani corporis fabrica libri septem</a>
-            </div>
-            <div class="result-info-grid">
-              <div class="result-row">
-                <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">Vesalius, Andreas, 1514-1564</a>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">Basileae : Oporinus, Johannes, 1543</span>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">RK 555</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Result 9 -->
-        <div class="result-item">
-          <div class="result-number">9</div>
-          <div class="result-image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="result-content">
-            <div class="result-title-row">
-              <a href="#" class="result-title-link">Die große Wundarznei</a>
-            </div>
-            <div class="result-info-grid">
-              <div class="result-row">
-                <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">Paracelsus, 1493-1541</a>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">Ulm : Varnier, Hans, 1536</span>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">RK 222</span>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="result-file">...</div> -->
-        </div>
-
-        <!-- Result 10 -->
-        <div class="result-item">
-          <div class="result-number">10</div>
-          <div class="result-image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="result-content">
-            <div class="result-title-row">
-              <a href="#" class="result-title-link">Il Principe</a>
-            </div>
-            <div class="result-info-grid">
-              <div class="result-row">
-                <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">Machiavelli, Niccolò, 1469-1527</a>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">Roma : Blado, Antonio, 1532</span>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">RK 111</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -349,7 +116,7 @@
           </ul>
         </nav>
       </div>
-      <FacetSidebar />
+      <FacetSidebar v-if="showFasety" />
     </main>
      
     <Footer />
@@ -362,10 +129,88 @@ import Header from '~/components/header.vue'
 import Footer from '~/components/footer.vue'
 import FacetSidebar from '~/components/FacetSidebar.vue'
 
+const showFasety = ref(true)
 const isSortOpen = ref(false)
 const selectedSort = ref('Relevance')
 const isPageSizeOpen = ref(false)
 const selectedPageSize = ref(10)
+
+const results = ref([
+  {
+    number: 1,
+    author: 'Spangenberg, Cyriacus, 1528-1604',
+    title: 'Adels-Spiegel. Historischer ausfürlicher Bericht, was Adel sey und heisse, woher er komme, wie mancherley er sey, und was denselben ziere und erhalte, auch hingegen verstelle und schwäche...',
+    publication: 'Schmalkalden : Schmuck, Michael, 1591',
+    recordNumber: 'RK 964'
+  },
+  {
+    number: 2,
+    author: 'Wanner, Valentin, 1495-1567',
+    title: 'DE MISSA IVDICIVM VALENTINI VANNII, PASTORIS ECCLESIAE QVAE EST IN CANDTSTAT. ...',
+    publication: 'Tübingen : Morhart, Ulrich - heredes, 1557',
+    recordNumber: 'DK 318'
+  },
+  {
+    number: 3,
+    author: 'Alcuin, 735-805',
+    title: 'ALBINI THEOLOGORVM SVAE aetatis doctissimi, in Ecclesiasten Commentaria ...',
+    publication: 'Basel : Bebel, Johann, 1531',
+    recordNumber: 'RK 259'
+  },
+  {
+    number: 4,
+    author: 'La Palud, Pierre de, asi 1280-1342',
+    title: 'Sermones Thesauri novi de tempore ...',
+    publication: 'Strasbourg : Flach, Martin, 1487',
+    recordNumber: 'DK 7',
+    imageUrl: 'https://skk.lib.cas.cz/files/159228'
+  },
+  {
+    number: 5,
+    author: 'Gritsch, Johannes, 1420-1470',
+    title: 'Quadragesimale ...',
+    publication: '[Strasbourg : Husner, Georg, 1490]',
+    recordNumber: 'OlmK 21',
+    imageUrl: 'https://skk.lib.cas.cz/files/159819'
+  },
+  {
+    number: 6,
+    author: 'Strabón, 64 př. Kr.-19 po Kr.',
+    title: 'Strabonos geographikon bibloi hepta kai deka...',
+    publication: 'Basel : Henricpetri - officina, [1571]',
+    recordNumber: 'DK 1116'
+  },
+  {
+    number: 7,
+    author: 'Hunnius, Aegidius, 1550-1603',
+    title: 'Labyrinthvs primvs papisticus. Hoc est: dispvtatio de papatv semetipsum contradictionibus implicante, confundente & jugulante, in articvlis de Scriptura Sacra. ...',
+    publication: 'Wittenberg : Müller, Georg, 1602',
+    recordNumber: 'RK 726',
+    imageUrl: 'https://skk.lib.cas.cz/files/158273'
+  },
+  {
+    number: 8,
+    author: 'Fine, Oronce, 1494-1555',
+    title: 'De speculo ustorio ignem ad propositam distantiam generante, liber unicus ...',
+    publication: 'Paris : Michel de Vascosan, 1551',
+    recordNumber: 'SJ 39'
+  },
+  {
+    number: 9,
+    author: 'Fabri de Werdea, Johannes, 1450-1505',
+    title: 'Exercitata parvorum logicalium secundum viam modernorum.',
+    publication: '[Reutlingen] : Otmar, Johann, 1487',
+    recordNumber: 'DK 613'
+  },
+  {
+    number: 10,
+    author: 'Beyerlinck, Laurentius, 1578-1627',
+    title: 'Promptuarium Morale Super Evangelia Festorum Totius Anni ...',
+    publication: 'Köln am Rhein : Hierat, Anton, 1617-1618',
+    recordNumber: 'OlmK 281',
+    imageUrl: 'https://skk.lib.cas.cz/files/152566'
+  }
+])
 
 const toggleSort = () => {
   isSortOpen.value = !isSortOpen.value
@@ -404,19 +249,12 @@ onUnmounted(() => {
 
 useHead({
   title: 'Výsledky vyhledávání | Krigsbyte',
-  htmlAttrs: { lang: 'cs' },
-  link: [
-    {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
-    }
-  ]
+  htmlAttrs: { lang: 'cs' }
 })
 </script>
 
 <style>
 body {
-  background-color: #f9fafb;
   margin: 0;
 }
 </style>
@@ -445,9 +283,82 @@ body {
 /* --- META BAR --- */
 .results-meta-bar {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.meta-row {
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
+  width: 100%;
+}
+
+.bottom-row {
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+/* --- SWITCH STYLE --- */
+.switch-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.switch-container input {
+  display: none;
+}
+
+.switch-slider {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: #ccc;
+  border-radius: 12px;
+  transition: background-color 0.2s;
+}
+
+.switch-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.switch-container input:checked + .switch-slider {
+  background-color: var(--primary, #850000);
+}
+
+.switch-container input:checked + .switch-slider::before {
+  transform: translateX(20px);
+}
+
+.facet-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.facet-label-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.switch-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
 }
 
 /* --- RESULTS LIST --- */
@@ -493,6 +404,12 @@ body {
   flex-shrink: 0;
   color: #9ca3af;
   overflow: hidden;
+}
+
+.result-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .result-content {

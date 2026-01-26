@@ -247,36 +247,12 @@ onBeforeUnmount(() => {
 
 useHead({
     title: 'Pokročilé vyhledávání | Krigsbyte',
-    htmlAttrs: { lang: 'cs' },
-    link: [
-        {
-            rel: 'stylesheet',
-            href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
-        }
-    ]
+    htmlAttrs: { lang: 'cs' }
 })
 </script>
 
 <style>
-/* --- VARIABLES & RESET --- */
-:root {
-    --primary: #850000;
-    --primary-hover: #600000;
-    --primary-light: rgba(133, 0, 0, 0.05);
-    --text-main: #1f2937;
-    --text-muted: #6b7280;
-    --border-color: #e5e7eb;
-    --bg-body: #f9fafb;
-    --bg-card: #ffffff;
-    --radius: 12px;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --focus-ring: 0 0 0 3px rgba(133, 0, 0, 0.15);
-}
-
-body {
-    background-color: var(--bg-body);
-}
+/* Variables moved to app.vue */
 </style>
 
 <style scoped>
@@ -286,7 +262,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: 'Inter', sans-serif;
     color: var(--text-main);
 }
 

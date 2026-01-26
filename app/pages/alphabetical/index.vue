@@ -74,13 +74,7 @@ onBeforeUnmount(() => {
 
 useHead({
     title: 'Prohlížet abecedně | Krigsbyte',
-    htmlAttrs: { lang: 'cs' },
-    link: [
-        {
-            rel: 'stylesheet',
-            href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
-        }
-    ]
+    htmlAttrs: { lang: 'cs' }
 })
 </script>
 
@@ -113,7 +107,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: 'Inter', sans-serif;
     color: var(--text-main);
 }
 

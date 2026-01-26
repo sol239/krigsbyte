@@ -100,7 +100,7 @@ export default {
       document.getElementById('langDropdown').classList.toggle('open')
     },
     handleSearch() {
-      navigateTo('/krigsbyte/search/results')
+      navigateTo('/search/results')
     },
     setLang(langCode) {
       this.selectedLang = langCode
