@@ -19,7 +19,7 @@
   --bg-footer: #f9fafb;
   --bg-input: #f3f4f6;
   --radius: 12px;
-  --shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+  --shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --focus-ring: 0 0 0 3px rgba(133, 0, 0, 0.15);
@@ -34,7 +34,7 @@ body {
 
 /* Global styles for layout */
 #app {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }

@@ -144,7 +144,7 @@ header {
   min-height: 70px;
   background: var(--bg-header);
   backdrop-filter: blur(12px);
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
 }
 
@@ -261,7 +261,7 @@ header .logo span {
   transform: rotate(180deg);
 }
 
-  .dropdown-list {
+.dropdown-list {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;

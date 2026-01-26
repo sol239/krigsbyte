@@ -2,38 +2,40 @@
   <div class="page-layout">
     <Header />
     <main class="main-content">
-      <div class="top-nav">
-        <h1>Vaše nedávná vyhledávání</h1>
-        <a class="back-btn" href="/krigsbyte">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 12H5" />
-            <path d="M12 19l-7-7 7-7" />
-          </svg>
-          Zpět na vyhledávání
-        </a>
+      <div class="card history-card">
+        <div class="top-nav">
+          <h1>Vaše nedávná vyhledávání</h1>
+          <a class="back-btn" href="/krigsbyte">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5" />
+              <path d="M12 19l-7-7 7-7" />
+            </svg>
+            Zpět na vyhledávání
+          </a>
+        </div>
+        <div class="history-table-wrapper">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Datum a čas</th>
+                <th>Vyhledávací dotaz</th>
+                <th>Použité filtry</th>
+                <th>Výsledky</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, idx) in historyData" :key="idx">
+                <td>{{ formatDate(item.date) }}</td>
+                <td v-html="item.query"></td>
+                <td v-html="item.filters"></td>
+                <td>{{ item.results }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="remove-btn">Odstranit neuložená vyhledávání</button>
       </div>
-      <div class="history-table-wrapper">
-        <table class="history-table">
-          <thead>
-            <tr>
-              <th>Datum a čas</th>
-              <th>Vyhledávací dotaz</th>
-              <th>Použité filtry</th>
-              <th>Výsledky</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, idx) in historyData" :key="idx">
-              <td>{{ formatDate(item.date) }}</td>
-              <td v-html="item.query"></td>
-              <td v-html="item.filters"></td>
-              <td>{{ item.results }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <button class="remove-btn">Odstranit neuložená vyhledávání</button>
     </main>
     <Footer />
   </div>
@@ -97,7 +99,10 @@ useHead({
 </script>
 
 <style>
-/* Variables moved to app.vue */
+/* --- DESIGN SYSTÉM --- */
+:root {
+  --bg-body: #eeeeee;
+}
 
 * {
   box-sizing: border-box;
@@ -109,18 +114,40 @@ body {
   height: 100%;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-body);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+}
+
 .page-layout {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* --- MAIN CONTENT --- */
 .main-content {
   flex: 1;
-  width: 80vw;
-  margin: 0 auto;
-  padding: 32px 24px;
+  width: calc(100% - 40px);
+  max-width: none;
+  margin: 20px auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: transparent;
+}
+
+.card.history-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
 }
 
 /* --- TOP NAVIGATION --- */
@@ -162,12 +189,15 @@ h1 {
   margin-bottom: 12px;
   border: 1px solid #ddd;
   border-radius: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .history-table {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
+  table-layout: fixed;
 }
 
 .history-table thead {
@@ -186,10 +216,19 @@ h1 {
 }
 
 .history-table td {
-  padding: 14px 16px;
-  border-bottom: 1px solid #e8e8e8;
+  padding: 14px 8px;
   font-size: 0.95rem;
   color: var(--text-main);
+  max-width: 120px;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.history-table td:nth-child(2),
+.history-table td:nth-child(3) {
+  max-width: 200px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .history-table tbody tr:hover {
@@ -215,5 +254,35 @@ h1 {
 
 .remove-btn:hover {
   background: var(--primary-hover);
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+  .main-content {
+    width: calc(100% - 20px);
+    margin: 5px auto;
+  }
+
+  .card.history-card {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+
+  .history-table th,
+  .history-table td {
+    font-size: 0.8rem;
+    padding: 8px 4px;
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .history-table th,
+  .history-table td {
+    font-size: 0.75rem;
+    padding: 6px 2px;
+    max-width: 60px;
+  }
 }
 </style>

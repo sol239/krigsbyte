@@ -23,7 +23,7 @@
 <style scoped>
 /* --- FOOTER --- */
 footer {
-  background: var(--bg-footer);
+  background: #ffffff !important;
   padding: 20px 80px;
   height: 15vh;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -32,6 +32,9 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   gap: 40px;
+  z-index: 10000;
+  position: relative;
+  box-shadow: 0 -4px 5px 0 rgba(0, 0, 0, 0.05);
 }
 
 .footer-logo-section {

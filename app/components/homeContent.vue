@@ -129,6 +129,8 @@ const loopedCities = [...cities, ...cities];
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+
 }
 
 .hero-content {

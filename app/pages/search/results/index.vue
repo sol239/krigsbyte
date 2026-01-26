@@ -23,14 +23,17 @@
                       <div class="dropdown-option" @click.stop="setSort('Autor')">Autor</div>
                       <div class="dropdown-option" @click.stop="setSort('Název')">Název</div>
                       <div class="dropdown-option" @click.stop="setSort('Místo')">Místo</div>
-                      <div class="dropdown-option" @click.stop="setSort('Podle data sestupně')">Podle data sestupně</div>
-                      <div class="dropdown-option" @click.stop="setSort('Podle data vzestupně')">Podle data vzestupně</div>
+                      <div class="dropdown-option" @click.stop="setSort('Podle data sestupně')">Podle data sestupně
+                      </div>
+                      <div class="dropdown-option" @click.stop="setSort('Podle data vzestupně')">Podle data vzestupně
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="control-group">
                   <label>Na stránku</label>
-                  <div class="custom-dropdown min-dropdown" :class="{ open: isPageSizeOpen }" @click.stop="togglePageSize">
+                  <div class="custom-dropdown min-dropdown" :class="{ open: isPageSizeOpen }"
+                    @click.stop="togglePageSize">
                     <div class="dropdown-selected">{{ selectedPageSize }}</div>
                     <div class="dropdown-list">
                       <div class="dropdown-option" @click.stop="setPageSize(10)">10</div>
@@ -56,10 +59,20 @@
 
               <div class="meta-actions">
                 <button class="action-btn" title="Exportovat">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
                 </button>
                 <button class="action-btn" title="Tisknout">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9V2h12v7" />
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                    <rect x="6" y="14" width="12" height="8" />
+                  </svg>
                 </button>
               </div>
             </div>
@@ -68,34 +81,38 @@
 
         <!-- Results List -->
         <div class="results-list card">
-        <div v-for="result in results" :key="result.number" class="result-item">
-          <div class="result-number">{{ result.number }}</div>
-          <div class="result-image-box">
-            <img v-if="result.imageUrl" :src="result.imageUrl" class="result-image" alt="Book cover" />
-            <svg v-else xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="result-content">
-            <div class="result-title-row">
-              <a href="#" class="result-title-link">{{ result.title }}</a>
+          <div v-for="result in results" :key="result.number" class="result-item">
+            <div class="result-number">{{ result.number }}</div>
+            <div class="result-image-box">
+              <img v-if="result.imageUrl" :src="result.imageUrl" class="result-image" alt="Book cover" />
+              <svg v-else xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
             </div>
-            <div class="result-info-grid">
-              <div class="result-row">
-                <span class="result-label">Autor:</span>
-                <a href="#" class="result-author-link">{{ result.author }}</a>
+            <div class="result-content">
+              <div class="result-title-row">
+                <a href="#" class="result-title-link">{{ result.title }}</a>
               </div>
-              <div class="result-row">
-                <span class="result-label">Nakladatelské údaje:</span>
-                <span class="result-value">{{ result.publication }}</span>
-              </div>
-              <div class="result-row">
-                <span class="result-label">Číslo záznamu:</span>
-                <span class="result-value secondary">{{ result.recordNumber }}</span>
+              <div class="result-info-grid">
+                <div class="result-row">
+                  <span class="result-label">Autor:</span>
+                  <a href="#" class="result-author-link">{{ result.author }}</a>
+                </div>
+                <div class="result-row">
+                  <span class="result-label">Nakladatelské údaje:</span>
+                  <span class="result-value">{{ result.publication }}</span>
+                </div>
+                <div class="result-row">
+                  <span class="result-label">Číslo záznamu:</span>
+                  <span class="result-value secondary">{{ result.recordNumber }}</span>
+                </div>
               </div>
             </div>
+            <!-- <div class="result-file">...</div> -->
           </div>
-          <!-- <div class="result-file">...</div> -->
         </div>
-      </div>
 
         <!-- Pagination -->
         <nav class="pagination-container">
@@ -118,7 +135,7 @@
       </div>
       <FacetSidebar v-if="showFasety" />
     </main>
-     
+
     <Footer />
   </div>
 </template>
@@ -277,7 +294,8 @@ body {
 
 .results-main {
   flex: 1;
-  min-width: 0; /* Prevents overflow */
+  min-width: 0;
+  /* Prevents overflow */
 }
 
 /* --- META BAR --- */
@@ -332,14 +350,14 @@ body {
   background-color: white;
   border-radius: 50%;
   transition: transform 0.2s;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.switch-container input:checked + .switch-slider {
+.switch-container input:checked+.switch-slider {
   background-color: var(--primary, #850000);
 }
 
-.switch-container input:checked + .switch-slider::before {
+.switch-container input:checked+.switch-slider::before {
   transform: translateX(20px);
 }
 
@@ -381,7 +399,7 @@ body {
 }
 
 .result-item:hover {
-  background-color: rgba(0,0,0,0.01);
+  background-color: rgba(0, 0, 0, 0.01);
 }
 
 .result-number {
@@ -683,11 +701,11 @@ body {
 }
 
 .card {
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-    padding: 24px;
-    margin-bottom: 24px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+  margin-bottom: 24px;
 }
 </style>

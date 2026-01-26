@@ -30,7 +30,7 @@ useHead({
 :root {
   --primary: #850000;
   --primary-hover: #600000;
-  --bg-body: #f2f2f2;
+  --bg-body: #eeeeee;
   --bg-header: rgba(255, 255, 255, 0.98);
   --bg-footer: #fff;
   --bg-input: #f1f1f1;
