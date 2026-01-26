@@ -14,8 +14,8 @@
 
     <ul class="footer-links">
       <li><a href="/krigsbyte/history">Historie vyhledávání</a></li>
-      <li><a href="#">Procházet abecedně</a></li>
-      <li><a href="#">Pokročilé vyhledávání</a></li>
+      <li><a href="/krigsbyte/alphabetical">Procházet abecedně</a></li>
+      <li><a href="/krigsbyte/advanced">Pokročilé vyhledávání</a></li>
     </ul>
   </footer>
 </template>
@@ -24,8 +24,8 @@
 /* --- FOOTER --- */
 footer {
   background: var(--bg-footer);
-  padding: 40px 80px;
-  margin-top: auto;
+  padding: 20px 80px;
+  height: 15vh;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;

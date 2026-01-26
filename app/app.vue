@@ -7,7 +7,7 @@
 <style>
 /* Global styles for layout */
 #app {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }

@@ -19,7 +19,7 @@
         </svg>
       </div>
 
-      <input type="text" class="search-input" placeholder="Hledat v databázi..." />
+      <input type="text" class="search-input" placeholder="Hledat v databázi..." @keyup.enter="handleSearch" />
 
       <div class="custom-dropdown" id="myDropdown">
         <div class="dropdown-selected" @click="toggleMenu">Všechna pole</div>
@@ -32,7 +32,7 @@
       </div>
 
       <div class="search-button-group">
-        <button class="search-button">Hledat</button>
+        <button class="search-button" @click="handleSearch">Hledat</button>
         <button class="search-button secondary" title="Vyhledávání v knihách">
           <img :src="bookSearch" alt="Book search" />
         </button>
@@ -99,6 +99,9 @@ export default {
     toggleLangMenu() {
       document.getElementById('langDropdown').classList.toggle('open')
     },
+    handleSearch() {
+      navigateTo('/krigsbyte/search/results')
+    },
     setLang(langCode) {
       this.selectedLang = langCode
       document.getElementById('langDropdown').classList.remove('open')
@@ -124,7 +127,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
-  height: 80px;
+  height: 9vh;
   background: var(--bg-header);
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
@@ -160,7 +163,7 @@ header .logo span {
   align-items: center;
   background: var(--bg-input);
   padding: 6px 6px 6px 18px;
-  border-radius: 50px;
+  border-radius: 8px;
   flex: 1;
   max-width: 500px;
   margin: 0 30px;
@@ -269,7 +272,7 @@ header .logo span {
   color: #fff;
   border: none;
   padding: 10px 22px;
-  border-radius: 50px;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   font-size: 0.9rem;
