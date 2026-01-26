@@ -15,7 +15,7 @@
     <ul class="footer-links">
       <li><a href="/krigsbyte/history">Historie vyhledávání</a></li>
       <li><a href="/krigsbyte/alphabetical">Procházet abecedně</a></li>
-      <li><a href="/krigsbyte/advanced">Pokročilé vyhledávání</a></li>
+      <li><a href="/krigsbyte/search/advanced">Pokročilé vyhledávání</a></li>
     </ul>
   </footer>
 </template>
@@ -46,7 +46,7 @@ footer .logo {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  color: var(--text-main);
+  color: #720000;
 }
 
 footer .logo span {
