@@ -25,7 +25,8 @@
 footer {
   background: #ffffff !important;
   padding: 20px 80px;
-  height: 15vh;
+  height: 105px;
+  min-height: 105px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;
@@ -87,6 +88,7 @@ svg {
   footer {
     flex-direction: column-reverse;
     height: auto;
+    min-height: unset;
     padding: 30px 20px;
     gap: 20px;
     text-align: center;

@@ -9,15 +9,6 @@
           <div class="results-meta-bar">
             <!-- Top Row -->
             <div class="meta-row top-row">
-              <a class="back-btn" href="/">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                  <polyline points="9 22 9 12 15 12 15 22" />
-                </svg>
-                Domovská stránka
-              </a>
-
               <div class="meta-controls">
                 <div class="control-group">
                   <label>Seřadit podle</label>
@@ -63,6 +54,15 @@
                   </div>
                 </div>
               </div>
+
+              <a class="back-btn" href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+                Domovská stránka
+              </a>
             </div>
 
             <!-- Bottom Row -->
@@ -408,8 +408,20 @@ useHead({
 </script>
 
 <style>
+/* --- DESIGN SYSTÉM --- */
+:root {
+  --bg-body: #eeeeee;
+  --text-main: #2d2d2d;
+}
+
 body {
   margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-body);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
 }
 </style>
 
@@ -421,10 +433,15 @@ body {
 }
 
 .results-layout {
+  flex: 1;
   width: calc(100% - 80px);
-  max-width: 1400px;
+  max-width: none;
   margin: 40px auto;
-  padding: 32px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: transparent;
 }
 
 .results-main {
@@ -581,6 +598,7 @@ body {
 
 .result-title-row {
   margin-bottom: 2px;
+  max-width: 50%;
 }
 
 .result-title-link {

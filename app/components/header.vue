@@ -1,89 +1,92 @@
 <template>
   <header id="header">
-    <a href="https://knizni-korist.cz/" class="logo">
-      <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5" />
-        <path d="M6.5 17H20" />
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17" />
-      </svg>
-      <span>Švédská knižní kořist z&nbsp;českých zemí</span>
-    </a>
+    <div class="header-left">
+      <a href="/" class="logo">
+        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5" />
+          <path d="M6.5 17H20" />
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17" />
+        </svg>
+        <span>Švédská knižní kořist z&nbsp;českých zemí</span>
+      </a>
 
-    <div class="search-area">
-      <div class="search-container">
-        <div class="search-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </div>
-
-        <input type="text" class="search-input" placeholder="Hledat v databázi..." @keyup.enter="handleSearch" />
-
-        <div class="custom-dropdown" id="myDropdown">
-          <button class="dropdown-trigger" @click.stop="toggleMenu">
-            <div class="trigger-content">
-              <svg class="dropdown-mobile-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-              </svg>
-              <span class="dropdown-text">{{ selectedField }}</span>
-            </div>
-            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-          <div class="dropdown-menu">
-            <div class="dropdown-item" @click="setVal('Všechna pole')">Všechna pole</div>
-            <div class="dropdown-item" @click="setVal('Název')">Název</div>
-            <div class="dropdown-item" @click="setVal('Autor')">Autor</div>
-            <div class="dropdown-item" @click="setVal('Popis')">Popis</div>
-          </div>
-        </div>
-
-        <div class="search-button-group">
-          <button class="search-button" @click="handleSearch">
-            <span class="search-btn-text">Hledat</span>
-            <svg class="search-btn-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <div class="search-area">
+        <div class="search-container">
+          <div class="search-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-          </button>
-        </div>
-      </div>
-      <div class="search-actions-group">
-        <a href="/search/advanced" class="advanced-search-link">POKROČILÉ</a>
-
-        <div class="header-actions">
-          <div class="info-btn" title="Informace">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
           </div>
-          <div class="custom-dropdown" id="langDropdown">
-            <button class="dropdown-trigger lang-trigger" @click.stop="toggleLangMenu">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m5 8 6 6" />
-                <path d="m4 14 6-6 2-3" />
-                <path d="M2 5h12" />
-                <path d="M7 2h1" />
-                <path d="m22 22-5-10-5 10" />
-                <path d="M14 18h6" />
+
+          <input type="text" class="search-input" placeholder="Hledat v databázi..." @keyup.enter="handleSearch" />
+
+          <div class="custom-dropdown" id="myDropdown">
+            <button class="dropdown-trigger" @click.stop="toggleMenu">
+              <div class="trigger-content">
+                <svg class="dropdown-mobile-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                <span class="dropdown-text">{{ selectedField }}</span>
+              </div>
+              <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
               </svg>
             </button>
             <div class="dropdown-menu">
-              <div class="dropdown-item" @click="setLang('cs')">Čeština</div>
-              <div class="dropdown-item" @click="setLang('en')">English</div>
+              <div class="dropdown-item" @click="setVal('Všechna pole')">Všechna pole</div>
+              <div class="dropdown-item" @click="setVal('Název')">Název</div>
+              <div class="dropdown-item" @click="setVal('Autor')">Autor</div>
+              <div class="dropdown-item" @click="setVal('Popis')">Popis</div>
             </div>
+          </div>
+
+          <div class="search-button-group">
+            <button class="search-button" @click="handleSearch">
+              <span class="search-btn-text">Hledat</span>
+              <svg class="search-btn-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <a href="/search/advanced" class="advanced-search-link">POKROČILÉ</a>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div class="header-actions">
+        <div class="info-btn" title="Informace">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </div>
+        <div class="custom-dropdown" id="langDropdown">
+          <button class="dropdown-trigger lang-trigger" @click.stop="toggleLangMenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m5 8 6 6" />
+              <path d="m4 14 6-6 2-3" />
+              <path d="M2 5h12" />
+              <path d="M7 2h1" />
+              <path d="m22 22-5-10-5 10" />
+              <path d="M14 18h6" />
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <div class="dropdown-item" @click="setLang('cs')">Čeština</div>
+            <div class="dropdown-item" @click="setLang('en')">English</div>
           </div>
         </div>
       </div>
@@ -150,6 +153,21 @@ header {
   backdrop-filter: blur(12px);
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
+  gap: 20px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -177,19 +195,11 @@ header .logo span {
 
 /* --- SEARCH AREA --- */
 .search-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  max-width: 800px;
-  margin: 0 30px;
-}
-
-.search-actions-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  min-width: 0;
 }
 
 /* --- SEARCH CONTAINER --- */
@@ -199,10 +209,26 @@ header .logo span {
   background: var(--bg-input);
   padding: 6px 6px 6px 18px;
   border-radius: 8px;
-  flex: 1;
+  width: 600px;
   border: 1px solid transparent;
   transition: var(--transition);
   position: relative;
+  min-width: 0;
+}
+
+/* --- ADVANCED SEARCH LINK --- */
+.advanced-search-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .search-container:focus-within {
@@ -370,20 +396,6 @@ header .logo span {
   filter: brightness(0) invert(1);
 }
 
-/* --- ADVANCED SEARCH LINK --- */
-.advanced-search-link {
-  text-decoration: none;
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 10px 16px;
-  border-radius: 8px;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
 /* --- ACTIONS & LANG --- */
 .header-actions {
   display: flex;
@@ -411,7 +423,6 @@ header .logo span {
 @media (max-width: 992px) {
   .search-area {
     max-width: none;
-    margin: 0 20px;
   }
 }
 
@@ -422,6 +433,14 @@ header .logo span {
     display: flex;
     align-items: stretch;
     gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
   }
 
   .logo {
@@ -440,25 +459,22 @@ header .logo span {
     margin: 0;
     flex: 1;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 8px;
     min-width: 0;
   }
 
   .search-container {
     padding: 4px 4px 4px 12px;
-    width: 100%;
+    width: auto;
+    flex: 1;
     max-width: none;
-  }
-
-  .search-actions-group {
-    width: 100%;
-    justify-content: space-between;
   }
 
   .advanced-search-link {
     margin: 0;
-    padding: 8px 0;
+    padding: 8px 10px;
+    font-size: 0.85rem;
   }
 
   .search-input {
