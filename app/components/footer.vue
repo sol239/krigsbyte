@@ -24,15 +24,15 @@
 /* --- FOOTER --- */
 footer {
   background: #ffffff !important;
-  padding: 20px 80px;
+  padding: 20px 120px;
   height: 105px;
   min-height: 105px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 60px;
   z-index: 10000;
   position: relative;
   box-shadow: 0 -4px 5px 0 rgba(0, 0, 0, 0.05);
@@ -89,7 +89,7 @@ svg {
     flex-direction: column-reverse;
     height: auto;
     min-height: unset;
-    padding: 30px 20px;
+    padding: 30px 60px;
     gap: 20px;
     text-align: center;
   }

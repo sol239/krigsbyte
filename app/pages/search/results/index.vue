@@ -128,7 +128,7 @@
               </div>
               <div class="result-content">
                 <div class="result-title-row">
-                  <a href="#" class="result-title-link">{{ result.title }}</a>
+                  <NuxtLink to="/record" class="result-title-link">{{ result.title }}</NuxtLink>
                 </div>
                 <div class="result-info-grid">
                   <div class="result-row">
@@ -434,7 +434,7 @@ body {
 
 .results-layout {
   flex: 1;
-  width: calc(100% - 80px);
+  width: calc(100% - 240px);
   max-width: none;
   margin: 40px auto;
   padding: 0;
@@ -701,7 +701,7 @@ body {
   font-weight: 500;
   font-size: 0.95rem;
   padding: 8px 16px;
-  border-radius: 99px;
+  border-radius: 8px;
   background: #fff;
   border: 1px solid var(--border-color);
   transition: all 0.2s;
@@ -742,12 +742,6 @@ body {
   display: flex;
   align-items: center;
   gap: 24px;
-}
-
-.control-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
 }
 
 .control-group label {

@@ -133,7 +133,7 @@ body {
 /* --- MAIN CONTENT --- */
 .main-content {
   flex: 1;
-  width: calc(100% - 80px);
+  width: calc(100% - 240px);
   max-width: none;
   margin: 40px auto;
   padding: 0;
@@ -174,7 +174,7 @@ h1 {
   font-weight: 500;
   font-size: 0.95rem;
   padding: 8px 16px;
-  border-radius: 99px;
+  border-radius: 8px;
   background: #fff;
   border: 1px solid #e5e7eb;
   transition: all 0.2s;
@@ -259,7 +259,7 @@ h1 {
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
   .main-content {
-    width: calc(100% - 20px);
+    width: calc(100% - 60px);
     margin: 5px auto;
   }
 

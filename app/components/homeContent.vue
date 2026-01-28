@@ -106,7 +106,7 @@ const loopedCities = [...cities, ...cities];
 <style scoped>
 .main-content {
   flex: 1;
-  width: calc(100% - 80px);
+  width: calc(100% - 240px);
   max-width: none;
   margin: 40px auto;
   padding: 0;
@@ -124,7 +124,8 @@ const loopedCities = [...cities, ...cities];
   border-radius: 24px;
   box-shadow: var(--shadow);
   text-align: center;
-  min-height: calc(100vh - 250px);
+  min-height: calc(100vh - 280px);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -447,7 +448,7 @@ const loopedCities = [...cities, ...cities];
   }
 
   .main-content {
-    width: calc(100% - 20px);
+    width: calc(100% - 60px);
     margin: 5px auto;
     gap: 12px;
   }

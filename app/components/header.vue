@@ -147,7 +147,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 40px;
+  padding: 10px 120px;
   min-height: 70px;
   background: var(--bg-header);
   backdrop-filter: blur(12px);
