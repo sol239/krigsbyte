@@ -3,19 +3,18 @@
         <Header />
 
         <main class="main-content">
-            <div class="top-nav">
-                <h1>Pokročilé vyhledávání</h1>
-                <a class="back-btn" href="/krigsbyte">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M19 12H5" />
-                        <path d="M12 19l-7-7 7-7" />
-                    </svg>
-                    Zpět na vyhledávání
-                </a>
-            </div>
-
             <div class="card search-card">
+                <div class="top-nav">
+                    <h1>Pokročilé vyhledávání</h1>
+                    <a class="back-btn" href="/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Domovská stránka
+                    </a>
+                </div>
                 <div class="card-header">
                     <h2>Kritéria vyhledávání</h2>
 
@@ -132,59 +131,58 @@
                     </div>
 
                 </div>
-            </div>
 
-            <div class="filters-grid">
-                <hr class="filter-divider" />
-                <div class="card filter-card">
-                    <h3>Jazyk</h3>
-                    <div class="custom-select-wrapper">
-                        <select class="modern-multi-select" multiple>
-                            <option>german</option>
-                            <option>greek</option>
-                            <option>hebrew</option>
-                            <option>hungarian</option>
-                            <option>italian</option>
-                            <option>latin</option>
-                            <option>polish</option>
-                            <option>portuguese</option>
-                            <option>spanish</option>
-                            <option>undetermined</option>
-                        </select>
-                        <div class="helper-text">Pro více možností držte Ctrl/Cmd</div>
-                    </div>
-                </div>
-                <hr class="filter-divider" />
-                <div class="card filter-card">
-                    <h3>Rok vydání</h3>
-
-                    <div class="year-filter-content">
-                        <div class="year-inputs-row">
-                            <div class="input-group">
-                                <label>Od</label>
-                                <input type="number" v-model="yearMin" class="modern-input small" />
-                            </div>
-                            <div class="separator">–</div>
-                            <div class="input-group">
-                                <label>Do</label>
-                                <input type="number" v-model="yearMax" class="modern-input small" />
-                            </div>
-                        </div>
-
-                        <div class="slider-wrapper">
-                            <div class="slider-track"></div>
-                            <div class="slider-range" :style="sliderRangeStyle"></div>
-                            <input type="range" min="1400" max="2026" v-model="yearMin" class="range-thumb" />
-                            <input type="range" min="1400" max="2026" v-model="yearMax" class="range-thumb" />
+                <div class="filters-grid">
+                    <hr class="filter-divider" />
+                    <div class="filter-card">
+                        <h3>Jazyk</h3>
+                        <div class="custom-select-wrapper">
+                            <select class="modern-multi-select" multiple>
+                                <option>german</option>
+                                <option>greek</option>
+                                <option>hebrew</option>
+                                <option>hungarian</option>
+                                <option>italian</option>
+                                <option>latin</option>
+                                <option>polish</option>
+                                <option>portuguese</option>
+                                <option>spanish</option>
+                                <option>undetermined</option>
+                            </select>
+                            <div class="helper-text">Pro více možností držte Ctrl/Cmd</div>
                         </div>
                     </div>
+                    <hr class="filter-divider" />
+                    <div class="filter-card">
+                        <h3>Rok vydání</h3>
+
+                        <div class="year-filter-content">
+                            <div class="year-inputs-row">
+                                <div class="input-group">
+                                    <label>Od</label>
+                                    <input type="number" v-model="yearMin" class="modern-input small" />
+                                </div>
+                                <div class="separator">–</div>
+                                <div class="input-group">
+                                    <label>Do</label>
+                                    <input type="number" v-model="yearMax" class="modern-input small" />
+                                </div>
+                            </div>
+
+                            <div class="slider-wrapper">
+                                <div class="slider-track"></div>
+                                <div class="slider-range" :style="sliderRangeStyle"></div>
+                                <input type="range" min="1400" max="2026" v-model="yearMin" class="range-thumb" />
+                                <input type="range" min="1400" max="2026" v-model="yearMax" class="range-thumb" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button class="btn-primary-large">Vyhledat</button>
                 </div>
             </div>
-
-            <div class="submit-section">
-                <button class="btn-primary-large">Vyhledat</button>
-            </div>
-
         </main>
         <Footer />
     </div>
@@ -297,7 +295,34 @@ useHead({
 </script>
 
 <style>
-/* Variables moved to app.vue */
+/* --- DESIGN SYSTÉM --- */
+:root {
+    --primary: #850000;
+    --primary-hover: #600000;
+    --text-main: #2d2d2d;
+    --text-muted: #666;
+    --bg-body: #eeeeee;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Zajištění, že footer bude vždy dole */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-body);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+}
 </style>
 
 <style scoped>
@@ -314,9 +339,14 @@ useHead({
 
 .main-content {
     flex: 1;
-    width: 80vw;
-    margin: 0 auto;
-    padding: 32px 24px;
+    width: calc(100% - 80px);
+    max-width: none;
+    margin: 40px auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: transparent;
 }
 
 /* --- TOP NAVIGATION --- */
@@ -325,6 +355,7 @@ useHead({
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
+    padding: 0;
 }
 
 h1 {
@@ -350,7 +381,7 @@ h3 {
     padding: 8px 16px;
     border-radius: 99px;
     background: #fff;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e5e7eb;
     transition: all 0.2s;
 }
 
@@ -362,12 +393,11 @@ h3 {
 
 /* --- CARDS --- */
 .card {
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-    padding: 24px;
-    margin-bottom: 24px;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    margin: 0;
 }
 
 .card-header {
@@ -376,7 +406,7 @@ h3 {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 16px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .card-header h2 {
@@ -392,7 +422,7 @@ h3 {
 
 .group-divider {
     border: none;
-    border-top: 1px solid #121212;
+    border-top: 1px solid #e5e7eb;
     margin: 32px 0;
 }
 
@@ -488,7 +518,7 @@ h3 {
     justify-content: space-between;
     padding: 10px 14px;
     background: #fff;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e5e7eb;
     border-radius: 8px;
     font-size: 0.95rem;
     color: var(--text-main);
@@ -502,7 +532,7 @@ h3 {
 
 .custom-dropdown.open .dropdown-trigger {
     border-color: var(--primary);
-    box-shadow: var(--focus-ring);
+    box-shadow: 0 0 0 3px rgba(133, 0, 0, 0.15);
 }
 
 .chevron {
@@ -522,9 +552,9 @@ h3 {
     /* Match trigger width */
     min-width: 10rem;
     background: #fff;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e5e7eb;
     border-radius: 8px;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     z-index: 50;
     opacity: 0;
     visibility: hidden;
@@ -562,14 +592,14 @@ h3 {
 }
 
 .dropdown-item:hover {
-    background: var(--primary-light);
+    background: rgba(133, 0, 0, 0.05);
     color: var(--primary);
 }
 
 .modern-input {
     width: 100%;
     padding: 10px 14px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e5e7eb;
     border-radius: 8px;
     font-size: 0.95rem;
     transition: all 0.2s;
@@ -578,7 +608,7 @@ h3 {
 .modern-input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: var(--focus-ring);
+    box-shadow: 0 0 0 3px rgba(133, 0, 0, 0.15);
 }
 
 /* --- ACTIONS ROW --- */
@@ -649,14 +679,33 @@ h3 {
 
 /* Multi-select styling */
 .modern-multi-select {
-    width: 100%;
+    width: 240px;
     height: 180px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e5e7eb;
     border-radius: 8px;
     padding: 8px 0;
     font-family: inherit;
     font-size: 0.95rem;
     outline: none;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+
+.modern-multi-select::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modern-multi-select::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modern-multi-select::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.modern-multi-select::-webkit-scrollbar-thumb:hover {
+    background-color: #bbb;
 }
 
 .modern-multi-select option {
@@ -674,6 +723,7 @@ h3 {
     color: var(--text-muted);
     margin-top: 6px;
     text-align: right;
+    width: 240px;
 }
 
 /* --- YEAR SLIDER --- */
@@ -682,6 +732,7 @@ h3 {
     align-items: flex-end;
     gap: 12px;
     margin-bottom: 20px;
+    width: 240px;
 }
 
 .input-group label {
@@ -704,7 +755,7 @@ h3 {
 
 .slider-wrapper {
     position: relative;
-    width: 100%;
+    width: 240px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -771,6 +822,9 @@ h3 {
 .submit-section {
     display: flex;
     justify-content: flex-end;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #111;
 }
 
 .btn-primary-large {
@@ -794,6 +848,16 @@ h3 {
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
+    .main-content {
+        width: calc(100% - 20px);
+        margin: 5px auto;
+    }
+
+    .card {
+        padding: 20px 15px;
+        border-radius: 16px;
+    }
+
     .search-row {
         grid-template-columns: 1fr;
         gap: 8px;
@@ -812,13 +876,20 @@ h3 {
     .match-selector {
         width: 100%;
     }
+
+    .top-nav {
+        padding: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
 }
 
 /* Divider between filter cards */
 .filter-divider {
     border: none;
-    border-top: 2px solid #111;
-    margin: 0 0 0 0;
+    border-top: 1px solid #111;
+    margin: 32px 0;
     grid-column: 1 / -1;
     height: 0;
     width: 100%;

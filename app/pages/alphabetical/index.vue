@@ -3,22 +3,29 @@
         <Header />
 
         <main class="main-content">
-            <div class="top-nav">
-                <h1>Prohlížet abecedně</h1>
-                <a class="back-btn" href="/krigsbyte">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-                    Zpět na vyhledávání
-                </a>
-            </div>
-
             <div class="card browse-card">
+                <div class="top-nav">
+                    <h1>Prohlížet abecedně</h1>
+                    <a class="back-btn" href="/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                        Domovská stránka
+                    </a>
+                </div>
                 <div class="browse-row">
                     <span class="browse-label">Prohlížet abecedně</span>
-                    
+
                     <div class="custom-dropdown" :class="{ open: activeDropdown === 'browse-type' }">
                         <button class="dropdown-trigger" @click.stop="toggleDropdown('browse-type')">
                             {{ selectedType }}
-                            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
                         </button>
                         <div class="dropdown-menu">
                             <div class="dropdown-item" @click="selectType('Podle tématu')">Podle tématu</div>
@@ -79,29 +86,40 @@ useHead({
 </script>
 
 <style>
-/* --- VARIABLES & RESET --- */
+/* --- DESIGN SYSTÉM --- */
 :root {
     --primary: #850000;
     --primary-hover: #600000;
-    --primary-light: rgba(133, 0, 0, 0.05);
-    --text-main: #1f2937;
-    --text-muted: #6b7280;
-    --border-color: #e5e7eb;
-    --bg-body: #f9fafb;
-    --bg-card: #ffffff;
-    --radius: 12px;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --focus-ring: 0 0 0 3px rgba(133, 0, 0, 0.15);
+    --text-main: #2d2d2d;
+    --text-muted: #666;
+    --bg-body: #eeeeee;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Zajištění, že footer bude vždy dole */
+html,
+body {
+    height: 100%;
 }
 
 body {
-    background-color: var(--bg-body);
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-body);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
 }
 </style>
 
 <style scoped>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 .page-layout {
     display: flex;
@@ -112,9 +130,14 @@ body {
 
 .main-content {
     flex: 1;
-    width: 80vw;
-    margin: 0 auto;
-    padding: 32px 24px;
+    width: calc(100% - 80px);
+    max-width: none;
+    margin: 40px auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: transparent;
 }
 
 /* --- TOP NAVIGATION --- */
@@ -123,6 +146,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
+    padding: 0;
 }
 
 h1 {
@@ -143,7 +167,7 @@ h1 {
     padding: 8px 16px;
     border-radius: 99px;
     background: #fff;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e5e7eb;
     transition: all 0.2s;
 }
 
@@ -155,12 +179,11 @@ h1 {
 
 /* --- CARD --- */
 .card {
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-    padding: 32px;
-    margin-bottom: 24px;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    margin: 0;
 }
 
 .browse-row {
@@ -195,7 +218,7 @@ h1 {
     justify-content: space-between;
     padding: 10px 14px;
     background: #fff;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e5e7eb;
     border-radius: 8px;
     font-size: 0.95rem;
     color: var(--text-main);
@@ -203,14 +226,23 @@ h1 {
     transition: all 0.2s;
 }
 
-.dropdown-trigger:hover { border-color: #bbb; }
-.custom-dropdown.open .dropdown-trigger {
-    border-color: var(--primary);
-    box-shadow: var(--focus-ring);
+.dropdown-trigger:hover {
+    border-color: #bbb;
 }
 
-.chevron { color: #9ca3af; transition: transform 0.2s; }
-.custom-dropdown.open .chevron { transform: rotate(180deg); }
+.custom-dropdown.open .dropdown-trigger {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(133, 0, 0, 0.15);
+}
+
+.chevron {
+    color: #9ca3af;
+    transition: transform 0.2s;
+}
+
+.custom-dropdown.open .chevron {
+    transform: rotate(180deg);
+}
 
 .dropdown-menu {
     position: absolute;
@@ -218,9 +250,9 @@ h1 {
     left: 0;
     width: 100%;
     background: #fff;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e5e7eb;
     border-radius: 8px;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     z-index: 50;
     opacity: 0;
     visibility: hidden;
@@ -243,7 +275,7 @@ h1 {
 }
 
 .dropdown-item:hover {
-    background: var(--primary-light);
+    background: rgba(133, 0, 0, 0.05);
     color: var(--primary);
 }
 
@@ -251,7 +283,7 @@ h1 {
 .modern-input {
     width: 200px;
     padding: 10px 14px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e5e7eb;
     border-radius: 8px;
     font-size: 0.95rem;
     transition: all 0.2s;
@@ -260,7 +292,7 @@ h1 {
 .modern-input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: var(--focus-ring);
+    box-shadow: 0 0 0 3px rgba(133, 0, 0, 0.15);
 }
 
 /* --- BUTTON --- */
@@ -285,10 +317,34 @@ h1 {
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
+    .main-content {
+        width: calc(100% - 20px);
+        margin: 5px auto;
+    }
+
+    .card {
+        padding: 20px 15px;
+        border-radius: 16px;
+    }
+
     .browse-row {
         flex-direction: column;
         align-items: stretch;
     }
+
+    .modern-input {
+        width: 100%;
+    }
+
+    .top-nav {
+        padding: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
     .modern-input {
         width: 100%;
     }

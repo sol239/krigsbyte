@@ -4,11 +4,21 @@
       <div class="header-main">
         <h2>Upřesnit hledání</h2>
         <button class="toggle-all-btn" @click="toggleAll" :title="allOpen ? 'Sbalit vše' : 'Rozbalit vše'">
-          <svg v-if="allOpen" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-          <svg v-else xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg v-if="allOpen" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15" />
+          </svg>
+          <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </button>
       </div>
     </div>
+
+    <!-- Místa původního uložení -->
+    <FacetSection title="Místa původního uložení" :items="originalLocations" isBadges :showShowAll="false"
+      :forceOpen="allOpen" />
 
     <!-- Původní knihovny -->
     <FacetSection title="Původní knihovny" :items="originalLibraries" showCheckboxes :forceOpen="allOpen" />
@@ -29,7 +39,11 @@
     <div class="facet-section">
       <div class="facet-header" @click="toggleSection('year')">
         <span>Rok vydání</span>
-        <svg class="chevron" :class="{ rotated: !sections.year }" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+        <svg class="chevron" :class="{ rotated: !sections.year }" xmlns="http://www.w3.org/2000/svg" width="16"
+          height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
       </div>
       <div v-show="sections.year" class="facet-content year-range">
         <div class="range-inputs">
@@ -73,13 +87,13 @@ const maxTotal = 2026
 
 // Computed style for the visual slider bar
 const sliderRangeStyle = computed(() => {
-    const range = maxTotal - minTotal
-    const left = ((yearFrom.value - minTotal) / range) * 100
-    const right = ((yearTo.value - minTotal) / range) * 100
-    return {
-        left: `${left}%`,
-        width: `${right - left}%`
-    }
+  const range = maxTotal - minTotal
+  const left = ((yearFrom.value - minTotal) / range) * 100
+  const right = ((yearTo.value - minTotal) / range) * 100
+  return {
+    left: `${left}%`,
+    width: `${right - left}%`
+  }
 })
 
 const toggleSection = (id) => {
@@ -100,6 +114,19 @@ const originalLibraries = [
   { name: 'knihovna kapucínského kláštera (Olomouc)', count: '102' },
   { name: 'knihovna premonstrátského kláštera (Hradisko u Olomouce)', count: '92' },
   { name: 'knihovna Pražského hradu', count: '79' },
+]
+
+const originalLocations = [
+  { name: 'Olomouc (Česko)', count: '2 049' },
+  { name: 'Mikulov (Břeclav, Česko)', count: '1 147' },
+  { name: 'Praha (Česko)', count: '1 034' },
+  { name: 'neurčeno', count: '33' },
+  { name: 'Chomutov (Česko)', count: '12' },
+  { name: 'Cheb (Česko)', count: '4' },
+  { name: 'Brno (Česko)', count: '2' },
+  { name: 'Jihlava (Česko)', count: '2' },
+  { name: 'Kutná Hora (Česko)', count: '1' },
+  { name: 'Roudnice nad Labem (Česko)', count: '1' },
 ]
 
 const previousOwners = [
@@ -127,9 +154,20 @@ const authors = [
 
 const publicationPlaces = [
   { name: 'Venezia', count: '516' },
+  { name: 'Basel', count: '388' },
   { name: 'Köln', count: '387' },
-  { name: 'Basel', count: '384' },
   { name: 'Strasbourg', count: '262' },
+  { name: 'Nürnberg', count: '175' },
+  { name: 'Paris', count: '168' },
+  { name: 'Ingolstadt', count: '146' },
+  { name: 'Lyon', count: '135' },
+  { name: 'Praha', count: '123' },
+  { name: 'Antwerpen', count: '118' },
+  { name: 'Frankfurt am Main', count: '113' },
+  { name: 'Leipzig', count: '98' },
+  { name: 'Wien', count: '98' },
+  { name: 'Augsburg', count: '92' },
+  { name: 'Wittenberg', count: '79' },
 ]
 
 const documentTypes = [
@@ -149,11 +187,13 @@ const documentTypes = [
   box-shadow: var(--shadow-sm);
   font-family: 'Inter', sans-serif;
   overflow: hidden;
-  height: max-content;
+  position: sticky;
+  top: 32px;
+  height: fit-content;
 }
 
 .sidebar-header {
-  padding: 16px;
+  padding: 16px 12px 16px 16px;
   border-bottom: 1px solid var(--border-color, #e5e7eb);
 }
 
@@ -182,7 +222,7 @@ const documentTypes = [
 }
 
 h2 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--text-main, #111);
   margin: 0;
   font-weight: 700;
@@ -227,7 +267,7 @@ h2 {
 .range-inputs {
   display: flex;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 6.5px;
 }
 
 .input-group {
@@ -306,7 +346,7 @@ h2 {
   border: 2px solid var(--primary, #850000);
   cursor: grab;
   margin-top: 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   transition: transform 0.1s;
 }
 
@@ -322,7 +362,7 @@ h2 {
   background: #fff;
   border: 2px solid var(--primary, #850000);
   cursor: grab;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .btn-setup {

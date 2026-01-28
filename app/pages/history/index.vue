@@ -5,13 +5,13 @@
       <div class="card history-card">
         <div class="top-nav">
           <h1>Vaše nedávná vyhledávání</h1>
-          <a class="back-btn" href="/krigsbyte">
+          <a class="back-btn" href="/">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 12H5" />
-              <path d="M12 19l-7-7 7-7" />
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
-            Zpět na vyhledávání
+            Domovská stránka
           </a>
         </div>
         <div class="history-table-wrapper">
@@ -34,7 +34,7 @@
             </tbody>
           </table>
         </div>
-        <button class="remove-btn">Odstranit neuložená vyhledávání</button>
+        <button class="remove-btn">Odstranit vyhledávání</button>
       </div>
     </main>
     <Footer />
@@ -133,9 +133,9 @@ body {
 /* --- MAIN CONTENT --- */
 .main-content {
   flex: 1;
-  width: calc(100% - 40px);
+  width: calc(100% - 80px);
   max-width: none;
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 0;
   display: flex;
   flex-direction: column;

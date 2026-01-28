@@ -9,7 +9,7 @@
       </svg>
     </div>
     <div v-show="isOpen" class="facet-content">
-      <ul class="facet-list">
+      <ul v-if="!isBadges" class="facet-list">
         <li v-for="(item, index) in items" :key="index" class="facet-item">
           <div class="item-main">
             <input v-if="showCheckboxes" type="checkbox" class="facet-checkbox" />
@@ -18,6 +18,15 @@
           <span class="item-count">{{ item.count }}</span>
         </li>
       </ul>
+      <div v-else class="badges-list">
+        <div v-for="(item, index) in items" :key="index" class="badge-item">
+          <input type="checkbox" :id="`badge-${title}-${index}`" class="badge-checkbox" />
+          <label :for="`badge-${title}-${index}`" class="badge-label">
+            <span class="badge-name">{{ item.name }}</span>
+            <span class="badge-count">{{ item.count }}</span>
+          </label>
+        </div>
+      </div>
       <div v-if="showShowAll" class="show-all">
         <a href="#">Zobrazit vše...</a>
       </div>
@@ -42,6 +51,10 @@ const props = defineProps({
   forceOpen: {
     type: Boolean,
     default: true
+  },
+  isBadges: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -67,7 +80,7 @@ watch(() => props.forceOpen, (newVal) => {
   cursor: pointer;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   letter-spacing: 0.05em;
   transition: background 0.2s;
 }
@@ -95,7 +108,7 @@ watch(() => props.forceOpen, (newVal) => {
   justify-content: space-between;
   align-items: flex-start;
   padding: 8px 16px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   gap: 12px;
   transition: background 0.1s;
 }
@@ -134,6 +147,61 @@ watch(() => props.forceOpen, (newVal) => {
   font-size: 0.8rem;
   white-space: nowrap;
   padding-top: 2px;
+}
+
+/* Badges Layout */
+.badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px;
+}
+
+.badge-item {
+  position: relative;
+}
+
+.badge-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.badge-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  color: var(--text-main, #374151);
+}
+
+.badge-item:hover .badge-label {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+}
+
+.badge-checkbox:checked+.badge-label {
+  background: var(--primary-light, rgba(133, 0, 0, 0.05));
+  border-color: var(--primary, #850000);
+  color: var(--primary, #850000);
+}
+
+.badge-count {
+  font-weight: 600;
+  opacity: 0.7;
+  font-size: 0.75rem;
+}
+
+.badge-checkbox:checked+.badge-label .badge-count {
+  color: var(--primary, #850000);
+  opacity: 1;
 }
 
 .show-all {

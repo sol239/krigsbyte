@@ -23,19 +23,25 @@
         <input type="text" class="search-input" placeholder="Hledat v databázi..." @keyup.enter="handleSearch" />
 
         <div class="custom-dropdown" id="myDropdown">
-          <div class="dropdown-selected" @click="toggleMenu">
-            <svg class="dropdown-mobile-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+          <button class="dropdown-trigger" @click.stop="toggleMenu">
+            <div class="trigger-content">
+              <svg class="dropdown-mobile-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+              </svg>
+              <span class="dropdown-text">{{ selectedField }}</span>
+            </div>
+            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
             </svg>
-            <span class="dropdown-text">Všechna pole</span>
-          </div>
-          <div class="dropdown-list">
-            <div class="dropdown-option" @click="setVal('Všechna pole')">Všechna pole</div>
-            <div class="dropdown-option" @click="setVal('Název')">Název</div>
-            <div class="dropdown-option" @click="setVal('Autor')">Autor</div>
-            <div class="dropdown-option" @click="setVal('Popis')">Popis</div>
+          </button>
+          <div class="dropdown-menu">
+            <div class="dropdown-item" @click="setVal('Všechna pole')">Všechna pole</div>
+            <div class="dropdown-item" @click="setVal('Název')">Název</div>
+            <div class="dropdown-item" @click="setVal('Autor')">Autor</div>
+            <div class="dropdown-item" @click="setVal('Popis')">Popis</div>
           </div>
         </div>
 
@@ -62,8 +68,8 @@
               <line x1="12" y1="8" x2="12.01" y2="8"></line>
             </svg>
           </div>
-          <div class="lang-dropdown" id="langDropdown">
-            <div class="lang-selected" @click="toggleLangMenu">
+          <div class="custom-dropdown" id="langDropdown">
+            <button class="dropdown-trigger lang-trigger" @click.stop="toggleLangMenu">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="m5 8 6 6" />
@@ -73,11 +79,10 @@
                 <path d="m22 22-5-10-5 10" />
                 <path d="M14 18h6" />
               </svg>
-            </div>
-            <div class="lang-list">
-              <div class="lang-option" @click="setLang('cs')">Čeština</div>
-              <div class="lang-option" @click="setLang('en')">English</div>
-              <div class="lang-option" @click="setLang('sv')">Svenska</div>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-item" @click="setLang('cs')">Čeština</div>
+              <div class="dropdown-item" @click="setLang('en')">English</div>
             </div>
           </div>
         </div>
@@ -107,7 +112,6 @@ export default {
     },
     setVal(text) {
       this.selectedField = text
-      document.querySelector('.dropdown-selected').textContent = text
       document.getElementById('myDropdown').classList.remove('open')
     },
     toggleLangMenu() {
@@ -122,7 +126,7 @@ export default {
       console.log('Jazyk změněn na:', langCode)
     },
     handleClickOutside(event) {
-      if (!event.target.closest('.dropdown-selected') && !event.target.closest('.lang-selected')) {
+      if (!event.target.closest('.dropdown-trigger')) {
         document.getElementById('myDropdown')?.classList.remove('open')
         document.getElementById('langDropdown')?.classList.remove('open')
       }
@@ -224,76 +228,105 @@ header .logo span {
 }
 
 /* --- CUSTOM DROPDOWNS --- */
+/* --- CUSTOM DROPDOWNS --- */
 .custom-dropdown {
   position: relative;
-  border-left: 1px solid #ddd;
-  margin-right: 8px;
-  cursor: pointer;
   user-select: none;
 }
 
-.dropdown-selected {
-  padding: 0 12px;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+#myDropdown {
+  border-left: 1px solid #ddd;
+  margin-right: 8px;
 }
 
-.dropdown-selected::after {
-  content: "";
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--text-muted);
+.dropdown-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: 8px;
+}
+
+.trigger-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdown-trigger:hover .dropdown-text {
+  color: var(--primary);
+}
+
+.chevron {
+  color: #9ca3af;
   transition: transform 0.2s;
 }
 
-.dropdown-mobile-icon {
-  display: none;
-  color: var(--text-muted);
-}
-
-.custom-dropdown.open .dropdown-selected::after {
+.custom-dropdown.open .chevron {
   transform: rotate(180deg);
 }
 
-.dropdown-list {
+.dropdown-menu {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  left: auto;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  min-width: 150px;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+  min-width: 160px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
-  transition: all 0.18s ease;
-  overflow: hidden;
+  transition: all 0.2s ease;
   z-index: 2000;
+  overflow: hidden;
 }
 
-.custom-dropdown.open .dropdown-list {
+.custom-dropdown.open .dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.dropdown-option {
-  padding: 10px 15px;
+.dropdown-item {
+  padding: 10px 16px;
   font-size: 0.9rem;
-  color: var(--text-main);
-  transition: all 0.1s;
+  cursor: pointer;
+  color: var(--text-main, #1f2937);
+  transition: background 0.15s;
+  text-align: left;
 }
 
-.dropdown-option:hover {
-  background-color: var(--primary);
-  color: #fff;
+.dropdown-item:hover {
+  background: var(--primary-light, rgba(133, 0, 0, 0.05));
+  color: var(--primary);
+}
+
+.lang-trigger {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-input);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-trigger:hover {
+  background: #e8e8e8;
+}
+
+.dropdown-mobile-icon {
+  display: none;
+  color: var(--text-muted);
 }
 
 /* --- SEARCH BUTTON GROUP --- */
@@ -358,8 +391,7 @@ header .logo span {
   gap: 12px;
 }
 
-.info-btn,
-.lang-selected {
+.info-btn {
   width: 40px;
   height: 40px;
   background: var(--bg-input);
@@ -371,48 +403,8 @@ header .logo span {
   transition: var(--transition);
 }
 
-.info-btn:hover,
-.lang-selected:hover {
+.info-btn:hover {
   background: #e8e8e8;
-}
-
-.lang-dropdown {
-  position: relative;
-}
-
-.lang-list {
-  position: absolute;
-  top: 45px;
-  right: 0;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  min-width: 130px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.2s ease;
-  z-index: 2000;
-  overflow: hidden;
-}
-
-.lang-dropdown.open .lang-list {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.lang-option {
-  padding: 10px 15px;
-  font-size: 0.9rem;
-  color: var(--text-main);
-  transition: all 0.1s;
-  cursor: pointer;
-}
-
-.lang-option:hover {
-  background-color: var(--primary);
-  color: #fff;
 }
 
 /* --- MOBILE RESPONSIVE --- */
@@ -473,7 +465,7 @@ header .logo span {
     font-size: 0.9rem;
   }
 
-  .dropdown-selected {
+  .dropdown-trigger {
     padding: 0 8px;
     font-size: 0.8rem;
   }
@@ -592,13 +584,11 @@ header .logo span {
     display: flex;
   }
 
-  .dropdown-list,
-  .lang-list {
+  .dropdown-menu {
     min-width: 120px;
   }
 
-  .dropdown-option,
-  .lang-option {
+  .dropdown-item {
     padding: 8px 12px;
     font-size: 0.85rem;
   }

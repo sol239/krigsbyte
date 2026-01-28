@@ -106,9 +106,9 @@ const loopedCities = [...cities, ...cities];
 <style scoped>
 .main-content {
   flex: 1;
-  width: calc(100% - 40px);
+  width: calc(100% - 80px);
   max-width: none;
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 0;
   display: flex;
   flex-direction: column;
