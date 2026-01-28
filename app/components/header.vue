@@ -58,7 +58,7 @@
           </div>
         </div>
 
-        <a href="krigsbyte/search/advanced" class="advanced-search-link">POKROČILÉ</a>
+        <a href="/krigsbyte/search/advanced" class="advanced-search-link">POKROČILÉ</a>
       </div>
     </div>
 
