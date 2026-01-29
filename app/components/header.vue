@@ -83,18 +83,35 @@
             <div class="dropdown-item" @click="setLang('en')">English</div>
           </div>
         </div>
+
+        <div class="citation-wrapper" v-click-outside="closeCitation">
+          <div class="status-indicator" :class="{ active: showCitation }" title="Zásady pro užívání" @click.stop="toggleCitation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981"
+              stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <transition name="fade">
+            <Citation v-if="showCitation" @close="showCitation = false" />
+          </transition>
+        </div>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import Citation from '~/components/Citation.vue'
 
 export default {
+  components: {
+    Citation
+  },
   data() {
     return {
       selectedField: 'Všechna pole',
-      selectedLang: 'cs'
+      selectedLang: 'cs',
+      showCitation: false
     }
   },
   mounted() {
@@ -122,10 +139,21 @@ export default {
       document.getElementById('langDropdown').classList.remove('open')
       console.log('Jazyk změněn na:', langCode)
     },
+    toggleCitation() {
+      this.showCitation = !this.showCitation
+    },
+    closeCitation() {
+      this.showCitation = false
+    },
     handleClickOutside(event) {
       if (!event.target.closest('.dropdown-trigger')) {
         document.getElementById('myDropdown')?.classList.remove('open')
         document.getElementById('langDropdown')?.classList.remove('open')
+      }
+
+      // Close citation if clicked outside
+      if (this.showCitation && !event.target.closest('.citation-wrapper')) {
+        this.showCitation = false
       }
     }
   }
@@ -415,6 +443,39 @@ header .logo span {
   background: #e8e8e8;
 }
 
+/* --- CITATION DROPDOWN --- */
+.citation-wrapper {
+  position: relative;
+}
+
+.status-indicator {
+  width: 40px;
+  height: 40px;
+  background: #ecfdf5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.status-indicator:hover,
+.status-indicator.active {
+  background: #d1fae5;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 992px) {
   .search-area {
@@ -496,7 +557,8 @@ header .logo span {
   }
 
   .info-btn,
-  .lang-selected {
+  .lang-selected,
+  .status-indicator {
     width: 35px;
     height: 35px;
   }
@@ -576,13 +638,15 @@ header .logo span {
   }
 
   .info-btn,
-  .lang-selected {
+  .lang-selected,
+  .status-indicator {
     width: 32px;
     height: 32px;
   }
 
   .info-btn svg,
-  .lang-selected svg {
+  .lang-selected svg,
+  .status-indicator svg {
     width: 18px;
     height: 18px;
   }

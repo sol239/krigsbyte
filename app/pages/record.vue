@@ -309,6 +309,7 @@
             </div>
           </transition>
         </section>
+
       </div>
     </main>
     <Footer/>
@@ -352,6 +353,7 @@
 <script setup lang="ts">
 import Header from '~/components/header.vue'
 import Footer from '~/components/footer.vue'
+import Citation from '~/components/Citation.vue'
 import {ref} from 'vue'
 
 const showMarcData = ref(false)
