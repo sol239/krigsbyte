@@ -2,7 +2,7 @@
   <div class="page-layout">
     <Header />
     <main class="main-content">
-      <div class="card record-card">
+      <div class="record-content">
         <div class="top-nav">
           <h1>Detail záznamu</h1>
 
@@ -422,7 +422,7 @@ useHead({
 <style scoped>
 /* --- DESIGN SYSTÉM --- */
 :root {
-  --bg-body: #eeeeee;
+  --bg-body: #ffffff;
 }
 
 * {
@@ -433,27 +433,23 @@ useHead({
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #eeeeee;
+  background: #ffffff;
   font-family: 'Inter', sans-serif;
 }
 
 /* --- MAIN CONTENT --- */
 .main-content {
   flex: 1;
-  width: calc(100% - 240px);
+  width: 100%;
   max-width: none;
-  margin: 40px auto;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-.card.record-card {
-  background: #fff;
-  padding: 40px;
-  border-radius: 24px;
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+.record-content {
+  padding: 40px 120px;
 }
 
 /* --- TOP NAVIGATION --- */

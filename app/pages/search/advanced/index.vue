@@ -3,7 +3,7 @@
         <Header />
 
         <main class="main-content">
-            <div class="card search-card">
+            <div class="advanced-search-content">
                 <div class="top-nav">
                     <h1>Pokročilé vyhledávání</h1>
                     <a class="back-btn" href="/krigsbyte/">
@@ -301,7 +301,7 @@ useHead({
     --primary-hover: #600000;
     --text-main: #2d2d2d;
     --text-muted: #666;
-    --bg-body: #eeeeee;
+    --bg-body: #ffffff;
 }
 
 * {
@@ -339,14 +339,16 @@ body {
 
 .main-content {
     flex: 1;
-    width: calc(100% - 240px);
+    width: 100%;
     max-width: none;
-    margin: 40px auto;
+    margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    background: transparent;
+}
+
+.advanced-search-content {
+    padding: 40px 120px;
 }
 
 /* --- TOP NAVIGATION --- */
@@ -389,15 +391,6 @@ h3 {
     color: var(--primary);
     border-color: var(--primary);
     background: #fff;
-}
-
-/* --- CARDS --- */
-.card {
-    background: #fff;
-    border-radius: 24px;
-    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
-    padding: 40px;
-    margin: 0;
 }
 
 .card-header {
@@ -848,14 +841,8 @@ h3 {
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .main-content {
-        width: calc(100% - 60px);
-        margin: 5px auto;
-    }
-
-    .card {
-        padding: 20px 15px;
-        border-radius: 16px;
+    .advanced-search-content {
+        padding: 20px;
     }
 
     .search-row {

@@ -2,7 +2,7 @@
   <div class="page-layout">
     <Header />
     <main class="main-content">
-      <div class="card history-card">
+      <div class="history-content">
         <div class="top-nav">
           <h1>Vaše nedávná vyhledávání</h1>
           <a class="back-btn" href="/krigsbyte/">
@@ -101,7 +101,7 @@ useHead({
 <style>
 /* --- DESIGN SYSTÉM --- */
 :root {
-  --bg-body: #eeeeee;
+  --bg-body: #ffffff;
 }
 
 * {
@@ -133,21 +133,16 @@ body {
 /* --- MAIN CONTENT --- */
 .main-content {
   flex: 1;
-  width: calc(100% - 240px);
+  width: 100%;
   max-width: none;
-  margin: 40px auto;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  background: transparent;
 }
 
-.card.history-card {
-  background: #fff;
-  padding: 40px;
-  border-radius: 24px;
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+.history-content {
+  padding: 40px 120px;
 }
 
 /* --- TOP NAVIGATION --- */
@@ -258,14 +253,8 @@ h1 {
 
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-  .main-content {
-    width: calc(100% - 60px);
-    margin: 5px auto;
-  }
-
-  .card.history-card {
-    padding: 20px 15px;
-    border-radius: 16px;
+  .history-content {
+    padding: 20px;
   }
 
   .history-table th,

@@ -4,7 +4,7 @@
 
     <main class="results-layout">
       <div class="results-main">
-        <div class="card">
+        <div class="results-header-container">
           <!-- Results meta info bar -->
           <div class="results-meta-bar">
             <!-- Top Row -->
@@ -115,7 +115,7 @@
 
         <div class="results-body">
           <!-- Results List -->
-          <div class="results-list card">
+          <div class="results-list">
             <div v-for="result in results" :key="result.number" class="result-item">
               <div class="result-number">{{ result.number }}</div>
               <div class="result-image-box">
@@ -410,7 +410,7 @@ useHead({
 <style>
 /* --- DESIGN SYSTÉM --- */
 :root {
-  --bg-body: #eeeeee;
+  --bg-body: #ffffff;
   --text-main: #2d2d2d;
 }
 
@@ -434,18 +434,20 @@ body {
 
 .results-layout {
   flex: 1;
-  width: calc(100% - 240px);
+  width: 100%;
   max-width: none;
-  margin: 40px auto;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  background: transparent;
 }
 
 .results-main {
   width: 100%;
+}
+
+.results-header-container {
+  padding: 40px 120px 0 120px;
 }
 
 .results-body {
@@ -453,6 +455,7 @@ body {
   gap: 32px;
   align-items: flex-start;
   margin-top: 24px;
+  padding: 0 120px;
 }
 
 /* --- META BAR --- */
@@ -537,7 +540,7 @@ body {
 }
 
 /* --- RESULTS LIST --- */
-.results-list.card {
+.results-list {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -903,14 +906,10 @@ body {
     align-items: flex-start;
     gap: 16px;
   }
-}
 
-.card {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  padding: 24px;
-  margin-bottom: 24px;
+  .results-header-container,
+  .results-body {
+    padding: 0 20px;
+  }
 }
 </style>
