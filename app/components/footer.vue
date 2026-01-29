@@ -1,13 +1,10 @@
+<script setup lang="ts">
+</script>
 <template>
   <footer id="footer">
     <div class="footer-logo-section">
       <a href="https://knizni-korist.cz/" target="_blank" class="logo">
-        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5" />
-          <path d="M6.5 17H20" />
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17" />
-        </svg>
+        <img src="@/assets/png/web_logo.png" alt="Logo" class="logo-icon" />
         <span>Švédská knižní kořist z&nbsp;českých zemí</span>
       </a>
     </div>
@@ -16,6 +13,7 @@
       <li><a href="/krigsbyte/history">Historie vyhledávání</a></li>
       <li><a href="/krigsbyte/alphabetical">Procházet abecedně</a></li>
       <li><a href="/krigsbyte/search/advanced">Pokročilé vyhledávání</a></li>
+      <li><a href="https://knizni-korist.cz/">Web</a></li>
     </ul>
   </footer>
 </template>
@@ -55,6 +53,13 @@ footer .logo {
 
 footer .logo span {
   display: block;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .footer-links {

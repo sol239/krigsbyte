@@ -2,12 +2,7 @@
   <header id="header">
     <div class="header-left">
       <a href="/krigsbyte/" class="logo">
-        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5" />
-          <path d="M6.5 17H20" />
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17" />
-        </svg>
+        <img src="@/assets/png/web_logo.png" alt="Logo" class="logo-icon" />
         <span>Švédská knižní kořist z&nbsp;českých zemí</span>
       </a>
 
@@ -15,27 +10,27 @@
         <div class="search-container">
           <div class="search-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </div>
 
-          <input type="text" class="search-input" placeholder="Hledat v databázi..." @keyup.enter="handleSearch" />
+          <input type="text" class="search-input" placeholder="Hledat v databázi..." @keyup.enter="handleSearch"/>
 
           <div class="custom-dropdown" id="myDropdown">
             <button class="dropdown-trigger" @click.stop="toggleMenu">
               <div class="trigger-content">
                 <svg class="dropdown-mobile-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round">
                   <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
                 </svg>
                 <span class="dropdown-text">{{ selectedField }}</span>
               </div>
               <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9" />
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
               </svg>
             </button>
             <div class="dropdown-menu">
@@ -50,14 +45,13 @@
             <button class="search-button" @click="handleSearch">
               <span class="search-btn-text">Hledat</span>
               <svg class="search-btn-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                   fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
             </button>
           </div>
         </div>
-
         <a href="/krigsbyte/search/advanced" class="advanced-search-link">POKROČILÉ</a>
       </div>
     </div>
@@ -189,7 +183,9 @@ header .logo span {
 }
 
 .logo-icon {
-  color: var(--primary);
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 

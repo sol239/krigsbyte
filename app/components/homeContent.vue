@@ -3,12 +3,68 @@
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-content">
-        <h1>Švédská knižní kořist z českých zemí</h1>
-        <p class="hero-subtitle">Bibliografický a informační portál</p>
-        <p class="hero-description">
-          V letech 1646–1648 odvezla švédská vojska z Mikulova, Olomouce a Prahy více než 25 000 knih.
-          Tento portál zpřístupňuje informace o dochovaných exemplářích rozptýlených po knihovnách celé Evropy.
-        </p>
+        <h2 >Švédská knižní kořist z českých zemí</h2>
+        <h1 class="hero-subtitle">Databáze dochovaných knih</h1>
+
+        <!-- SEARCHBAR -->
+        <div class="search-area">
+          <div class="search-container">
+            <div class="search-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+
+            <input type="text" class="search-input" placeholder="Hledat v databázi..." @keyup.enter="handleSearch"/>
+
+            <div class="custom-dropdown" :class="{ open: isDropdownOpen }">
+              <button class="dropdown-trigger" @click.stop="toggleMenu">
+                <div class="trigger-content">
+                  <svg class="dropdown-mobile-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                       stroke-linejoin="round">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                  </svg>
+                  <span class="dropdown-text">{{ selectedField }}</span>
+                </div>
+                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="dropdown-menu">
+                <div class="dropdown-item" @click="setVal('Všechna pole')">Všechna pole</div>
+                <div class="dropdown-item" @click="setVal('Název')">Název</div>
+                <div class="dropdown-item" @click="setVal('Autor')">Autor</div>
+                <div class="dropdown-item" @click="setVal('Popis')">Popis</div>
+              </div>
+            </div>
+
+            <div class="search-button-group">
+              <button class="search-button" @click="handleSearch">
+                <span class="search-btn-text">Hledat</span>
+                <svg class="search-btn-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <a href="/krigsbyte/search/advanced" class="advanced-search-link">POKROČILÉ</a>
+        </div>
+
+        <div class="city-scroller-container">
+          <div class="city-scroller">
+            <div class="city-scroller-track">
+              <span v-for="(city, index) in loopedCities" :key="index" class="city-item">
+                <span class="flag-icon" v-html="flagSvg(city.country)"></span> {{ city.name }} ({{ city.count }})
+              </span>
+            </div>
+          </div>
+        </div>
 
         <div class="hero-stats-card">
           <span class="stats-label">Aktuálně:</span>
@@ -28,21 +84,21 @@
           </div>
         </div>
 
-        <div class="city-scroller-container">
-          <div class="city-scroller">
-            <div class="city-scroller-track">
-              <span v-for="(city, index) in loopedCities" :key="index" class="city-item">
-                <span class="flag-icon" v-html="flagSvg(city.country)"></span> {{ city.name }} ({{ city.count }})
-              </span>
-            </div>
-          </div>
-        </div>
-
         <div class="hero-footer-link">
           <a href="https://knizni-korist.cz/" target="_blank" rel="noopener">
-            Navštívit hlavní web projektu knizni-korist.cz
+            Hlavní web
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+          <a href="https://knizni-korist.cz/vizualizace-dat/" target="_blank" rel="noopener">
+            Vizualizace databáze
+            <!-- TODO: lepší obrázek -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               <polyline points="15 3 21 3 21 9"></polyline>
               <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -57,6 +113,38 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const selectedField = ref('Všechna pole')
+const isDropdownOpen = ref(false)
+
+const toggleMenu = () => {
+  isDropdownOpen.value = !isDropdownOpen.value
+}
+
+const setVal = (val: string) => {
+  selectedField.value = val
+  isDropdownOpen.value = false
+}
+
+const handleSearch = () => {
+  navigateTo('/search/results')
+}
+
+const handleClickOutside = (event: MouseEvent) => {
+  if (!(event.target as Element).closest('.custom-dropdown')) {
+    isDropdownOpen.value = false
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('click', handleClickOutside)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('click', handleClickOutside)
+})
+
 const cities = [
   { name: 'Västerås', count: 688, country: 'SE' },
   { name: 'Stockholm', count: 669, country: 'SE' },
@@ -136,6 +224,176 @@ const loopedCities = [...cities, ...cities];
 
 .hero-content {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- SEARCH AREA --- */
+.search-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 30px;
+  width: 100%;
+  justify-content: center;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: var(--bg-input);
+  padding: 6px 6px 6px 18px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 700px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  position: relative;
+}
+
+.search-container:focus-within {
+  background: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(133, 0, 0, 0.1);
+}
+
+.search-icon {
+  color: #999;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: var(--text-main);
+  padding: 8px 0;
+}
+
+.advanced-search-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  padding: 10px;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.advanced-search-link:hover {
+  opacity: 0.8;
+}
+
+/* --- CUSTOM DROPDOWN --- */
+.custom-dropdown {
+  position: relative;
+  user-select: none;
+  border-left: 1px solid #ddd;
+  margin-right: 8px;
+}
+
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  gap: 8px;
+}
+
+.trigger-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdown-text {
+  font-weight: 500;
+}
+
+.chevron {
+  color: #9ca3af;
+  transition: transform 0.2s;
+}
+
+.custom-dropdown.open .chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.custom-dropdown.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--text-main);
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.dropdown-mobile-icon {
+  display: none;
+}
+
+/* --- SEARCH BUTTON --- */
+.search-button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.search-btn-icon {
+  display: none;
 }
 
 .hero-stats-card {
@@ -268,6 +526,10 @@ const loopedCities = [...cities, ...cities];
 
 .hero-footer-link {
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .hero-footer-link a {
@@ -288,133 +550,6 @@ const loopedCities = [...cities, ...cities];
   text-decoration: underline;
 }
 
-/* --- FEATURES GRID --- */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-}
-
-.feature-card {
-  background: #fff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-}
-
-.card-icon {
-  color: var(--primary);
-  margin-bottom: 20px;
-}
-
-.feature-card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 12px;
-}
-
-.feature-card p {
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 20px;
-  flex: 1;
-}
-
-.stats {
-  font-size: 0.9rem;
-  color: var(--text-main);
-  margin-bottom: 20px;
-  padding: 10px;
-  background: var(--bg-input);
-  border-radius: 8px;
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 12px 24px;
-  background: var(--primary);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  text-align: center;
-  transition: background 0.2s;
-}
-
-.cta-button.secondary {
-  background: #444;
-}
-
-.cta-button.outline {
-  background: transparent;
-  border: 2px solid var(--primary);
-  color: var(--primary);
-}
-
-.cta-button:hover {
-  opacity: 0.9;
-}
-
-/* --- SECONDARY INFO --- */
-.secondary-info {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 24px;
-}
-
-.video-section,
-.resources-links {
-  background: #fff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-}
-
-.video-placeholder {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: #222;
-  border-radius: 12px;
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  cursor: pointer;
-}
-
-.links-groups {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 15px;
-}
-
-.link-group h4 {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-}
-
-.link-group a {
-  display: block;
-  color: var(--text-main);
-  text-decoration: none;
-  padding: 5px 0;
-  font-weight: 500;
-}
-
-.link-group a:hover {
-  color: var(--primary);
-}
-
 /* --- MOBILE --- */
 @media (max-width: 768px) {
   .hero-section {
@@ -427,8 +562,17 @@ const loopedCities = [...cities, ...cities];
     word-wrap: break-word;
   }
 
-  .hero-description {
-    font-size: 0.95rem;
+  .search-area {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-container {
+    padding: 4px 4px 4px 12px;
+  }
+
+  .advanced-search-link {
+    padding: 5px;
   }
 
   .hero-stats-card {
@@ -443,14 +587,28 @@ const loopedCities = [...cities, ...cities];
     display: none;
   }
 
-  .secondary-info {
-    grid-template-columns: 1fr;
-  }
-
   .main-content {
     width: calc(100% - 60px);
     margin: 5px auto;
     gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dropdown-text {
+    display: none;
+  }
+  .dropdown-mobile-icon {
+    display: block;
+  }
+  .search-btn-text {
+    display: none;
+  }
+  .search-btn-icon {
+    display: block;
+  }
+  .search-button {
+    padding: 10px;
   }
 }
 
