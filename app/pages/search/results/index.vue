@@ -5,8 +5,8 @@
     <main class="results-layout">
       <div class="results-main">
         <div class="results-header-container">
-          <!-- Results meta info bar -->
-          <div class="results-meta-bar">
+          <!-- Results meta info bar wrapped in a card -->
+          <div class="results-meta-card">
             <!-- Top Row -->
             <div class="meta-row top-row">
               <div class="meta-controls">
@@ -117,7 +117,10 @@
           <!-- Results List -->
           <div class="results-list">
             <div v-for="result in results" :key="result.number" class="result-item">
-              <div class="result-number">{{ result.number }}</div>
+              <div class="result-selection">
+                <input type="checkbox" class="result-checkbox" />
+                <div class="result-number">{{ result.number }}</div>
+              </div>
               <div class="result-image-box">
                 <img v-if="result.imageUrl" :src="result.imageUrl" class="result-image" alt="Book cover" />
                 <svg v-else xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
@@ -458,12 +461,16 @@ body {
   padding: 0 120px;
 }
 
-/* --- META BAR --- */
-.results-meta-bar {
+/* --- META CARD --- */
+.results-meta-card {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 8px 0;
+  padding: 20px 24px;
+  background: #fff;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
 }
 
 .meta-row {
@@ -474,7 +481,7 @@ body {
 }
 
 .bottom-row {
-  padding-top: 12px;
+  padding-top: 16px;
   border-top: 1px solid #eee;
 }
 
@@ -552,24 +559,34 @@ body {
   display: flex;
   gap: 13px;
   padding: 28px 0;
-  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #000;
   transition: background-color 0.2s;
-}
-
-.result-item:last-child {
-  border-bottom: none;
+  align-items: flex-start;
 }
 
 .result-item:hover {
   background-color: rgba(0, 0, 0, 0.01);
 }
 
+.result-selection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 55px;
+  padding-top: 3px;
+}
+
+.result-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary, #850000);
+  cursor: pointer;
+}
+
 .result-number {
   font-weight: 700;
   font-size: 1rem;
   color: #111;
-  min-width: 25px;
-  padding-top: 2px;
 }
 
 .result-image-box {
@@ -606,7 +623,7 @@ body {
 
 .result-title-link {
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #000;
   text-decoration: none;
   line-height: 1.3;
@@ -901,10 +918,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  .results-meta-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+  .results-meta-card {
+    padding: 16px;
   }
 
   .results-header-container,

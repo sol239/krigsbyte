@@ -1,6 +1,6 @@
 <template>
   <div class="page-layout">
-    <Header />
+    <Header/>
     <main class="main-content">
       <div class="record-content">
         <div class="top-nav">
@@ -9,42 +9,35 @@
           <div class="center-controls">
             <button class="arrow-btn" title="Předchozí">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
             </button>
             <button class="arrow-btn" title="Následující">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
             </button>
             <div class="record-counter"><strong>#11</strong> z 4312
-              <button class="arrow-btn" title="Zobrazit detaily" @click="handleCounterIconClick">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="18 15 12 9 6 15"></polyline>
-                </svg>
-              </button>
             </div>
           </div>
 
           <div class="top-actions">
             <button @click="printPage" class="action-btn" title="Tisknout">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 9V2h12v7" />
-                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-                <rect x="6" y="14" width="12" height="8" />
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9V2h12v7"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
               </svg>
             </button>
-            <router-link class="back-btn" to="/krigsbyte/">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <polyline points="9 22 9 12 15 12 15 22" />
+            <router-link class="back-btn" to="/search/results/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="18 15 12 9 6 15"></polyline>
               </svg>
-              Domovská stránka
+              Zpátky do databáze
             </router-link>
           </div>
         </div>
@@ -104,7 +97,7 @@
                   <a class="external-link" href="#" target="_blank">
                     Odkaz na online katalog
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                       <polyline points="15 3 21 3 21 9"></polyline>
                       <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -118,7 +111,7 @@
                   <a class="external-link" href="#" target="_blank">
                     https://example.com/record/123456789
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                       <polyline points="15 3 21 3 21 9"></polyline>
                       <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -139,14 +132,14 @@
 
             <div class="image-gallery">
               <div v-for="(image, index) in images" :key="index" class="gallery-item"
-                :class="{ 'featured-item': index === 0 }" tabindex="0" @click="openImageModal(index)"
-                @keydown.enter="openImageModal(index)">
+                   :class="{ 'featured-item': index === 0 }" tabindex="0" @click="openImageModal(index)"
+                   @keydown.enter="openImageModal(index)">
                 <div class="image-wrapper">
-                  <img :src="image.src" :alt="image.alt" loading="lazy" />
+                  <img :src="image.src" :alt="image.alt" loading="lazy"/>
                   <div class="overlay">
                     <span class="icon-box">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
                       </svg>
@@ -161,11 +154,12 @@
         <!-- Sekce MARC21 -->
         <section class="marc21-data" :class="{ 'is-open': showMarcData }">
           <button class="accordion-trigger" @click="showMarcData = !showMarcData"
-            aria-label="Přepnout viditelnost MARC21 dat">
+                  aria-label="Přepnout viditelnost MARC21 dat">
             <h2>MARC21 Data</h2>
             <svg class="chevron-icon" :class="{ 'rotated': showMarcData }" xmlns="http://www.w3.org/2000/svg" width="24"
-              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
+                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
@@ -174,142 +168,142 @@
             <div v-if="showMarcData" class="table-wrapper">
               <table class="marc21-table">
                 <thead>
-                  <tr>
-                    <th>Pole</th>
-                    <th>Ind1</th>
-                    <th>Ind2</th>
-                    <th>Podpole</th>
-                    <th>Data</th>
-                  </tr>
+                <tr>
+                  <th>Pole</th>
+                  <th>Ind1</th>
+                  <th>Ind2</th>
+                  <th>Podpole</th>
+                  <th>Data</th>
+                </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>LEADER</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>00000nam a2200000 a 4500</td>
-                  </tr>
-                  <tr>
-                    <td>001</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>123456789</td>
-                  </tr>
-                  <tr>
-                    <td>006</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>m o d </td>
-                  </tr>
-                  <tr>
-                    <td>007</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>cr cn|||||||||</td>
-                  </tr>
-                  <tr>
-                    <td>008</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>230101s2023 cz ||||| |||| 000 0 ces d</td>
-                  </tr>
-                  <tr>
-                    <td>040</td>
-                    <td></td>
-                    <td></td>
-                    <td>$a</td>
-                    <td>ABA</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>$b</td>
-                    <td>cze</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>$e</td>
-                    <td>rda</td>
-                  </tr>
-                  <tr>
-                    <td>100</td>
-                    <td>1</td>
-                    <td> </td>
-                    <td>$a</td>
-                    <td>Novák, Jan,</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>$d</td>
-                    <td>1900-1980</td>
-                  </tr>
-                  <tr>
-                    <td>245</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>$a</td>
-                    <td>Velká kniha o všem a ničem</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>$c</td>
-                    <td>Jan Novák</td>
-                  </tr>
-                  <tr>
-                    <td>260</td>
-                    <td></td>
-                    <td></td>
-                    <td>$a</td>
-                    <td>Praha :</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>$b</td>
-                    <td>Nakladatelství XYZ,</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>$c</td>
-                    <td>2023</td>
-                  </tr>
-                  <tr>
-                    <td>300</td>
-                    <td></td>
-                    <td></td>
-                    <td>$a</td>
-                    <td>350 stran :</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>$b</td>
-                    <td>ilustrace ;</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>$c</td>
-                    <td>24 cm</td>
-                  </tr>
-                  <!-- Další MARC21 pole dle potřeby -->
+                <tr>
+                  <td>LEADER</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>00000nam a2200000 a 4500</td>
+                </tr>
+                <tr>
+                  <td>001</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>123456789</td>
+                </tr>
+                <tr>
+                  <td>006</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>m o d</td>
+                </tr>
+                <tr>
+                  <td>007</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>cr cn|||||||||</td>
+                </tr>
+                <tr>
+                  <td>008</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>230101s2023 cz ||||| |||| 000 0 ces d</td>
+                </tr>
+                <tr>
+                  <td>040</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>ABA</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$b</td>
+                  <td>cze</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$e</td>
+                  <td>rda</td>
+                </tr>
+                <tr>
+                  <td>100</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Novák, Jan,</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$d</td>
+                  <td>1900-1980</td>
+                </tr>
+                <tr>
+                  <td>245</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>$a</td>
+                  <td>Velká kniha o všem a ničem</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$c</td>
+                  <td>Jan Novák</td>
+                </tr>
+                <tr>
+                  <td>260</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Praha :</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$b</td>
+                  <td>Nakladatelství XYZ,</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$c</td>
+                  <td>2023</td>
+                </tr>
+                <tr>
+                  <td>300</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>350 stran :</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$b</td>
+                  <td>ilustrace ;</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$c</td>
+                  <td>24 cm</td>
+                </tr>
+                <!-- Další MARC21 pole dle potřeby -->
                 </tbody>
               </table>
             </div>
@@ -317,7 +311,7 @@
         </section>
       </div>
     </main>
-    <Footer />
+    <Footer/>
 
     <!-- Image Modal -->
     <transition name="fade">
@@ -325,24 +319,24 @@
         <div class="modal-content" @click.stop>
           <button class="close-btn" @click="closeImageModal" aria-label="Zavřít">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
           <div class="modal-image-container">
             <img v-if="selectedImageIndex !== null" :src="images[selectedImageIndex].src"
-              :alt="images[selectedImageIndex].alt" class="modal-image" />
+                 :alt="images[selectedImageIndex].alt" class="modal-image"/>
           </div>
           <button class="nav-arrow nav-arrow-prev" @click="prevModalImage" aria-label="Předchozí obrázek">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </button>
           <button class="nav-arrow nav-arrow-next" @click="nextModalImage" aria-label="Další obrázek">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
@@ -358,7 +352,7 @@
 <script setup lang="ts">
 import Header from '~/components/header.vue'
 import Footer from '~/components/footer.vue'
-import { ref } from 'vue'
+import {ref} from 'vue'
 
 const showMarcData = ref(false)
 const showModal = ref(false)
@@ -366,11 +360,11 @@ const selectedImageIndex = ref<number | null>(null)
 
 // Ukázkové obrázky - v reálné aplikaci by se načítaly z API
 const images = ref([
-  { src: 'https://picsum.photos/300/200?random=1', alt: 'Obrázek 1' },
-  { src: 'https://picsum.photos/250/300?random=2', alt: 'Obrázek 2' },
-  { src: 'https://picsum.photos/350/200?random=3', alt: 'Obrázek 3' },
-  { src: 'https://picsum.photos/280/280?random=4', alt: 'Obrázek 4' },
-  { src: 'https://picsum.photos/320/240?random=5', alt: 'Obrázek 5' }
+  {src: 'https://picsum.photos/300/200?random=1', alt: 'Obrázek 1'},
+  {src: 'https://picsum.photos/250/300?random=2', alt: 'Obrázek 2'},
+  {src: 'https://picsum.photos/350/200?random=3', alt: 'Obrázek 3'},
+  {src: 'https://picsum.photos/280/280?random=4', alt: 'Obrázek 4'},
+  {src: 'https://picsum.photos/320/240?random=5', alt: 'Obrázek 5'}
 ])
 
 // Funkce pro modal s obrázky
@@ -395,8 +389,8 @@ const nextModalImage = () => {
 const prevModalImage = () => {
   if (selectedImageIndex.value !== null) {
     selectedImageIndex.value = selectedImageIndex.value === 0
-      ? images.value.length - 1
-      : selectedImageIndex.value - 1
+        ? images.value.length - 1
+        : selectedImageIndex.value - 1
   }
 }
 
@@ -649,7 +643,6 @@ h2 {
   font-weight: 600;
   color: var(--text-muted, #666);
   font-size: 0.9rem;
-  text-transform: uppercase;
   letter-spacing: 0.025em;
   padding-right: 24px;
 }

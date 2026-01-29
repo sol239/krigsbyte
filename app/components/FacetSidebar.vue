@@ -17,7 +17,7 @@
     </div>
 
     <!-- Místa původního uložení -->
-    <FacetSection title="Místa původního uložení" :items="originalLocations" isBadges :showShowAll="false"
+    <FacetSection title="Místa původního uložení" :items="originalLocations.slice(0, 3)" showCheckboxes
       :forceOpen="allOpen" />
 
     <!-- Původní knihovny -->
@@ -226,7 +226,6 @@ h2 {
   color: var(--text-main, #111);
   margin: 0;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.025em;
 }
 
@@ -243,8 +242,7 @@ h2 {
   align-items: center;
   cursor: pointer;
   font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   letter-spacing: 0.05em;
 }
 

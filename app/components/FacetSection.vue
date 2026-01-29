@@ -1,7 +1,7 @@
 <template>
   <div class="facet-section">
     <div class="facet-header" @click="isOpen = !isOpen">
-      <span>{{ title }}</span>
+      <span>{{ formatName(title) }}</span>
       <svg class="chevron" :class="{ rotated: !isOpen }" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
         stroke-linejoin="round">
@@ -13,7 +13,7 @@
         <li v-for="(item, index) in items" :key="index" class="facet-item">
           <div class="item-main">
             <input v-if="showCheckboxes" type="checkbox" class="facet-checkbox" />
-            <a href="#" class="item-link" :class="{ 'with-checkbox': showCheckboxes }">{{ item.name }}</a>
+            <a href="#" class="item-link" :class="{ 'with-checkbox': showCheckboxes }">{{ formatName(item.name) }}</a>
           </div>
           <span class="item-count">{{ item.count }}</span>
         </li>
@@ -22,7 +22,7 @@
         <div v-for="(item, index) in items" :key="index" class="badge-item">
           <input type="checkbox" :id="`badge-${title}-${index}`" class="badge-checkbox" />
           <label :for="`badge-${title}-${index}`" class="badge-label">
-            <span class="badge-name">{{ item.name }}</span>
+            <span class="badge-name">{{ formatName(item.name) }}</span>
             <span class="badge-count">{{ item.count }}</span>
           </label>
         </div>
@@ -63,6 +63,12 @@ const isOpen = ref(props.forceOpen)
 watch(() => props.forceOpen, (newVal) => {
   isOpen.value = newVal
 })
+
+const formatName = (name) => {
+  if (!name) return ''
+  const lower = name.toLowerCase()
+  return lower.charAt(0).toUpperCase() + lower.slice(1)
+}
 </script>
 
 <style scoped>
@@ -79,7 +85,6 @@ watch(() => props.forceOpen, (newVal) => {
   align-items: center;
   cursor: pointer;
   font-weight: 600;
-  text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
   transition: background 0.2s;
