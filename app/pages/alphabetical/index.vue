@@ -15,30 +15,33 @@
                         Domovská stránka
                     </a>
                 </div>
-                <div class="browse-row">
-                    <span class="browse-label">Prohlížet abecedně</span>
 
-                    <div class="custom-dropdown" :class="{ open: activeDropdown === 'browse-type' }">
-                        <button class="dropdown-trigger" @click.stop="toggleDropdown('browse-type')">
-                            {{ selectedType }}
-                            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9" />
-                            </svg>
-                        </button>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-item" @click="selectType('Podle tématu')">Podle tématu</div>
-                            <div class="dropdown-item" @click="selectType('Podle autora')">Podle autora</div>
-                            <div class="dropdown-item" @click="selectType('Podle názvu')">Podle názvu</div>
+                <div class="browse-card">
+                    <div class="browse-row">
+                        <span class="browse-label">Prohlížet abecedně</span>
+
+                        <div class="custom-dropdown" :class="{ open: activeDropdown === 'browse-type' }">
+                            <button class="dropdown-trigger" @click.stop="toggleDropdown('browse-type')">
+                                {{ selectedType }}
+                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item" @click="selectType('Podle tématu')">Podle tématu</div>
+                                <div class="dropdown-item" @click="selectType('Podle autora')">Podle autora</div>
+                                <div class="dropdown-item" @click="selectType('Podle názvu')">Podle názvu</div>
+                            </div>
                         </div>
+
+                        <span class="browse-suffix">začínající</span>
+
+                        <input type="text" class="modern-input browse-input" v-model="searchText" placeholder="" />
+
+                        <button class="btn-primary-large">Procházet</button>
                     </div>
-
-                    <span class="browse-suffix">začínající</span>
-
-                    <input type="text" class="modern-input browse-input" v-model="searchText" placeholder="" />
-
-                    <button class="btn-primary-large">Procházet</button>
                 </div>
             </div>
         </main>
@@ -92,7 +95,8 @@ useHead({
     --primary-hover: #600000;
     --text-main: #2d2d2d;
     --text-muted: #666;
-    --bg-body: #ffffff;
+    --bg-body: #f9fafb;
+    --border-color: #e5e7eb;
 }
 
 * {
@@ -169,7 +173,7 @@ h1 {
     padding: 8px 16px;
     border-radius: 8px;
     background: #fff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     transition: all 0.2s;
 }
 
@@ -177,6 +181,15 @@ h1 {
     color: var(--primary);
     border-color: var(--primary);
     background: #fff;
+}
+
+/* --- BROWSE CARD --- */
+.browse-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .browse-row {
@@ -211,7 +224,7 @@ h1 {
     justify-content: space-between;
     padding: 10px 14px;
     background: #fff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 0.95rem;
     color: var(--text-main);
@@ -243,7 +256,7 @@ h1 {
     left: 0;
     width: 100%;
     background: #fff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     z-index: 50;
@@ -276,7 +289,7 @@ h1 {
 .modern-input {
     width: 200px;
     padding: 10px 14px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 0.95rem;
     transition: all 0.2s;
@@ -309,9 +322,19 @@ h1 {
 }
 
 /* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .browse-content {
+        padding: 40px;
+    }
+}
+
 @media (max-width: 768px) {
     .browse-content {
         padding: 20px;
+    }
+
+    .browse-card {
+        padding: 24px;
     }
 
     .browse-row {

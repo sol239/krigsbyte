@@ -14,27 +14,32 @@
             Domovská stránka
           </a>
         </div>
-        <div class="history-table-wrapper">
-          <table class="history-table">
-            <thead>
-              <tr>
-                <th>Datum a čas</th>
-                <th>Vyhledávací dotaz</th>
-                <th>Použité filtry</th>
-                <th>Výsledky</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(item, idx) in historyData" :key="idx">
-                <td>{{ formatDate(item.date) }}</td>
-                <td v-html="item.query"></td>
-                <td v-html="item.filters"></td>
-                <td>{{ item.results }}</td>
-              </tr>
-            </tbody>
-          </table>
+
+        <div class="history-card">
+          <div class="history-table-wrapper">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Datum a čas</th>
+                  <th>Vyhledávací dotaz</th>
+                  <th>Použité filtry</th>
+                  <th>Výsledky</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(item, idx) in historyData" :key="idx">
+                  <td>{{ formatDate(item.date) }}</td>
+                  <td v-html="item.query"></td>
+                  <td v-html="item.filters"></td>
+                  <td>{{ item.results }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="history-actions">
+            <button class="remove-btn">Odstranit vyhledávání</button>
+          </div>
         </div>
-        <button class="remove-btn">Odstranit vyhledávání</button>
       </div>
     </main>
     <Footer />
@@ -101,7 +106,12 @@ useHead({
 <style>
 /* --- DESIGN SYSTÉM --- */
 :root {
-  --bg-body: #ffffff;
+  --primary: #850000;
+  --primary-hover: #600000;
+  --text-main: #2d2d2d;
+  --text-muted: #666;
+  --bg-body: #f9fafb;
+  --border-color: #e5e7eb;
 }
 
 * {
@@ -171,7 +181,7 @@ h1 {
   padding: 8px 16px;
   border-radius: 8px;
   background: #fff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   transition: all 0.2s;
 }
 
@@ -180,10 +190,20 @@ h1 {
   border-color: var(--primary);
 }
 
+/* --- HISTORY CARD --- */
+.history-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
 .history-table-wrapper {
-  margin-bottom: 12px;
-  border: 1px solid #ddd;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
+  overflow: hidden;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -196,27 +216,26 @@ h1 {
 }
 
 .history-table thead {
-  position: sticky;
-  top: 0;
-  background: #e0e0e0;
-  z-index: 10;
+  background: #f9fafb;
 }
 
 .history-table th {
   padding: 12px 16px;
   text-align: left;
   font-weight: 700;
-  font-size: 0.98rem;
-  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+  color: #4b5563;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .history-table td {
-  padding: 14px 8px;
+  padding: 14px 16px;
   font-size: 0.95rem;
   color: var(--text-main);
   max-width: 120px;
   word-break: break-word;
   white-space: normal;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .history-table td:nth-child(2),
@@ -227,11 +246,16 @@ h1 {
 }
 
 .history-table tbody tr:hover {
-  background: #f7f7f7;
+  background: #f9fafb;
 }
 
 .history-table tbody tr:last-child td {
   border-bottom: none;
+}
+
+.history-actions {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .remove-btn {
@@ -239,7 +263,6 @@ h1 {
   color: #fff;
   border: none;
   padding: 10px 24px;
-  margin-bottom: 12px;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
@@ -252,26 +275,25 @@ h1 {
 }
 
 /* --- MOBILE RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .history-content {
+    padding: 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .history-content {
     padding: 20px;
   }
 
+  .history-card {
+    padding: 16px;
+  }
+
   .history-table th,
   .history-table td {
     font-size: 0.8rem;
-    padding: 8px 4px;
-    max-width: 80px;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .history-table th,
-  .history-table td {
-    font-size: 0.75rem;
-    padding: 6px 2px;
-    max-width: 60px;
+    padding: 8px 12px;
   }
 }
 </style>

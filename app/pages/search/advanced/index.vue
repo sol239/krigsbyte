@@ -15,172 +15,175 @@
                         Domovská stránka
                     </a>
                 </div>
-                <div class="card-header">
-                    <h2>Kritéria vyhledávání</h2>
 
-                    <div class="match-selector">
-                        <label>Shoda:</label>
-                        <div class="custom-dropdown" :class="{ open: activeDropdown === 'match' }"
-                            v-click-outside="() => activeDropdown = null">
-                            <button class="dropdown-trigger" @click.stop="toggleDropdown('match')">
-                                {{ selectedMatch }}
-                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9" />
-                                </svg>
-                            </button>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-item" @click="selectMatch('Všechny výrazy (AND)')">Všechny výrazy
-                                    (AND)</div>
-                                <div class="dropdown-item" @click="selectMatch('Libovolné výrazy (OR)')">Libovolné
-                                    výrazy (OR)</div>
-                                <div class="dropdown-item" @click="selectMatch('Žádné výrazy')">Žádné výrazy</div>
+                <div class="advanced-card">
+                    <div class="card-header">
+                        <h2>Kritéria vyhledávání</h2>
+
+                        <div class="match-selector">
+                            <label>Shoda:</label>
+                            <div class="custom-dropdown" :class="{ open: activeDropdown === 'match' }"
+                                v-click-outside="() => activeDropdown = null">
+                                <button class="dropdown-trigger" @click.stop="toggleDropdown('match')">
+                                    {{ selectedMatch }}
+                                    <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-item" @click="selectMatch('Všechny výrazy (AND)')">Všechny výrazy
+                                        (AND)</div>
+                                    <div class="dropdown-item" @click="selectMatch('Libovolné výrazy (OR)')">Libovolné
+                                        výrazy (OR)</div>
+                                    <div class="dropdown-item" @click="selectMatch('Žádné výrazy')">Žádné výrazy</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="search-groups-wrapper">
+                    <div class="search-groups-wrapper">
 
-                    <template v-for="(group, groupIdx) in fieldGroups" :key="group.id">
-                        <hr v-if="groupIdx > 0" class="group-divider" />
-                        <div class="field-group-container">
+                        <template v-for="(group, groupIdx) in fieldGroups" :key="group.id">
+                            <hr v-if="groupIdx > 0" class="group-divider" />
+                            <div class="field-group-container">
 
-                            <div class="group-header-label" v-if="fieldGroups.length > 1">
-                                <span class="group-title">Skupina {{ groupIdx + 1 }}</span>
-                                <button class="delete-group-btn" @click="removeGroup(groupIdx)"
-                                    title="Odstranit celou skupinu">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                    </svg>
-                                    Odstranit skupinu
-                                </button>
-                            </div>
+                                <div class="group-header-label" v-if="fieldGroups.length > 1">
+                                    <span class="group-title">Skupina {{ groupIdx + 1 }}</span>
+                                    <button class="delete-group-btn" @click="removeGroup(groupIdx)"
+                                        title="Odstranit celou skupinu">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                        </svg>
+                                        Odstranit skupinu
+                                    </button>
+                                </div>
 
-                            <div class="group-fields">
-                                <div v-for="(field, idx) in group.fields" :key="field.id" class="search-row">
-                                    <div class="field-select-wrapper">
-                                        <div class="custom-dropdown"
-                                            :class="{ open: activeDropdown === `field-${field.id}` }">
-                                            <button class="dropdown-trigger"
-                                                @click.stop="toggleDropdown(`field-${field.id}`)">
-                                                {{ field.selected || 'Všechna pole' }}
-                                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16"
-                                                    height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <polyline points="6 9 12 15 18 9" />
-                                                </svg>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <div class="dropdown-item"
-                                                    @click="selectField(field.id, 'Všechna pole')">Všechna pole</div>
-                                                <div class="dropdown-item" @click="selectField(field.id, 'Název')">Název
-                                                </div>
-                                                <div class="dropdown-item" @click="selectField(field.id, 'Autor')">Autor
-                                                </div>
-                                                <div class="dropdown-item" @click="selectField(field.id, 'Popis')">Popis
+                                <div class="group-fields">
+                                    <div v-for="(field, idx) in group.fields" :key="field.id" class="search-row">
+                                        <div class="field-select-wrapper">
+                                            <div class="custom-dropdown"
+                                                :class="{ open: activeDropdown === `field-${field.id}` }">
+                                                <button class="dropdown-trigger"
+                                                    @click.stop="toggleDropdown(`field-${field.id}`)">
+                                                    {{ field.selected || 'Všechna pole' }}
+                                                    <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16"
+                                                        height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <polyline points="6 9 12 15 18 9" />
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <div class="dropdown-item"
+                                                        @click="selectField(field.id, 'Všechna pole')">Všechna pole</div>
+                                                    <div class="dropdown-item" @click="selectField(field.id, 'Název')">Název
+                                                    </div>
+                                                    <div class="dropdown-item" @click="selectField(field.id, 'Autor')">Autor
+                                                    </div>
+                                                    <div class="dropdown-item" @click="selectField(field.id, 'Popis')">Popis
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="input-wrapper">
+                                            <input class="modern-input" type="text" placeholder="Zadejte hledaný výraz..."
+                                                v-model="field.value" />
+                                            <button v-if="group.fields.length > 1" class="delete-field-btn"
+                                                @click="removeField(groupIdx, idx)" title="Odebrat pole" type="button">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 24 24" fill="none" stroke="#850000" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                                </svg>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="input-wrapper">
-                                        <input class="modern-input" type="text" placeholder="Zadejte hledaný výraz..."
-                                            v-model="field.value" />
-                                        <button v-if="group.fields.length > 1" class="delete-field-btn"
-                                            @click="removeField(groupIdx, idx)" title="Odebrat pole" type="button">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 24 24" fill="none" stroke="#850000" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <line x1="18" y1="6" x2="6" y2="18" />
-                                                <line x1="6" y1="6" x2="18" y2="18" />
-                                            </svg>
-                                        </button>
+                                </div>
+
+                                <div class="group-actions">
+                                    <button class="btn-ghost" type="button" @click="addField(groupIdx)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                        Přidat další pole
+                                    </button>
+                                </div>
+                            </div>
+                        </template>
+
+                        <div class="global-actions">
+                            <button class="btn-dashed" type="button" @click="addGroup">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                                </svg>
+                                Přidat novou skupinu
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="filters-grid">
+                        <hr class="filter-divider" />
+                        <div class="filter-card">
+                            <h3>Jazyk</h3>
+                            <div class="custom-select-wrapper">
+                                <select class="modern-multi-select" multiple>
+                                    <option>german</option>
+                                    <option>greek</option>
+                                    <option>hebrew</option>
+                                    <option>hungarian</option>
+                                    <option>italian</option>
+                                    <option>latin</option>
+                                    <option>polish</option>
+                                    <option>portuguese</option>
+                                    <option>spanish</option>
+                                    <option>undetermined</option>
+                                </select>
+                                <div class="helper-text">Pro více možností držte Ctrl/Cmd</div>
+                            </div>
+                        </div>
+                        <hr class="filter-divider" />
+                        <div class="filter-card">
+                            <h3>Rok vydání</h3>
+
+                            <div class="year-filter-content">
+                                <div class="year-inputs-row">
+                                    <div class="input-group">
+                                        <label>Od</label>
+                                        <input type="number" v-model="yearMin" class="modern-input small" />
+                                    </div>
+                                    <div class="separator">–</div>
+                                    <div class="input-group">
+                                        <label>Do</label>
+                                        <input type="number" v-model="yearMax" class="modern-input small" />
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="group-actions">
-                                <button class="btn-ghost" type="button" @click="addField(groupIdx)">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg>
-                                    Přidat další pole
-                                </button>
-                            </div>
-                        </div>
-                    </template>
-
-                    <div class="global-actions">
-                        <button class="btn-dashed" type="button" @click="addGroup">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="12" y1="8" x2="12" y2="16"></line>
-                                <line x1="8" y1="12" x2="16" y2="12"></line>
-                            </svg>
-                            Přidat novou skupinu
-                        </button>
-                    </div>
-
-                </div>
-
-                <div class="filters-grid">
-                    <hr class="filter-divider" />
-                    <div class="filter-card">
-                        <h3>Jazyk</h3>
-                        <div class="custom-select-wrapper">
-                            <select class="modern-multi-select" multiple>
-                                <option>german</option>
-                                <option>greek</option>
-                                <option>hebrew</option>
-                                <option>hungarian</option>
-                                <option>italian</option>
-                                <option>latin</option>
-                                <option>polish</option>
-                                <option>portuguese</option>
-                                <option>spanish</option>
-                                <option>undetermined</option>
-                            </select>
-                            <div class="helper-text">Pro více možností držte Ctrl/Cmd</div>
-                        </div>
-                    </div>
-                    <hr class="filter-divider" />
-                    <div class="filter-card">
-                        <h3>Rok vydání</h3>
-
-                        <div class="year-filter-content">
-                            <div class="year-inputs-row">
-                                <div class="input-group">
-                                    <label>Od</label>
-                                    <input type="number" v-model="yearMin" class="modern-input small" />
-                                </div>
-                                <div class="separator">–</div>
-                                <div class="input-group">
-                                    <label>Do</label>
-                                    <input type="number" v-model="yearMax" class="modern-input small" />
+                                <div class="slider-wrapper">
+                                    <div class="slider-track"></div>
+                                    <div class="slider-range" :style="sliderRangeStyle"></div>
+                                    <input type="range" min="1400" max="2026" v-model="yearMin" class="range-thumb" />
+                                    <input type="range" min="1400" max="2026" v-model="yearMax" class="range-thumb" />
                                 </div>
                             </div>
-
-                            <div class="slider-wrapper">
-                                <div class="slider-track"></div>
-                                <div class="slider-range" :style="sliderRangeStyle"></div>
-                                <input type="range" min="1400" max="2026" v-model="yearMin" class="range-thumb" />
-                                <input type="range" min="1400" max="2026" v-model="yearMax" class="range-thumb" />
-                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="submit-section">
-                    <button class="btn-primary-large">Vyhledat</button>
+                    <div class="submit-section">
+                        <button class="btn-primary-large">Vyhledat</button>
+                    </div>
                 </div>
             </div>
         </main>
@@ -301,7 +304,8 @@ useHead({
     --primary-hover: #600000;
     --text-main: #2d2d2d;
     --text-muted: #666;
-    --bg-body: #ffffff;
+    --bg-body: #f9fafb;
+    --border-color: #e5e7eb;
 }
 
 * {
@@ -383,7 +387,7 @@ h3 {
     padding: 8px 16px;
     border-radius: 8px;
     background: #fff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     transition: all 0.2s;
 }
 
@@ -393,13 +397,22 @@ h3 {
     background: #fff;
 }
 
+/* --- ADVANCED CARD --- */
+.advanced-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
     padding-bottom: 16px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .card-header h2 {
@@ -415,7 +428,7 @@ h3 {
 
 .group-divider {
     border: none;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid var(--border-color);
     margin: 32px 0;
 }
 
@@ -511,7 +524,7 @@ h3 {
     justify-content: space-between;
     padding: 10px 14px;
     background: #fff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 0.95rem;
     color: var(--text-main);
@@ -542,10 +555,9 @@ h3 {
     top: calc(100% + 4px);
     left: 0;
     width: 100%;
-    /* Match trigger width */
     min-width: 10rem;
     background: #fff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     z-index: 50;
@@ -592,7 +604,7 @@ h3 {
 .modern-input {
     width: 100%;
     padding: 10px 14px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 0.95rem;
     transition: all 0.2s;
@@ -674,7 +686,7 @@ h3 {
 .modern-multi-select {
     width: 240px;
     height: 180px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 8px 0;
     font-family: inherit;
@@ -817,7 +829,7 @@ h3 {
     justify-content: flex-end;
     margin-top: 40px;
     padding-top: 32px;
-    border-top: 1px solid #111;
+    border-top: 1px solid var(--border-color);
 }
 
 .btn-primary-large {
@@ -840,9 +852,19 @@ h3 {
 }
 
 /* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .advanced-search-content {
+        padding: 40px;
+    }
+}
+
 @media (max-width: 768px) {
     .advanced-search-content {
         padding: 20px;
+    }
+
+    .advanced-card {
+        padding: 24px;
     }
 
     .search-row {
@@ -875,7 +897,7 @@ h3 {
 /* Divider between filter cards */
 .filter-divider {
     border: none;
-    border-top: 1px solid #111;
+    border-top: 1px solid var(--border-color);
     margin: 32px 0;
     grid-column: 1 / -1;
     height: 0;

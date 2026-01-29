@@ -179,8 +179,7 @@ const documentTypes = [
 
 <style scoped>
 .facet-sidebar {
-  width: 280px;
-  flex-shrink: 0;
+  flex: 1;
   background: var(--bg-card, #fff);
   border-radius: var(--radius, 12px);
   border: 1px solid var(--border-color, #e5e7eb);

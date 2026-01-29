@@ -30,12 +30,13 @@ useHead({
 :root {
   --primary: #850000;
   --primary-hover: #600000;
-  --bg-body: #ffffff;
+  --bg-body: #f9fafb;
   --bg-header: rgba(255, 255, 255, 0.98);
   --bg-footer: #fff;
   --bg-input: #f1f1f1;
   --text-main: #2d2d2d;
   --text-muted: #666;
+  --border-color: #e5e7eb;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   --transition: all 0.25s ease;
 }

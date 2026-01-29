@@ -1,6 +1,6 @@
 <template>
   <div class="page-layout">
-    <Header />
+    <Header/>
 
     <main class="results-layout">
       <div class="results-main">
@@ -16,9 +16,9 @@
                     <button class="dropdown-trigger" @click.stop="toggleSort">
                       {{ selectedSort }}
                       <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9" />
+                           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                           stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"/>
                       </svg>
                     </button>
                     <div class="dropdown-menu">
@@ -39,9 +39,9 @@
                     <button class="dropdown-trigger" @click.stop="togglePageSize">
                       {{ selectedPageSize }}
                       <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9" />
+                           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                           stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"/>
                       </svg>
                     </button>
                     <div class="dropdown-menu">
@@ -57,9 +57,9 @@
 
               <a class="back-btn" href="/krigsbyte/">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                  <polyline points="9 22 9 12 15 12 15 22" />
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
                 Domovská stránka
               </a>
@@ -70,18 +70,18 @@
               <div class="meta-actions">
                 <button class="action-btn" title="Exportovat">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" />
-                    <line x1="12" y1="15" x2="12" y2="3" />
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
                   </svg>
                 </button>
                 <button class="action-btn" title="Tisknout">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M6 9V2h12v7" />
-                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-                    <rect x="6" y="14" width="12" height="8" />
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9V2h12v7"/>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                    <rect x="6" y="14" width="12" height="8"/>
                   </svg>
                 </button>
               </div>
@@ -89,14 +89,14 @@
               <div class="results-count">
                 <button class="arrow-btn" title="Předchozí">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                   </svg>
                 </button>
                 Zobrazeno <strong>1 - 20</strong> z <strong>4323</strong>
                 <button class="arrow-btn" title="Následující">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
                 </button>
@@ -105,7 +105,7 @@
               <div class="facet-toggle">
                 <span class="facet-label-text">Fasety:</span>
                 <label class="switch-container">
-                  <input type="checkbox" v-model="showFasety" />
+                  <input type="checkbox" v-model="showFasety"/>
                   <span class="switch-slider"></span>
                 </label>
               </div>
@@ -118,15 +118,15 @@
           <div class="results-list">
             <div v-for="result in results" :key="result.number" class="result-item">
               <div class="result-selection">
-                <input type="checkbox" class="result-checkbox" />
+                <input type="checkbox" class="result-checkbox"/>
                 <div class="result-number">{{ result.number }}</div>
               </div>
               <div class="result-image-box">
-                <img v-if="result.imageUrl" :src="result.imageUrl" class="result-image" alt="Book cover" />
+                <img v-if="result.imageUrl" :src="result.imageUrl" class="result-image" alt="Book cover"/>
                 <svg v-else xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                 </svg>
               </div>
               <div class="result-content">
@@ -152,7 +152,7 @@
             </div>
           </div>
 
-          <FacetSidebar v-if="showFasety" />
+          <FacetSidebar v-if="showFasety"/>
         </div>
 
         <!-- Pagination -->
@@ -161,7 +161,7 @@
             <li class="page-item">
               <a href="#" title="Na první stránku">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="11 19 4 12 11 5"></polyline>
                   <polyline points="18 19 11 12 18 5"></polyline>
                 </svg>
@@ -170,7 +170,7 @@
             <li class="page-item">
               <a href="#" title="Předchozí stránka">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
               </a>
@@ -183,7 +183,7 @@
             <li class="page-item">
               <a href="#" title="Následující stránka">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
               </a>
@@ -191,7 +191,7 @@
             <li class="page-item">
               <a href="#" title="Na poslední stránku">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="13 19 20 12 13 5"></polyline>
                   <polyline points="6 19 13 12 6 5"></polyline>
                 </svg>
@@ -202,12 +202,12 @@
       </div>
     </main>
 
-    <Footer />
+    <Footer/>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import {ref, onMounted, onUnmounted} from 'vue'
 import Header from '~/components/header.vue'
 import Footer from '~/components/footer.vue'
 import FacetSidebar from '~/components/FacetSidebar.vue'
@@ -406,7 +406,7 @@ onUnmounted(() => {
 
 useHead({
   title: 'Výsledky vyhledávání | Krigsbyte',
-  htmlAttrs: { lang: 'cs' }
+  htmlAttrs: {lang: 'cs'}
 })
 </script>
 
@@ -520,11 +520,11 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.switch-container input:checked+.switch-slider {
+.switch-container input:checked + .switch-slider {
   background-color: var(--primary, #850000);
 }
 
-.switch-container input:checked+.switch-slider::before {
+.switch-container input:checked + .switch-slider::before {
   transform: translateX(20px);
 }
 
@@ -550,7 +550,7 @@ body {
 .results-list {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 3;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -618,7 +618,7 @@ body {
 
 .result-title-row {
   margin-bottom: 2px;
-  max-width: 50%;
+  max-width: 66.66%;
 }
 
 .result-title-link {

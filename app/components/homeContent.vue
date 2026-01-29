@@ -3,7 +3,7 @@
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-content">
-        <h2 >Švédská knižní kořist z českých zemí</h2>
+        <h2 class="hero-top-title">Švédská knižní kořist z českých zemí</h2>
         <h1 class="hero-subtitle">Databáze dochovaných knih</h1>
 
         <!-- SEARCHBAR -->
@@ -96,7 +96,6 @@
           </a>
           <a href="https://knizni-korist.cz/vizualizace-dat/" target="_blank" rel="noopener">
             Vizualizace databáze
-            <!-- TODO: lepší obrázek -->
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -107,8 +106,6 @@
         </div>
       </div>
     </section>
-
-
   </main>
 </template>
 
@@ -194,32 +191,28 @@ const loopedCities = [...cities, ...cities];
 <style scoped>
 .main-content {
   flex: 1;
-  width: calc(100% - 240px);
+  width: 100%;
   max-width: none;
-  margin: 40px auto;
-  padding: 0;
+  margin: 0;
+  padding: 40px 120px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background: transparent;
-  box-shadow: none;
 }
 
-/* --- HERO SECTION --- */
+/* --- HERO SECTION (CARD) --- */
 .hero-section {
   background: #fff;
-  padding: 40px;
-  border-radius: 24px;
-  box-shadow: var(--shadow);
+  padding: 60px 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color, #e5e7eb);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
   text-align: center;
   min-height: calc(100vh - 280px);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
-
 }
 
 .hero-content {
@@ -229,12 +222,29 @@ const loopedCities = [...cities, ...cities];
   align-items: center;
 }
 
+.hero-top-title {
+  font-size: 1.1rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.hero-subtitle {
+  font-size: 2.8rem;
+  color: var(--text-main);
+  margin: 0 auto 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  max-width: 900px;
+}
+
 /* --- SEARCH AREA --- */
 .search-area {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 20px 0 30px;
+  margin: 0 0 40px;
   width: 100%;
   justify-content: center;
 }
@@ -396,6 +406,7 @@ const loopedCities = [...cities, ...cities];
   display: none;
 }
 
+/* --- STATS CARD --- */
 .hero-stats-card {
   display: inline-flex;
   align-items: center;
@@ -405,7 +416,7 @@ const loopedCities = [...cities, ...cities];
   background: var(--bg-input);
   padding: 10px 24px;
   border-radius: 100px;
-  margin: 10px 0 20px;
+  margin: 10px 0 30px;
   border: 1px solid var(--border-color);
 }
 
@@ -440,36 +451,11 @@ const loopedCities = [...cities, ...cities];
   background: var(--border-color);
 }
 
-.hero-section h1 {
-  font-size: 2.8rem;
-  color: var(--text-main);
-  margin: 0 auto 5px;
-  font-weight: 800;
-  line-height: 1.2;
-  max-width: 900px;
-}
-
-.hero-subtitle {
-  font-size: 1.1rem;
-  color: var(--primary);
-  font-weight: 600;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
-}
-
-.hero-description {
-  max-width: 800px;
-  margin: 0 auto 20px;
-  line-height: 1.5;
-  color: var(--text-muted);
-  font-size: 1.05rem;
-}
-
 /* --- CITY SCROLLER --- */
 .city-scroller-container {
   width: 100%;
   max-width: 900px;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
   overflow: hidden;
   position: relative;
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -515,13 +501,8 @@ const loopedCities = [...cities, ...cities];
 }
 
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .hero-footer-link {
@@ -529,7 +510,7 @@ const loopedCities = [...cities, ...cities];
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .hero-footer-link a {
@@ -551,15 +532,24 @@ const loopedCities = [...cities, ...cities];
 }
 
 /* --- MOBILE --- */
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 40px 40px;
+  }
+}
+
 @media (max-width: 768px) {
+  .main-content {
+    padding: 20px 20px;
+  }
+
   .hero-section {
-    padding: 30px 20px;
+    padding: 40px 20px;
     min-height: auto;
   }
 
-  .hero-section h1 {
-    font-size: 1.6rem;
-    word-wrap: break-word;
+  .hero-subtitle {
+    font-size: 1.8rem;
   }
 
   .search-area {
@@ -569,10 +559,6 @@ const loopedCities = [...cities, ...cities];
 
   .search-container {
     padding: 4px 4px 4px 12px;
-  }
-
-  .advanced-search-link {
-    padding: 5px;
   }
 
   .hero-stats-card {
@@ -585,12 +571,6 @@ const loopedCities = [...cities, ...cities];
 
   .stat-divider {
     display: none;
-  }
-
-  .main-content {
-    width: calc(100% - 60px);
-    margin: 5px auto;
-    gap: 12px;
   }
 }
 
@@ -609,16 +589,6 @@ const loopedCities = [...cities, ...cities];
   }
   .search-button {
     padding: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-section h1 {
-    font-size: 1.4rem;
-  }
-
-  .hero-section {
-    padding: 20px 15px;
   }
 }
 </style>
