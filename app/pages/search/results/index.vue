@@ -7,8 +7,8 @@
         <div class="results-header-container">
           <!-- Results meta info bar wrapped in a card -->
           <div class="results-meta-card">
-            <!-- Top Row -->
-            <div class="meta-row top-row">
+            <!-- Main Row -->
+            <div class="meta-row">
               <div class="meta-controls">
                 <div class="control-group">
                   <label>Seřadit podle</label>
@@ -55,37 +55,6 @@
                 </div>
               </div>
 
-              <a class="back-btn" href="/krigsbyte/">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-                Domovská stránka
-              </a>
-            </div>
-
-            <!-- Bottom Row -->
-            <div class="meta-row bottom-row">
-              <div class="meta-actions">
-                <button class="action-btn" title="Exportovat">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                  </svg>
-                </button>
-                <button class="action-btn" title="Tisknout">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M6 9V2h12v7"/>
-                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
-                    <rect x="6" y="14" width="12" height="8"/>
-                  </svg>
-                </button>
-              </div>
-
               <div class="results-count">
                 <button class="arrow-btn" title="Předchozí">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -102,12 +71,40 @@
                 </button>
               </div>
 
-              <div class="facet-toggle">
-                <span class="facet-label-text">Fasety:</span>
-                <label class="switch-container">
-                  <input type="checkbox" v-model="showFasety"/>
-                  <span class="switch-slider"></span>
-                </label>
+              <div class="right-side-controls">
+                <div class="meta-actions">
+                  <button class="action-btn" title="Exportovat">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="7 10 12 15 17 10"/>
+                      <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                  </button>
+                  <button class="action-btn" title="Tisknout">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 9V2h12v7"/>
+                      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                      <rect x="6" y="14" width="12" height="8"/>
+                    </svg>
+                  </button>
+                  <a class="back-btn" href="/krigsbyte/" title="Domovská stránka">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                      <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                  </a>
+                </div>
+
+                <div class="facet-toggle">
+                  <span class="facet-label-text">Fasety:</span>
+                  <label class="switch-container">
+                    <input type="checkbox" v-model="showFasety"/>
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -450,7 +447,7 @@ body {
 }
 
 .results-header-container {
-  padding: 40px 120px 0 120px;
+  padding: 20px 120px 0 120px;
 }
 
 .results-body {
@@ -480,9 +477,11 @@ body {
   width: 100%;
 }
 
-.bottom-row {
-  padding-top: 16px;
-  border-top: 1px solid #eee;
+.right-side-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
 }
 
 /* --- SWITCH STYLE --- */
@@ -715,12 +714,11 @@ body {
 .back-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   color: var(--text-muted);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 8px 16px;
   border-radius: 8px;
   background: #fff;
   border: 1px solid var(--border-color);

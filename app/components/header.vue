@@ -172,7 +172,8 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 10px 120px;
-  min-height: 70px;
+  height: 105px;
+  min-height: 105px;
   background: var(--bg-header);
   backdrop-filter: blur(12px);
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
