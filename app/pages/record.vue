@@ -47,69 +47,101 @@
           <section class="main-metadata">
             <div class="metadata-grid">
               <div class="metadata-row">
+                <div class="metadata-label">Původní knihovna</div>
+                <div class="metadata-value">knihovna františkánského kláštera (Olomouc)</div>
+              </div>
+              <div class="metadata-row">
                 <div class="metadata-label">Číslo záznamu</div>
-                <div class="metadata-value">123456789</div>
+                <div class="metadata-value">OlmK 2</div>
               </div>
               <div class="metadata-row">
                 <div class="metadata-label">Hlavní autor</div>
                 <div class="metadata-value">
-                  <a class="metadata-link" href="/search?author=novak-jan">Novák, Jan (1900-1980)</a>
+                  <a class="metadata-link" href="#">Hugues de Saint-Victor, asi 1096-1141</a>
                 </div>
               </div>
               <div class="metadata-row">
-                <div class="metadata-label">Název knihy</div>
-                <div class="metadata-value highlight title-value">Velká kniha o všem a ničem</div>
+                <div class="metadata-label">Název</div>
+                <div class="metadata-value highlight title-value">De sacramentis Christianae fidei ...</div>
               </div>
               <div class="metadata-row">
                 <div class="metadata-label">Nakladatelské údaje</div>
-                <div class="metadata-value">Praha: Nakladatelství XYZ, 2023</div>
+                <div class="metadata-value">Strasbourg : [Husner, Georg], 1485</div>
               </div>
               <div class="metadata-row">
                 <div class="metadata-label">Rozsah</div>
-                <div class="metadata-value">350 stran, 24 cm</div>
+                <div class="metadata-value">2°</div>
               </div>
               <div class="metadata-row">
-                <div class="metadata-label">Literatura / bibliografické odkazy</div>
-                <div class="metadata-value">Viz str. 345-348</div>
+                <div class="metadata-label">Tiskař textu</div>
+                <div class="metadata-value">Husner, Georg, -1505</div>
+              </div>
+              <div class="metadata-row">
+                <div class="metadata-label">Typ dokumentu</div>
+                <div class="metadata-value">prvotisk</div>
+              </div>
+              <div class="metadata-row">
+                <div class="metadata-label">Literatura</div>
+                <div class="metadata-value">
+                  Katalog rožmberské knihovny, I, fol. 34<br>
+                  V. Madsen, Strängnas-Dubletter i Det kongelige Bibliotek i København, in: Nordisk tidskrift för bok- och biblioteksväsen 11/1927, s. 98, num. 46.<br>
+                  ISTC ih00535000<br>
+                  Catalogus librorum, ab antiquis bibliothecis, Pragensi & Olomuciensi, qvibus olim Regium Gymnasium Gustavianum Strengnesense donaverat gl. m. regina Christina, Stockholm 1765 K 23/407
+                </div>
               </div>
               <div class="metadata-row">
                 <div class="metadata-label">Poznámky</div>
-                <div class="metadata-value">První vydání. Obsahuje rejstřík.</div>
+                <div class="metadata-value">
+                  Exemplář původně patřil augustiniánskému klášteru v Třeboni, za V. Březana převázán a vřazen do rožmberské knihovny, v r. 1616 v majetku olomouckého kanovníka A. Kindlera, který jej v roce 1620 daroval františkánskému klášteru v Olomouci.<br>
+                  konvolut OlmK 2 - OlmK 210
+                </div>
               </div>
               <div class="metadata-row">
                 <div class="metadata-label">Dřívější majitelé</div>
                 <div class="metadata-value">
-                  <a class="metadata-link" href="/record/owner/karel-novotny">Karel Novotný</a> (viz <a
-                    class="metadata-link" href="/record/owner/karel-novotny">další záznam</a>)
+                  z Rožmberka, Petr Vok, 1539-1611<br>
+                  Kindler, Ondřej<br>
+                  Thott, Otto, 1703-1785<br>
+                  Třeboňský klášter<br>
+                  Klášter františkánů (Olomouc, Česko)<br>
+                  Kungliga Biblioteket (Švédsko)<br>
+                  Domkyrkobibliotek (Strängnäs, Švédsko)
                 </div>
+              </div>
+              <div class="metadata-row">
+                <div class="metadata-label">Místo původního uložení</div>
+                <div class="metadata-value">Olomouc (Česko)</div>
+              </div>
+              <div class="metadata-row">
+                <div class="metadata-label">Vazba</div>
+                <div class="metadata-value">Celokožená nekvalitně provedená (pokroucená, nedrží dobře blok), při této příležitosti vytvořen rukopisný titulní list (pravděpodobně rukou Václava Březana), zbytky tkanic, supralibros, na hřbetě stopy po Vossiově signatuře.</div>
               </div>
               <div class="metadata-row">
                 <div class="metadata-label">Provenience</div>
-                <div class="metadata-value">Zakoupeno v antikvariátu, 2024</div>
-              </div>
-              <div class="metadata-row">
-                <div class="metadata-label">Exempláře</div>
-                <div class="metadata-value">Knihovna A (signatura: A-123), Knihovna B (signatura: B-456)</div>
-              </div>
-              <div class="metadata-row">
-                <div class="metadata-label">Katalog knihovny</div>
                 <div class="metadata-value">
-                  <a class="external-link" href="#" target="_blank">
-                    Odkaz na online katalog
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
-                    </svg>
-                  </a>
+                  rukopisný záznam Mon: Třeboň: (pag. 5)<br>
+                  iniciálové supralibros PWWDR [=Petr Vok z Rožmberka] (přední desky)<br>
+                  exlibris (Collijn, fig. 1) Petr Vok z Rožmberka (předsádka)<br>
+                  supralibros (Collijn, fig. 17) Petr Vok z Rožmberka (přední desky)<br>
+                  rukopisný záznam D. Andreas Kindler Canonicus Olomucensij hu[n]c libru[m] ad monasteriu[m] S. Bernardini Olomucij dono dedit. Die 17. Maij, An[n]o M. DC. XX ora pro eo. (fol. 1r)<br>
+                  rukopisný záznam (přeškrtnutý) Andreas Kindler Canon: Olomu. 1616 (fol. 1r)<br>
+                  Aukční číslice 407 - z aukce kapitulní knihovny ve Strängnäs (prázdný list před titulní stranou)<br>
+                  X - oborová signatura Královské knihovny ve Stockholmu z let 1650-1651 (hřbet)<br>
+                  Kat VII 359 (dle Madsena) Thott - dle katalogu
                 </div>
               </div>
               <div class="metadata-row">
-                <div class="metadata-label">Trvalý odkaz na online záznam</div>
+                <div class="metadata-label">Exempláře</div>
                 <div class="metadata-value">
-                  <a class="external-link" href="#" target="_blank">
-                    https://example.com/record/123456789
+                  København : Det Kongelige Bibliotek (Inc. Haun., 2050 fol. Inkunabelsamlingen)<br>
+                  København : Det Kongelige Bibliotek (Inc. Haun., 2050 fol. Inkunabelsamlingen)
+                </div>
+              </div>
+              <div class="metadata-row">
+                <div class="metadata-label">Trvalý odkaz</div>
+                <div class="metadata-value">
+                  <a class="external-link" href="https://krigsbyte.lib.cas.cz/Record/OlmK2" target="_blank">
+                    https://krigsbyte.lib.cas.cz/Record/OlmK2
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -182,128 +214,666 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td>00000nam a2200000 a 4500</td>
+                  <td>00000nam-a2200000-a-4500</td>
                 </tr>
                 <tr>
                   <td>001</td>
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td>123456789</td>
+                  <td>OlmK 2</td>
                 </tr>
                 <tr>
                   <td>006</td>
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td>m o d</td>
+                  <td>007198bf-8e44-4547-bb72-6b9d1be6c0ce</td>
+                </tr>
+                <tr>
+                  <td>004</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>kvo_swe</td>
+                </tr>
+                <tr>
+                  <td>005</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>20211205141053.6</td>
                 </tr>
                 <tr>
                   <td>007</td>
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td>cr cn|||||||||</td>
+                  <td>ta</td>
                 </tr>
                 <tr>
                   <td>008</td>
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td>230101s2023 cz ||||| |||| 000 0 ces d</td>
+                  <td>211250s1485----fr |||||||||||||||||lat||</td>
                 </tr>
                 <tr>
-                  <td>040</td>
+                  <td>041</td>
+                  <td>0</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>lat</td>
+                </tr>
+                <tr>
+                  <td>044</td>
                   <td></td>
                   <td></td>
                   <td>$a</td>
-                  <td>ABA</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>$b</td>
-                  <td>cze</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>$e</td>
-                  <td>rda</td>
+                  <td>fr</td>
                 </tr>
                 <tr>
                   <td>100</td>
                   <td>1</td>
                   <td></td>
                   <td>$a</td>
-                  <td>Novák, Jan,</td>
+                  <td>Hugues de Saint-Victor,</td>
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td>$d</td>
-                  <td>1900-1980</td>
+                  <td>asi 1096-1141</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$7</td>
+                  <td>jn19990003738</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$4</td>
+                  <td>aut</td>
+                </tr>
+                <tr>
+                  <td>210</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>De sacramentis Christianae fidei ...</td>
                 </tr>
                 <tr>
                   <td>245</td>
-                  <td>1</td>
+                  <td>0</td>
                   <td>0</td>
                   <td>$a</td>
-                  <td>Velká kniha o všem a ničem</td>
+                  <td>De sacramentis Christianae fidei ...</td>
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td>$c</td>
-                  <td>Jan Novák</td>
+                  <td>$h</td>
+                  <td>prvotisk</td>
                 </tr>
                 <tr>
                   <td>260</td>
                   <td></td>
                   <td></td>
                   <td>$a</td>
-                  <td>Praha :</td>
+                  <td>Strasbourg :</td>
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td>$b</td>
-                  <td>Nakladatelství XYZ,</td>
+                  <td>[Husner, Georg],</td>
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td>$c</td>
-                  <td>2023</td>
+                  <td>1485</td>
                 </tr>
                 <tr>
                   <td>300</td>
                   <td></td>
                   <td></td>
-                  <td>$a</td>
-                  <td>350 stran :</td>
+                  <td>$c</td>
+                  <td>2°</td>
                 </tr>
                 <tr>
+                  <td>500</td>
                   <td></td>
                   <td></td>
+                  <td>$a</td>
+                  <td>Exemplář původně patřil augustiniánskému klášteru v Třeboni, za V. Březana převázán a vřazen do rožmberské knihovny, v r. 1616 v majetku olomouckého kanovníka A. Kindlera, který jej v roce 1620 daroval františkánskému klášteru v Olomouci.</td>
+                </tr>
+                <tr>
+                  <td>500</td>
                   <td></td>
-                  <td>$b</td>
-                  <td>ilustrace ;</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>konvolut OlmK 2 - OlmK 210</td>
+                </tr>
+                <tr>
+                  <td>510</td>
+                  <td>0</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Katalog rožmberské knihovny, I, fol.</td>
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td>$c</td>
-                  <td>24 cm</td>
+                  <td>34</td>
                 </tr>
-                <!-- Další MARC21 pole dle potřeby -->
+                <tr>
+                  <td>510</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>V. Madsen, Strängnas-Dubletter i Det kongelige Bibliotek i København, in: Nordisk tidskrift för bok- och biblioteksväsen 11/1927,</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$c</td>
+                  <td>s. 98, num. 46.</td>
+                </tr>
+                <tr>
+                  <td>510</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>ISTC</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$c</td>
+                  <td>ih00535000</td>
+                </tr>
+                <tr>
+                  <td>510</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Catalogus librorum, ab antiquis bibliothecis, Pragensi & Olomuciensi, qvibus olim Regium Gymnasium Gustavianum Strengnesense donaverat gl. m. regina Christina, Stockholm 1765</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$c</td>
+                  <td>K 23/407</td>
+                </tr>
+                <tr>
+                  <td>535</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Det Kongelige Bibliotek</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$b</td>
+                  <td>København</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$c</td>
+                  <td>DK</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$g</td>
+                  <td>Inc. Haun., 2050 fol. Inkunabelsamlingen</td>
+                </tr>
+                <tr>
+                  <td>561</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Mon: Třeboň:</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>rukopisný záznam</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$3</td>
+                  <td>pag. 5</td>
+                </tr>
+                <tr>
+                  <td>561</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>PWWDR [=Petr Vok z Rožmberka]</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>iniciálové supralibros</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$y</td>
+                  <td>1609</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$3</td>
+                  <td>přední desky</td>
+                </tr>
+                <tr>
+                  <td>561</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Petr Vok z Rožmberka</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>exlibris (Collijn, fig. 1)</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$y</td>
+                  <td>1609</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$3</td>
+                  <td>předsádka</td>
+                </tr>
+                <tr>
+                  <td>561</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Petr Vok z Rožmberka</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>supralibros (Collijn, fig. 17)</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$3</td>
+                  <td>přední desky</td>
+                </tr>
+                <tr>
+                  <td>561</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>D. Andreas Kindler Canonicus Olomucensij hu[n]c libru[m] ad monasteriu[m] S. Bernardini Olomucij dono dedit. Die 17. Maij, An[n]o M. DC. XX ora pro eo.</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>rukopisný záznam</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$3</td>
+                  <td>fol. 1r</td>
+                </tr>
+                <tr>
+                  <td>561</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Andreas Kindler Canon: Olomu. 1616</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>rukopisný záznam (přeškrtnutý)</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$y</td>
+                  <td>1616</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$3</td>
+                  <td>fol. 1r</td>
+                </tr>
+                <tr>
+                  <td>561</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Aukční číslice 407 - z aukce kapitulní knihovny ve Strängnäs</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$3</td>
+                  <td>prázdný list před titulní stranou</td>
+                </tr>
+                <tr>
+                  <td>561</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>X - oborová signatura Královské knihovny ve Stockholmu z let 1650-1651</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$3</td>
+                  <td>hřbet</td>
+                </tr>
+                <tr>
+                  <td>561</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Thott - dle katalogu</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Kat VII 359 (dle Madsena)</td>
+                </tr>
+                <tr>
+                  <td>563</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Celokožená nekvalitně provedená (pokroucená, nedrží dobře blok), při této příležitosti vytvořen rukopisný titulní list (pravděpodobně rukou Václava Březana), zbytky tkanic, supralibros, na hřbetě stopy po Vossiově signatuře.</td>
+                </tr>
+                <tr>
+                  <td>650</td>
+                  <td>0</td>
+                  <td>4</td>
+                  <td>$a</td>
+                  <td>rožmberská knihovna</td>
+                </tr>
+                <tr>
+                  <td>650</td>
+                  <td>0</td>
+                  <td>4</td>
+                  <td>$a</td>
+                  <td>knihovna františkánského kláštera (Olomouc)</td>
+                </tr>
+                <tr>
+                  <td>651</td>
+                  <td></td>
+                  <td>4</td>
+                  <td>$a</td>
+                  <td>Olomouc (Česko)</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$7</td>
+                  <td>ge130299</td>
+                </tr>
+                <tr>
+                  <td>700</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Husner, Georg,</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$d</td>
+                  <td>-1505</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$7</td>
+                  <td>ola364121</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$4</td>
+                  <td>prt</td>
+                </tr>
+                <tr>
+                  <td>700</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>&lt;&lt;z&gt;&gt; Rožmberka, Petr Vok,</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$d</td>
+                  <td>1539-1611</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$7</td>
+                  <td>jn20000728571</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$4</td>
+                  <td>fmo</td>
+                </tr>
+                <tr>
+                  <td>700</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Kindler, Ondřej</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$4</td>
+                  <td>fmo</td>
+                </tr>
+                <tr>
+                  <td>700</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Thott, Otto,</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$d</td>
+                  <td>1703-1785</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$4</td>
+                  <td>fmo</td>
+                </tr>
+                <tr>
+                  <td>710</td>
+                  <td>2</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Třeboňský klášter</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$7</td>
+                  <td>mzk2004237519</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$4</td>
+                  <td>fmo</td>
+                </tr>
+                <tr>
+                  <td>710</td>
+                  <td>2</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Klášter františkánů (Olomouc, Česko)</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$7</td>
+                  <td>mzk2017966506</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$4</td>
+                  <td>fmo</td>
+                </tr>
+                <tr>
+                  <td>710</td>
+                  <td>2</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Kungliga Biblioteket (Švédsko)</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$7</td>
+                  <td>kn20020403012</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$4</td>
+                  <td>fmo</td>
+                </tr>
+                <tr>
+                  <td>710</td>
+                  <td>2</td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>Domkyrkobibliotek (Strängnäs, Švédsko)</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$4</td>
+                  <td>fmo</td>
+                </tr>
+                <tr>
+                  <td>919</td>
+                  <td></td>
+                  <td></td>
+                  <td>$a</td>
+                  <td>OlmK 2</td>
+                </tr>
+                <tr>
+                  <td>856</td>
+                  <td></td>
+                  <td></td>
+                  <td>$u</td>
+                  <td>https://skk.lib.cas.cz/files/159890</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$y</td>
+                  <td>Plný text</td>
+                </tr>
+                <tr>
+                  <td>856</td>
+                  <td></td>
+                  <td></td>
+                  <td>$u</td>
+                  <td>https://skk.lib.cas.cz/files/159891</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>$y</td>
+                  <td>Plný text</td>
+                </tr>
                 </tbody>
               </table>
             </div>
