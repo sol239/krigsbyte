@@ -185,10 +185,31 @@ const documentTypes = [
   border: 1px solid var(--border-color, #e5e7eb);
   box-shadow: var(--shadow-sm);
   font-family: 'Inter', sans-serif;
-  overflow: hidden;
   position: sticky;
   top: 32px;
   height: fit-content;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.facet-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.facet-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.facet-sidebar::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.facet-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #bbb;
 }
 
 .sidebar-header {

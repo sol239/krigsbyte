@@ -1161,7 +1161,7 @@ h2 {
 /* --- METADATA --- */
 .metadata-section-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 4fr 1fr;
   gap: 24px;
   align-items: start;
 }
@@ -1299,8 +1299,8 @@ h2 {
 .image-gallery {
   display: grid;
   /* Automatické sloupce, ale s minimální šířkou */
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  grid-auto-rows: 140px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-auto-rows: 120px;
   /* Fixní výška řádku pro zarovnání */
   gap: 12px;
 }
@@ -1317,8 +1317,8 @@ h2 {
 
 /* První obrázek bude "Featured" - zabere 2x2 dlaždice */
 .gallery-item.featured-item {
-  grid-column: span 2;
-  grid-row: span 2;
+  grid-column: span 1;
+  grid-row: span 1;
 }
 
 /* Pokud je jen jeden obrázek, ať je přes celou šířku kontejneru */
