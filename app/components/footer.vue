@@ -3,7 +3,7 @@
 <template>
   <footer id="footer">
     <div class="footer-logo-section">
-      <a href="https://knizni-korist.cz/" target="_blank" class="logo">
+      <a href="/krigsbyte/" target="_blank" class="logo">
         <img src="@/assets/png/web_logo.png" alt="Logo" class="logo-icon" />
         <span>Švédská knižní kořist z&nbsp;českých zemí</span>
       </a>
@@ -27,7 +27,7 @@ footer {
   min-height: 105px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 60px;
