@@ -86,9 +86,11 @@
 
         <div class="citation-wrapper" v-click-outside="closeCitation">
           <div class="status-indicator" :class="{ active: showCitation }" title="Zásady pro užívání" @click.stop="toggleCitation">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981"
-              stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <path d="m9 15 2 2 4-4"/>
             </svg>
           </div>
           <transition name="fade">
@@ -451,7 +453,7 @@ header .logo span {
 .status-indicator {
   width: 40px;
   height: 40px;
-  background: #ecfdf5;
+  background: var(--primary-light);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -462,8 +464,8 @@ header .logo span {
 
 .status-indicator:hover,
 .status-indicator.active {
-  background: #d1fae5;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  background: rgba(133, 0, 0, 0.1);
+  box-shadow: 0 0 0 2px rgba(133, 0, 0, 0.2);
 }
 
 .fade-enter-active,

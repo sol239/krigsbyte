@@ -2,12 +2,6 @@
   <div class="citation-dropdown-card" @click.stop>
     <div class="card-header">
       <h2 class="citation-title">Zásady pro užívání</h2>
-      <button class="close-btn" @click="$emit('close')" aria-label="Zavřít">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
     </div>
 
     <div class="citation-content">
@@ -31,6 +25,10 @@
           <strong>Pozn.:</strong> Pokud citujete jiný záznam, nahraďte číslo záznamu a URL příslušnými údaji ze záznamu.
         </p>
       </div>
+    </div>
+
+    <div class="card-footer">
+      <button class="btn-agree" @click="$emit('close')">Souhlasím</button>
     </div>
   </div>
 </template>
@@ -65,9 +63,6 @@ defineEmits(['close'])
 }
 
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 16px 24px;
   border-bottom: 1px solid #f3f4f6;
   background: #fff;
@@ -78,24 +73,6 @@ defineEmits(['close'])
   font-weight: 700;
   color: #111;
   margin: 0;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  color: #9ca3af;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 6px;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.close-btn:hover {
-  background: #f3f4f6;
-  color: #111;
 }
 
 .citation-content {
@@ -135,10 +112,34 @@ defineEmits(['close'])
   margin-top: 6px;
 }
 
+.card-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: flex-end;
+  background: #fff;
+}
+
+.btn-agree {
+  background: #850000;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-agree:hover {
+  background: #600000;
+}
+
 @media (max-width: 640px) {
   .citation-dropdown-card {
     width: 300px;
-    right: -60px; /* Adjust for mobile if needed */
+    right: -60px;
   }
 
   .citation-content {
