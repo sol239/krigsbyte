@@ -659,6 +659,7 @@ h2 {
 .title-value {
   font-size: 1.15rem;
   color: var(--primary, #850000);
+  font-weight: 100;
 }
 
 .metadata-link {

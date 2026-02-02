@@ -623,7 +623,7 @@ body {
 
 .result-title-link {
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #000;
   text-decoration: none;
   line-height: 1.3;
