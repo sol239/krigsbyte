@@ -68,19 +68,17 @@
         </div>
         <div class="custom-dropdown" id="langDropdown">
           <button class="dropdown-trigger lang-trigger" @click.stop="toggleLangMenu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m5 8 6 6" />
-              <path d="m4 14 6-6 2-3" />
-              <path d="M2 5h12" />
-              <path d="M7 2h1" />
-              <path d="m22 22-5-10-5 10" />
-              <path d="M14 18h6" />
-            </svg>
+            <span class="current-lang-flag" v-html="flagSvg(selectedLang === 'cs' ? 'CZ' : 'GB')"></span>
           </button>
           <div class="dropdown-menu">
-            <div class="dropdown-item" @click="setLang('cs')">Čeština</div>
-            <div class="dropdown-item" @click="setLang('en')">English</div>
+            <div class="dropdown-item lang-item" @click="setLang('cs')">
+              <span class="flag-icon" v-html="flagSvg('CZ')"></span>
+              Čeština
+            </div>
+            <div class="dropdown-item lang-item" @click="setLang('en')">
+              <span class="flag-icon" v-html="flagSvg('GB')"></span>
+              English
+            </div>
           </div>
         </div>
 
@@ -113,7 +111,11 @@ export default {
     return {
       selectedField: 'Všechna pole',
       selectedLang: 'cs',
-      showCitation: false
+      showCitation: false,
+      flagSvgs: {
+        CZ: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="8" fill="#FFFFFF"/><rect y="8" width="16" height="8" fill="#D52B1E"/><polygon points="0,0 8,8 0,16" fill="#11457E"/></svg>`,
+        GB: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" fill="#012169"/><path d="m0 0 16 16M16 0 0 16" stroke="#fff" stroke-width="2"/><path d="m0 0 16 16M16 0 0 16" stroke="#C8102E" stroke-width="1.2"/><path d="M8 0v16M0 8h16" stroke="#fff" stroke-width="3"/><path d="M8 0v16M0 8h16" stroke="#C8102E" stroke-width="2"/></svg>`
+      }
     }
   },
   mounted() {
@@ -123,6 +125,9 @@ export default {
     window.removeEventListener('click', this.handleClickOutside)
   },
   methods: {
+    flagSvg(code) {
+      return this.flagSvgs[code] || ''
+    },
     toggleMenu() {
       document.getElementById('myDropdown').classList.toggle('open')
     },
@@ -281,7 +286,6 @@ header .logo span {
 }
 
 /* --- CUSTOM DROPDOWNS --- */
-/* --- CUSTOM DROPDOWNS --- */
 .custom-dropdown {
   position: relative;
   user-select: none;
@@ -375,6 +379,35 @@ header .logo span {
 
 .lang-trigger:hover {
   background: #e8e8e8;
+}
+
+.current-lang-flag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flag-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #eee;
+  flex-shrink: 0;
 }
 
 .dropdown-mobile-icon {

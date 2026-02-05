@@ -149,7 +149,7 @@ const cities = [
   { name: 'Lund', count: 209, country: 'SE' },
   { name: 'Leiden', count: 180, country: 'NL' },
   { name: 'København', count: 169, country: 'DK' },
-  { name: 'Vatikán', count: 91, country: 'VA' },
+  { name: 'Vatican', count: 91, country: 'VA' },
   { name: 'Växjö', count: 45, country: 'SE' },
   { name: 'Linköping', count: 30, country: 'SE' },
   { name: 'Brno', count: 21, country: 'CZ' },

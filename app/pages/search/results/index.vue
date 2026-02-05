@@ -137,7 +137,10 @@
                   </div>
                   <div class="result-row">
                     <span class="result-label">Nakladatelské údaje:</span>
-                    <span class="result-value">{{ result.publication }}</span>
+                    <span class="result-value">
+                      <span v-if="result.country" class="result-flag" v-html="flagSvg(result.country)"></span>
+                      {{ result.publication }}
+                    </span>
                   </div>
                   <div class="result-row">
                     <span class="result-label">Číslo záznamu:</span>
@@ -215,27 +218,48 @@ const selectedSort = ref('Relevance')
 const isPageSizeOpen = ref(false)
 const selectedPageSize = ref(20)
 
+const flagSvgs = {
+  SE: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" fill="#0052B4"/><rect x="5.33" y="0" width="1.33" height="16" fill="#FFCC00"/><rect x="0" y="5.33" width="16" height="1.33" fill="#FFCC00"/></svg>`,
+  NL: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="5.33" fill="#AE1C28"/><rect y="5.33" width="16" height="5.33" fill="#FFFFFF"/><rect y="10.67" width="16" height="5.33" fill="#21468B"/></svg>`,
+  DK: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" fill="#C8102E"/><rect x="5.33" y="0" width="1.33" height="16" fill="#FFFFFF"/><rect x="0" y="5.33" width="16" height="1.33" fill="#FFFFFF"/></svg>`,
+  VA: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="8" height="16" fill="#FFE000"/><rect x="8" width="8" height="16" fill="#FFFFFF"/></svg>`,
+  CZ: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="8" fill="#FFFFFF"/><rect y="8" width="16" height="8" fill="#D52B1E"/><polygon points="0,0 8,8 0,16" fill="#11457E"/></svg>`,
+  DE: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="5.33" fill="#000000"/><rect y="5.33" width="16" height="5.33" fill="#DD0000"/><rect y="10.67" width="16" height="5.33" fill="#FFCC00"/></svg>`,
+  NO: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" fill="#BA0C2F"/><rect x="5.33" y="0" width="1.33" height="16" fill="#FFFFFF"/><rect x="0" y="5.33" width="16" height="1.33" fill="#FFFFFF"/><rect x="6" y="0" width="0.67" height="16" fill="#00205B"/><rect x="0" y="6" width="16" height="0.67" fill="#00205B"/></svg>`,
+  IT: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="5.33" height="16" fill="#009246"/><rect x="5.33" width="5.33" height="16" fill="#FFFFFF"/><rect x="10.67" width="5.33" height="16" fill="#CE2B37"/></svg>`,
+  RU: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="5.33" fill="#FFFFFF"/><rect y="5.33" width="16" height="5.33" fill="#0052B4"/><rect y="10.67" width="16" height="5.33" fill="#D52B1E"/></svg>`,
+  CH: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" fill="#FF0000"/><rect x="7" y="3" width="2" height="10" fill="#FFFFFF"/><rect x="3" y="7" width="10" height="2" fill="#FFFFFF"/></svg>`,
+  FR: `<svg width="16" height="16" viewBox="0 0 16 16"><rect width="5.33" height="16" fill="#002395"/><rect x="5.33" width="5.33" height="16" fill="#FFFFFF"/><rect x="10.67" width="5.33" height="16" fill="#ED2939"/></svg>`,
+};
+
+function flagSvg(code) {
+  return flagSvgs[code] || '';
+}
+
 const results = ref([
   {
     number: 1,
     author: 'Spangenberg, Cyriacus, 1528-1604',
     title: 'Adels-Spiegel. Historischer ausfürlicher Bericht, was Adel sey und heisse, woher er komme, wie mancherley er sey, und was denselben ziere und erhalte, auch hingegen verstelle und schwäche',
     publication: 'Schmalkalden : Schmuck, Michael, 1591',
-    recordNumber: 'RK 964'
+    recordNumber: 'RK 964',
+    country: 'DE'
   },
   {
     number: 2,
     author: 'Wanner, Valentin, 1495-1567',
     title: 'DE MISSA IVDICIVM VALENTINI VANNII, PASTORIS ECCLESIAE QVAE EST IN CANDTSTAT.',
     publication: 'Tübingen : Morhart, Ulrich - heredes, 1557',
-    recordNumber: 'DK 318'
+    recordNumber: 'DK 318',
+    country: 'DE'
   },
   {
     number: 3,
     author: 'Alcuin, 735-805',
     title: 'ALBINI THEOLOGORVM SVAE aetatis doctissimi, in Ecclesiasten Commentaria',
     publication: 'Basel : Bebel, Johann, 1531',
-    recordNumber: 'RK 259'
+    recordNumber: 'RK 259',
+    country: 'CH'
   },
   {
     number: 4,
@@ -243,7 +267,8 @@ const results = ref([
     title: 'Sermones Thesauri novi de tempore',
     publication: 'Strasbourg : Flach, Martin, 1487',
     recordNumber: 'DK 7',
-    imageUrl: 'https://skk.lib.cas.cz/files/159228'
+    imageUrl: 'https://skk.lib.cas.cz/files/159228',
+    country: 'FR'
   },
   {
     number: 5,
@@ -251,14 +276,16 @@ const results = ref([
     title: 'Quadragesimale',
     publication: '[Strasbourg : Husner, Georg, 1490]',
     recordNumber: 'OlmK 21',
-    imageUrl: 'https://skk.lib.cas.cz/files/159819'
+    imageUrl: 'https://skk.lib.cas.cz/files/159819',
+    country: 'FR'
   },
   {
     number: 6,
     author: 'Strabón, 64 př. Kr.-19 po Kr.',
     title: 'Strabonos geographikon bibloi hepta kai deka',
     publication: 'Basel : Henricpetri - officina, [1571]',
-    recordNumber: 'DK 1116'
+    recordNumber: 'DK 1116',
+    country: 'CH'
   },
   {
     number: 7,
@@ -266,21 +293,24 @@ const results = ref([
     title: 'Labyrinthvs primvs papisticus. Hoc est: dispvtatio de papatv semetipsum contradictionibus implicante, confundente & jugulante, in articvlis de Scriptura Sacra.',
     publication: 'Wittenberg : Müller, Georg, 1602',
     recordNumber: 'RK 726',
-    imageUrl: 'https://skk.lib.cas.cz/files/158273'
+    imageUrl: 'https://skk.lib.cas.cz/files/158273',
+    country: 'DE'
   },
   {
     number: 8,
     author: 'Fine, Oronce, 1494-1555',
     title: 'De speculo ustorio ignem ad propositam distantiam generante, liber unicus',
     publication: 'Paris : Michel de Vascosan, 1551',
-    recordNumber: 'SJ 39'
+    recordNumber: 'SJ 39',
+    country: 'FR'
   },
   {
     number: 9,
     author: 'Fabri de Werdea, Johannes, 1450-1505',
     title: 'Exercitata parvorum logicalium secundum viam modernorum.',
     publication: '[Reutlingen] : Otmar, Johann, 1487',
-    recordNumber: 'DK 613'
+    recordNumber: 'DK 613',
+    country: 'DE'
   },
   {
     number: 10,
@@ -288,7 +318,8 @@ const results = ref([
     title: 'Promptuarium Morale Super Evangelia Festorum Totius Anni',
     publication: 'Köln am Rhein : Hierat, Anton, 1617-1618',
     recordNumber: 'OlmK 281',
-    imageUrl: 'https://skk.lib.cas.cz/files/152566'
+    imageUrl: 'https://skk.lib.cas.cz/files/152566',
+    country: 'DE'
   },
   {
     number: 11,
@@ -296,21 +327,24 @@ const results = ref([
     title: 'Adagiorum chiliades tres, ac centuriae fere totidem',
     publication: 'Venice : Aldus Manutius, 1508',
     recordNumber: 'RK 112',
-    imageUrl: 'https://skk.lib.cas.cz/files/151234'
+    imageUrl: 'https://skk.lib.cas.cz/files/151234',
+    country: 'IT'
   },
   {
     number: 12,
     author: 'Melanchthon, Philipp, 1497-1560',
     title: 'Loci communes rerum theologicarum',
     publication: 'Wittenberg : Lotter, Melchior, 1521',
-    recordNumber: 'DK 442'
+    recordNumber: 'DK 442',
+    country: 'DE'
   },
   {
     number: 13,
     author: 'Luther, Martin, 1483-1446',
     title: 'De captivitate babylonica ecclesiae praeludium',
     publication: 'Wittenberg : Melchior Lotter, 1520',
-    recordNumber: 'RK 885'
+    recordNumber: 'RK 885',
+    country: 'DE'
   },
   {
     number: 14,
@@ -318,14 +352,16 @@ const results = ref([
     title: 'De humani corporis fabrica libri septem',
     publication: 'Basel : Oporinus, Johannes, 1543',
     recordNumber: 'SJ 125',
-    imageUrl: 'https://skk.lib.cas.cz/files/153456'
+    imageUrl: 'https://skk.lib.cas.cz/files/153456',
+    country: 'CH'
   },
   {
     number: 15,
     author: 'Copernicus, Nicolaus, 1473-1543',
     title: 'De revolutionibus orbium coelestium',
     publication: 'Nuremberg : Petreius, Johannes, 1543',
-    recordNumber: 'RK 334'
+    recordNumber: 'RK 334',
+    country: 'DE'
   },
   {
     number: 16,
@@ -333,21 +369,24 @@ const results = ref([
     title: 'De re metallica libri XII',
     publication: 'Basel : Froben, Hieronymus & Episcopius, Nicolaus, 1556',
     recordNumber: 'DK 998',
-    imageUrl: ''
+    imageUrl: '',
+    country: 'CH'
   },
   {
     number: 17,
     author: 'Calvin, Jean, 1509-1564',
     title: 'Institutio christianae religionis',
     publication: 'Geneva : Robert Estienne, 1559',
-    recordNumber: 'RK 441'
+    recordNumber: 'RK 441',
+    country: 'CH'
   },
   {
     number: 18,
     author: 'More, Thomas, 1478-1535',
     title: 'Libellus vere aureus, nec minus salutaris quam festivus de optimo reipublicae statu deque nova insula Utopia',
     publication: 'Louvain : Martens, Thierry, 1516',
-    recordNumber: 'DK 553'
+    recordNumber: 'DK 553',
+    country: 'BE'
   },
   {
     number: 19,
@@ -355,14 +394,16 @@ const results = ref([
     title: 'Il Principe',
     publication: 'Rome : Blado, Antonio, 1532',
     recordNumber: 'RK 662',
-    imageUrl: 'https://skk.lib.cas.cz/files/155678'
+    imageUrl: 'https://skk.lib.cas.cz/files/155678',
+    country: 'IT'
   },
   {
     number: 20,
     author: 'Kepler, Johannes, 1571-1630',
     title: 'Astronomia nova',
     publication: '[Heidelberg] : [Vögelin], 1609',
-    recordNumber: 'SJ 212'
+    recordNumber: 'SJ 212',
+    country: 'DE'
   }
 ])
 
@@ -672,10 +713,24 @@ body {
 .result-value {
   color: #333;
   font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .result-value.secondary {
   color: #666;
+}
+
+.result-flag {
+  display: inline-flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid #eee;
 }
 
 .result-file {
